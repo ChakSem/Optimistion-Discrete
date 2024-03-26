@@ -15,7 +15,7 @@ class Instance
         int i_Nombre_POI;           //Nombre de POIs numéroté (id) de 0 à i_Nombre_POI-1
         int i_Nombre_Jour;          //Nombre de jours numéroté (id) de 0 à i_Nombre_Jour-1
         
-        vector<float> v_f_Duree_Max_Voyage_Par_Jour; //Durée maxiamel d'une journée (heure arrivé - heure départ pour chaque jour)
+        vector<float> v_f_Duree_Max_Voyage_Par_Jour; //Durée maximale d'une journée (heure arrivé - heure départ pour chaque jour)
     
         class POI
         {

@@ -129,11 +129,13 @@
   <ItemGroup>
     <ClInclude Include="..\..\Instance.hpp" />
     <ClInclude Include="..\..\Solution.hpp" />
+    <ClInclude Include="Heuristique_v1.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Instance.cpp" />
     <ClCompile Include="..\..\main.cpp" />
     <ClCompile Include="..\..\Solution.cpp" />
+    <ClCompile Include="Heuristique_v1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
