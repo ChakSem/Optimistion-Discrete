@@ -1,11 +1,14 @@
 #pragma once
 #include <unordered_map>
+#include <algorithm>    
 #include "..\..\Instance.hpp"
 
 #define HOTEL_OBSOLETE -2
 
 #define POI_OBSOLETE false
 #define POI_NON_OBSOLETE true
+
+using namespace std;
 
 /**
  * Determination d'une solution :
@@ -47,6 +50,13 @@
  * 
  * ...
  * 
+ * ============================================================================================================================================================
+ * Score hotel en fonction de la deformation sur la projection de H à Ha
+ * 
+ * Retour en arrière lors de CalculMeilleurJournee (POI 0 haut score qui ouvre le soir)
+ * 
+ * Ne pas eliminer les hotels qui font revenir en arriere (cas ou journee tres courte rend hotel Hm mauvais, donc joint hotel plus proche de Ha
+ * mais journee d'apres plus longue, rend Hm interesssant)
  */
 
 
@@ -56,11 +66,14 @@ private:
     int i_Jour;
     int i_Duree_Max;
     int i_Duree_Journee_En_Cours;
-    int H;
+    int H;//ID Hotel de Depart
 
-    Instance *Instance;
+    Instance * probleme;
     vector<double> pi_Score_POI;          // Liste de taille n, stockant le score calculee du POI
     vector<int> pi_Rayon_Hotels;          /* Liste contenant les hotels dans le rayon de l'hotel choisit en debut d'iteration*/
+
+    int i_Meilleur_Hotel;
+    vector<int> pi_Rayon_Meilleur_Hotel;
 
     vector<int> pi_Solution; // Liste des id dans l'ordre des solution
 
@@ -68,6 +81,12 @@ private:
     vector<int> pi_Hotels_Coherents;
 
 public:
+    Heuristique_v1(Instance* problemeParam) {
+        probleme = problemeParam;
+
+        Solution1();
+    }
+
     void Solution1();
 
     void CalculScorePOI(int iPOI_Param);
@@ -78,7 +97,11 @@ public:
     /* Permet de calculer le score d'un hotel */
     double CalculScoreHotel(int i_Hotel_Param, vector<int> pi_POI_Dans_Le_Rayon);
     /* Permet de calculer la meilleure journée entre deux hotels*/
-    void CalculMeilleurJournee(int i_Hotel_Depart, int i_Hotel_Arrive);
-
+    void CalculMeilleureJournee();
+    
     void Initialisation();
+
+private :
+    double GetAbsiceProjectionPOI(int i_POI_Param);
+    double GetAbsiceProjectionHotel(int i_Hotel_Param);
 };
