@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <algorithm>    
 #include "..\..\Instance.hpp"
+#include "..\..\Solution.hpp"
 
 #define HOTEL_OBSOLETE -2
 
@@ -64,28 +65,27 @@ class Heuristique_v1
 {
 private:
     int i_Jour;
-    int i_Duree_Max;
-    int i_Duree_Journee_En_Cours;
+    float f_Duree_Max;
+    float f_Duree_Journee_En_Cours;
     int H;//ID Hotel de Depart
 
     Instance * probleme;
-    vector<double> pi_Score_POI;          // Liste de taille n, stockant le score calculee du POI
+    unordered_map<int, float> map_Score_POI;          // Map de taille n, stockant le score calculee du POI
     vector<int> pi_Rayon_Hotels;          /* Liste contenant les hotels dans le rayon de l'hotel choisit en debut d'iteration*/
 
     int i_Meilleur_Hotel;
     vector<int> pi_Rayon_Meilleur_Hotel;
 
-    vector<int> pi_Solution; // Liste des id dans l'ordre des solution
-
     vector<int> pi_POI_Coherents;
     vector<int> pi_Hotels_Coherents;
 
-public:
-    Heuristique_v1(Instance* problemeParam) {
-        probleme = problemeParam;
+    int i_Score_Solution;
+    Solution* solution;
 
-        Solution1();
-    }
+public:
+    Heuristique_v1(Instance* problemeParam);
+
+    static Solution* ExtraireSolution(Instance* problemeParam);
 
     void Solution1();
 
@@ -95,13 +95,13 @@ public:
     /* Permet d'intialiser les scores des hotels sur un demi rayon de */
     vector<int> IdentifierPOIRayonHotel(int i_Hotel_Param);
     /* Permet de calculer le score d'un hotel */
-    double CalculScoreHotel(int i_Hotel_Param, vector<int> pi_POI_Dans_Le_Rayon);
+    float CalculScoreHotel(int i_Hotel_Param, vector<int> pi_POI_Dans_Le_Rayon);
     /* Permet de calculer la meilleure journée entre deux hotels*/
     void CalculMeilleureJournee();
     
     void Initialisation();
 
 private :
-    double GetAbsiceProjectionPOI(int i_POI_Param);
-    double GetAbsiceProjectionHotel(int i_Hotel_Param);
+    float GetAbsiceProjectionPOI(int i_POI_Param);
+    float GetAbsiceProjectionHotel(int i_Hotel_Param);
 };
