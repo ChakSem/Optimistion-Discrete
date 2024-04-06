@@ -7,10 +7,12 @@
 #define HOTEL_SCORE_POI 1.0
 #define HOTEL_DISTANCE_AU_POI 1.0
 
-Solution* Heuristique_v1::ExtraireSolution(Instance* problemeParam) {
-    Heuristique_v1* Algorithme = new Heuristique_v1(problemeParam);
+#define POI_DISTANCES_AUX_HOTELS 1.0
 
+
+Solution* Heuristique_v1::ExtraireSolution(Instance* problemeParam) {
     Solution* nouvelleSolution = new Solution();
+    Heuristique_v1* Algorithme = new Heuristique_v1(problemeParam, nouvelleSolution);
 
     Algorithme->Initialisation();
     Algorithme->Solution1();
@@ -18,26 +20,41 @@ Solution* Heuristique_v1::ExtraireSolution(Instance* problemeParam) {
     return nouvelleSolution;
 }
 
-Heuristique_v1::Heuristique_v1(Instance* problemeParam) {
+Heuristique_v1::Heuristique_v1(Instance* problemeParam, Solution* nouvelleSolution) {
     probleme = problemeParam;
+    solution = nouvelleSolution;
+
+    i_Jour = 0;
+    f_Duree_Max = 0.0;
+    f_Duree_Journee_En_Cours = 0.0;
+    H = 0;//ID Hotel de Depart
+
+    map_Score_POI;          // Map de taille n, stockant le score calculee du POI
+    pi_Rayon_Hotels = {};          /* Liste contenant les hotels dans le rayon de l'hotel choisit en debut d'iteration*/
+
+    i_Meilleur_Hotel = 0;
+    pi_Rayon_Meilleur_Hotel = {};
+
+    pi_Hotels_Coherents = {};
+
+    i_Score_Solution = 0;
 }
 
 void Heuristique_v1::Solution1()
 {
     // A tester
-    for (int i : pi_POI_Coherents)
-    {
-        CalculScorePOI(i);
+    for (int i_POI_Coherent = 0; i_POI_Coherent < probleme->get_Nombre_POI(); i_POI_Coherent ++) {
+        CalculScorePOI(i_POI_Coherent);
     }
 
     H = probleme->get_Id_Hotel_depart();
 
     for (i_Jour = 0; i_Jour < probleme->get_Nombre_Jour(); i_Jour++)
     {
-        printf("On part de l'hotel %d\n", H);
+        printf("\n\nJournee %d :\nOn part de l'hotel %d\n", i_Jour, H);
         f_Duree_Journee_En_Cours = probleme->get_POI_Duree_Max_Voyage(i_Jour);
 
-        printf("NB hotels coherents : %d et NB POI coherents : %d\n", pi_Hotels_Coherents.size(), pi_POI_Coherents.size());
+        printf("NB hotels coherents : %d et NB POI coherents : %d\n", pi_Hotels_Coherents.size(), map_Score_POI.size());
 
         printf("La journee dure %f\n", f_Duree_Journee_En_Cours);
 
@@ -64,13 +81,18 @@ void Heuristique_v1::Solution1()
                 pi_Rayon_Meilleur_Hotel = pi_Rayon;
             }
         }
-        printf("Le meilleur hotel est %d avec un score de %f\n", i_Meilleur_Hotel, f_Score_Meilleur_Hotel);
+        printf("Le meilleur hotel est %d avec un score de %f\nMeilleure journee : ", i_Meilleur_Hotel, f_Score_Meilleur_Hotel);
 
         CalculMeilleureJournee();
         H = i_Meilleur_Hotel;
 
+        printf("\n\n");
+
         f_Duree_Max -= f_Duree_Journee_En_Cours;
     }
+
+    solution->i_valeur_fonction_objectif = i_Score_Solution;
+    printf("Score final de : %d\n\n", i_Score_Solution);
 }
 
 /*
@@ -129,8 +151,9 @@ vector<int> Heuristique_v1::IdentifierPOIRayonHotel(int i_Hotel_Param)
      */
     vector<int> pi_POI_DANS_LE_RAYON = {};
 
-    for (int i_POI_Coherent : pi_POI_Coherents)
-    {
+    for (auto it = map_Score_POI.begin(); it != map_Score_POI.end(); ++it) {
+        int i_POI_Coherent = it->first;
+
         if (probleme->get_distance_Hotel_POI(i_Hotel_Param, i_POI_Coherent) +
                 probleme->get_distance_Hotel_POI(H, i_POI_Coherent) <
             f_Duree_Journee_En_Cours)
@@ -175,88 +198,59 @@ void Heuristique_v1::CalculMeilleureJournee()
     // H ;// Hotel debut de journee
     // i_Meilleur_Hotel; // Id hotel fin de journee
     // pf_Score_POI; // Notre score pour chaque POI
-
-    vector<int> pi_POI_Tries = pi_Rayon_Meilleur_Hotel;
-
-    sort(pi_POI_Tries.begin(), pi_POI_Tries.end(), [this](int a, int b)
-        { return map_Score_POI[a] > map_Score_POI[b]; });
-
     vector<int> pi_Journee = {};        // POI de la journee
-    vector<float> pf_abs_Journee = {}; // Abscisse des POI dans la journee
+    vector<info_POI> pf_infos = {}; // Abscisse des POI dans la journee
     float f_Duree_Journee = 0;
 
-    for (int i_POI : pi_POI_Tries)
+    unordered_map<int, float> pi_score_POI_Pour_H;
+    for (int i_POI : pi_Rayon_Meilleur_Hotel) {
+        pi_score_POI_Pour_H[i_POI] = map_Score_POI[i_POI] / ((probleme->get_distance_Hotel_POI(H, i_POI) + probleme->get_distance_Hotel_POI(i_Meilleur_Hotel, i_POI)) * POI_DISTANCES_AUX_HOTELS);
+    }
+
+    std::map<int, int> map_POI_Tries(pi_score_POI_Pour_H.begin(), pi_score_POI_Pour_H.end());
+
+    for (auto i : map_POI_Tries)
     {
+        int i_POI = i.first;
+
         float d_abs = GetAbsiceProjectionPOI(i_POI);
 
+        info_POI info;
+        info.ouverture = probleme->get_POI_Heure_ouverture(i_POI);
+        info.fermeture = probleme->get_POI_Heure_fermeture(i_POI);
+        info.absice = GetAbsiceProjectionPOI(i_POI);
+
         int idx = 0;
+        bool correct = true;
         int i_Precedent = H;
 
         // GERER LES HEURES D'OUVERTURE
 
-        int len = pf_abs_Journee.size();
-        if (len > 0)
-        {
-            if (d_abs >= pf_abs_Journee[0])
-            {
-                f_Duree_Journee = probleme->get_distance_Hotel_POI(H, pi_Journee[0]);
-
-                for (idx = 1; idx < pf_abs_Journee.size() && d_abs >= pf_abs_Journee[idx]; idx++)
-                {
-                    f_Duree_Journee += probleme->get_distance_POI_POI(pi_Journee[idx - 1], pi_Journee[idx]);
-                }
-
-                f_Duree_Journee += probleme->get_distance_POI_POI(pi_Journee[idx], i_POI);
-            }
-            else
-            {
-                f_Duree_Journee = probleme->get_distance_Hotel_POI(H, i_POI);
-                f_Duree_Journee += probleme->get_distance_POI_POI(i_POI, pi_Journee[0]);
-
-                idx = 0;
-            }
-
-            if (idx < len - 1)
-            {
-                idx++;
-                for (idx; idx < pf_abs_Journee.size(); idx++)
-                {
-                    f_Duree_Journee += probleme->get_distance_POI_POI(pi_Journee[idx - 1], pi_Journee[idx]);
-                }
-
-                f_Duree_Journee += probleme->get_distance_Hotel_POI(i_Meilleur_Hotel, pi_Journee[len - 1]);
-            }
-            else
-            {
-                f_Duree_Journee += probleme->get_distance_Hotel_POI(i_Meilleur_Hotel, i_POI);
-            }
-        }
-        else
-        {
-            f_Duree_Journee = probleme->get_distance_Hotel_POI(H, i_POI);
-            +probleme->get_distance_Hotel_POI(i_Meilleur_Hotel, i_POI);
-        }
-
-        if (f_Duree_Journee < f_Duree_Journee_En_Cours)
-        {
-            pi_Journee.insert(pi_Journee.begin() + idx, i_POI);         // Ajouter à la position idx
-            pf_abs_Journee.insert(pf_abs_Journee.begin() + idx, d_abs); // Ajouter à la position idx
-        }
+        int len = pf_infos.size();
+        float f_abs = info.absice;
+        
+        pi_Journee = MeilleureSequence(pi_Journee, pf_infos, i_POI, info);
     }
 
     vector<int> pi_solution_journee = {};
     for (int i : pi_Journee)
     {
-        printf("\n%d, ", i);
+        printf("%d, ", i);
         pi_solution_journee.push_back(i);
         i_Score_Solution += probleme->get_POI_Score(i);
+
+        map_Score_POI.erase(i);
     }
-    printf("\n\npasok");
+
+    solution->v_Date_Depart.push_back(0.0);
     solution->v_v_Sequence_Id_Par_Jour.push_back(pi_solution_journee);
-    printf("\n\nok");
 
     if(i_Meilleur_Hotel != probleme->get_Id_Hotel_Arrivee())
         solution->v_Id_Hotel_Intermedaire.push_back(i_Meilleur_Hotel);
+}
+
+vector<int> Heuristique_v1::MeilleureSequence(vector<int> pi_Sequence, vector<info_POI> p_Infos, int id_POI, info_POI info) {
+    return pi_Sequence;
 }
 
 /*
@@ -267,11 +261,6 @@ Méthode d'initialisation des variables suivantes :
 void Heuristique_v1::Initialisation()
 {
     // A tester
-
-    for (int i = 0; i < probleme->get_Nombre_POI(); ++i)
-    {
-        pi_POI_Coherents.push_back(i);
-    }
 
     for (int i = 0; i < probleme->get_Nombre_Hotel(); ++i)
     {
@@ -284,6 +273,8 @@ void Heuristique_v1::Initialisation()
     {
         f_Duree_Max += probleme->get_POI_Duree_Max_Voyage(i);
     }
+
+    solution->v_v_Sequence_Id_Par_Jour = {};
 }
 
 /*
@@ -360,4 +351,11 @@ float Heuristique_v1::GetAbsiceProjectionHotel(int i_Hotel_Param)
     float d = sqrt(pow(xp - xs, 2) + pow(yp - ys, 2)); // Distance entre l'hotel de depart et le POI
 
     return d;
+}
+
+bool comparator(const pair<string, int>& p1, const pair<string, int>& p2) {
+    if (p1.second == p2.second) { // If numbers are same, sort by string
+        return p1.first < p2.first;
+    }
+    return p1.second > p2.second; // Descending order
 }

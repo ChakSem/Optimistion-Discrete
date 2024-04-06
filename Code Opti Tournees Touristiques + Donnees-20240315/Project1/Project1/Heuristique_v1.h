@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_map>
+#include <map>
 #include <algorithm>    
 #include "..\..\Instance.hpp"
 #include "..\..\Solution.hpp"
@@ -60,6 +61,11 @@ using namespace std;
  * mais journee d'apres plus longue, rend Hm interesssant)
  */
 
+struct info_POI {
+    float ouverture;
+    float fermeture;
+    float absice;
+};
 
 class Heuristique_v1
 {
@@ -76,14 +82,14 @@ private:
     int i_Meilleur_Hotel;
     vector<int> pi_Rayon_Meilleur_Hotel;
 
-    vector<int> pi_POI_Coherents;
+    //vector<int> pi_POI_Coherents;
     vector<int> pi_Hotels_Coherents;
 
     int i_Score_Solution;
     Solution* solution;
 
 public:
-    Heuristique_v1(Instance* problemeParam);
+    Heuristique_v1(Instance* problemeParam, Solution* nouvelleSolution);
 
     static Solution* ExtraireSolution(Instance* problemeParam);
 
@@ -98,6 +104,8 @@ public:
     float CalculScoreHotel(int i_Hotel_Param, vector<int> pi_POI_Dans_Le_Rayon);
     /* Permet de calculer la meilleure journée entre deux hotels*/
     void CalculMeilleureJournee();
+    
+    vector<int> MeilleureSequence(vector<int> pi_Sequence, vector<info_POI> p_Infos, int id_POI, info_POI info);
     
     void Initialisation();
 

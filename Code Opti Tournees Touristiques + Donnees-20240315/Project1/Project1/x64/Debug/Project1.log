@@ -35,35 +35,105 @@ S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnee
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(71,85): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
   (compiler le fichier source 'Heuristique_v1.cpp')
   
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(40,16): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type 'unsigned __int64'
-  S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(40,16):
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(62,16): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type 'unsigned __int64'
+  S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(62,16):
   utilisez '%zd' dans la chaîne de format
   
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(40,16): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 2 est de type 'unsigned __int64'
-  S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(40,16):
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(62,16): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 2 est de type 'unsigned __int64'
+  S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(62,16):
   utilisez '%zd' dans la chaîne de format
   
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(85,25): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(161,23): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(163,41): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(197,17): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(237,13): warning C4552: '+' : résultat de l'expression non utilisé
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(299,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(300,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(303,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(304,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(307,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(308,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(315,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(316,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(324,13): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(335,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(336,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(339,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(340,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(343,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(344,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(351,16): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(352,16): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(360,13): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(112,25): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(189,23): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(191,41): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(212,59): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(234,17): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(285,13): warning C4552: '+' : résultat de l'expression non utilisé
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(346,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(347,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(350,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(351,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(354,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(355,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(362,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(363,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(371,13): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(382,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(383,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(386,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(387,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(390,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(391,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(398,16): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(399,16): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(407,13): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244: 'initialisation' : conversion de 'const _Ty2' en '_Ty2', perte possible de données
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:             _Ty2=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:             _Ty2=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:         ]
+  (compiler le fichier source 'Heuristique_v1.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38):
+  le contexte d’instanciation du modèle (le plus ancien) est
+  	S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(215,37):
+  	voir la référence à l'instanciation de la fonction modèle 'std::map<int,int,std::less<int>,std::allocator<std::pair<const int,int>>>::map<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>>(_Iter,_Iter)' en cours de compilation
+          with
+          [
+              _Ty=std::pair<const int,float>,
+              _Iter=std::_List_iterator<std::_List_val<std::_List_simple_types<std::pair<const int,float>>>>
+          ]
+  		S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(215,37):
+  		voir la première référence à « std::map<int,int,std::less<int>,std::allocator<std::pair<const int,int>>>::map » dans « Heuristique_v1::CalculMeilleureJournee »
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\map(120,9):
+  	voir la référence à l'instanciation de la fonction modèle 'void std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>::insert<_Iter>(_Iter,_Iter)' en cours de compilation
+          with
+          [
+              _Kty=int,
+              _Ty=int,
+              _Pr=std::less<int>,
+              _Alloc=std::allocator<std::pair<const int,int>>,
+              _Iter=std::_List_iterator<std::_List_val<std::_List_simple_types<std::pair<const int,float>>>>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xtree(1260,9):
+  	voir la référence à l'instanciation de la fonction modèle 'void std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>::_Insert_range_unchecked<std::_List_unchecked_iterator<std::_List_val<std::_List_simple_types<std::pair<const int,float>>>>,std::_List_unchecked_iterator<std::_List_val<std::_List_simple_types<std::pair<const int,float>>>>>(_Iter,const _Sent)' en cours de compilation
+          with
+          [
+              _Kty=int,
+              _Ty=int,
+              _Pr=std::less<int>,
+              _Alloc=std::allocator<std::pair<const int,int>>,
+              _Iter=std::_List_unchecked_iterator<std::_List_val<std::_List_simple_types<std::pair<const int,float>>>>,
+              _Sent=std::_List_unchecked_iterator<std::_List_val<std::_List_simple_types<std::pair<const int,float>>>>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xtree(1252,13):
+  	voir la référence à l'instanciation de la fonction modèle 'std::_Tree_node<std::pair<const int,int>,std::_Default_allocator_traits<_Alloc>::void_pointer> *std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>::_Emplace_hint<std::pair<const int,float>&>(std::_Tree_node<std::pair<const int,int>,std::_Default_allocator_traits<_Alloc>::void_pointer> *const ,std::pair<const int,float> &)' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<std::pair<const int,int>>,
+              _Kty=int,
+              _Ty=int,
+              _Pr=std::less<int>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xtree(1042,49):
+  	voir la référence à l'instanciation de la fonction modèle 'std::_Tree_temp_node<std::allocator<std::_Tree_node<std::pair<const int,int>,std::_Default_allocator_traits<_Alloc>::void_pointer>>>::_Tree_temp_node<std::pair<const int,float>&>(_Alnode &,std::_Tree_node<std::pair<const int,int>,std::_Default_allocator_traits<_Alloc>::void_pointer> *,std::pair<const int,float> &)' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<std::pair<const int,int>>,
+              _Alnode=std::allocator<std::_Tree_node<std::pair<const int,int>,std::_Default_allocator_traits<std::allocator<std::pair<const int,int>>>::void_pointer>>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xtree(806,25):
+  	voir la référence à l'instanciation de la fonction modèle 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,std::pair<const int,float>&>(_Alloc &,_Objty *const ,std::pair<const int,float> &)' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<std::_Tree_node<std::pair<const int,int>,std::_Default_allocator_traits<std::allocator<std::pair<const int,int>>>::void_pointer>>,
+              _Ty=std::pair<const int,int>,
+              _Objty=std::pair<const int,int>
+          ]
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xmemory(727,103):
+  	voir la référence à l'instanciation de la fonction modèle 'std::pair<const int,int>::pair<const int,float,0>(const std::pair<const int,float> &) noexcept' en cours de compilation
+  
   Project1.vcxproj -> S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\x64\Debug\Project1.exe

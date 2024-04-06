@@ -11,6 +11,7 @@
 
 #include "Instance.hpp"
 #include "Solution.hpp"
+#include "Project1\Project1\Heuristique_v1.h"
 
 using namespace std;
 
@@ -53,8 +54,14 @@ int main(int argc, const char * argv[])
                     s_chemin.erase(remove(s_chemin.begin(), s_chemin.end(), '\n'), s_chemin.end());
                     
                     instance->chargement_Instance(s_chemin);
+                    i_best_solution_score = Resolution(instance);
                     chrono_start = chrono::system_clock::now();
-                    i_best_solution_score=Resolution(instance);
+                    
+                    printf("Nombre hotels : %d\n Nombre POI : %d\n Nombre jours: %d\n Duree jour1 : %.2f \n Duree Jour 2 : %.2f", instance->get_Nombre_Hotel(), instance->get_Nombre_POI()
+                        , instance->get_Nombre_Jour(), instance->get_POI_Duree_Max_Voyage(0), instance->get_POI_Duree_Max_Voyage(1));
+                    Solution* solution = Heuristique_v1::ExtraireSolution(instance);
+                    solution->Verification_Solution(instance);
+
                     cout<< " Fin de résolution de "<<s_tmp<<endl;
                     chrono_end = chrono::system_clock::now();
                     elapsed=chrono_end-chrono_start;
