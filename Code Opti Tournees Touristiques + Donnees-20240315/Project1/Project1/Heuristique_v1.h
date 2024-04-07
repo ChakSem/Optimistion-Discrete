@@ -31,7 +31,16 @@ using namespace std;
  *    |     Etape 4 : Hotel H' <= Hotel avec le score le plus élevé
  *    |     
  *    |     Etape 5 : Calcul du chemin qui maximise le score de H à H'
- *    |     (Eliminer les POI selectionnés)
+ *    |        |        Tri des POI selon leur score (pre
+ *    |        |        Sequence <- {}
+ *    |        |        
+ *    |        |        Pour tout les i dans POI accessible depuis H à H'
+ *    |        |           |    Inserer i à toutes les position de Sequence possibles : Sequences <- {j U Sequence, Sequence[0] U i U Sequence[1:], ...}
+ *    |        |           |    Eliminer de Sequences les sequence impossibles
+ *    |        |           |    
+ *    |        |           |    Si Sequences != {} : Sequence <- Meilleure(Sequences)
+ *    |        |        FinPour
+ *    |       ---
  *    |     
  *    |     Etape 6 : H <= H'
  * Jusqu'à nb de jour restant = 0 (à la dernière iteration H' est d'office l'hotel d'arrivé
@@ -65,18 +74,17 @@ class Heuristique_v1
 {
 private:
     int i_Jour;
-    float f_Duree_Max;
+    float f_Duree_Totale_Restante;
     float f_Duree_Journee_En_Cours;
-    int H;//ID Hotel de Depart
+    int i_Hotel_Debut_Journee;
+    int i_Hotel_Fin_Journee;
 
-    Instance * probleme;
+    Instance * instance;
     unordered_map<int, float> map_Score_POI;          // Map de taille n, stockant le score calculee du POI
     vector<int> pi_Rayon_Hotels;          /* Liste contenant les hotels dans le rayon de l'hotel choisit en debut d'iteration*/
 
-    int i_Meilleur_Hotel;
-    vector<int> pi_Rayon_Meilleur_Hotel;
+    vector<int> pi_POI_Joignables;
 
-    //vector<int> pi_POI_Coherents;
     vector<int> pi_Hotels_Coherents;
 
     int i_Score_Solution;
@@ -102,7 +110,7 @@ public:
     /// Identifie les hotels joignables en une moins d'1 journée depuis l'hotel en parametre
     /// </summary>
     /// <param name="i_Hotel_Depart"></param>
-    void IdentifierHotelsDemiRayon(int i_Hotel_Param);
+    void IdentifierHotelsFinJournee(int i_Hotel_Param);
 
 
     /// <summary>
@@ -142,11 +150,11 @@ public:
 
 private :
     /// <summary>
-    /// Calcule la durée d'une journée pour une suite de POI en parametre
+    /// Renvoie un score basé sur les temps libres (attente avant ouverture POI, nb d'heures restantes à la fin) de la journée, donnant plus d'importance au long
     /// </summary>
     /// <param name="pi_Trajet"></param>
     /// <returns> temps libre ou -1 si impossible </returns>
-    float GetTempsLibreTrajet(vector<int> pi_Trajet);
+    float GetScoreSequence(vector<int> pi_Trajet);
 
     /// <summary>
     /// Methode pour realiser la projection d'un POI sur la droite joignant le couple d'Hotels de la journée

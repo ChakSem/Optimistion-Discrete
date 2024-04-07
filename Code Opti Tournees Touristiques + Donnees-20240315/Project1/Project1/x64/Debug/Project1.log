@@ -1,41 +1,4 @@
-﻿  Solution.cpp
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(52,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(59,67): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(60,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(61,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(62,53): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(63,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(64,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(67,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(68,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(69,80): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(70,78): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(71,85): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
-  (compiler le fichier source '../../Solution.cpp')
-  
-  Heuristique_v1.cpp
+﻿  Heuristique_v1.cpp
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(52,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
   (compiler le fichier source 'Heuristique_v1.cpp')
   
@@ -84,18 +47,20 @@ S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnee
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(201,23): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(203,41): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(221,59): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(313,26): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(342,91): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(350,46): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(365,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(366,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(312,26): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(320,28): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(336,32): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(346,91): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(354,24): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(369,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(370,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(373,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(374,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(381,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(382,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(390,13): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(373,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(374,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(377,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(378,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(385,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(386,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(394,13): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244: 'initialisation' : conversion de 'const _Ty2' en '_Ty2', perte possible de données
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:         with
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(271,38): warning C4244:         [
@@ -165,5 +130,4 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.3351
   	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xmemory(727,103):
   	voir la référence à l'instanciation de la fonction modèle 'std::pair<const int,int>::pair<const int,float,0>(const std::pair<const int,float> &) noexcept' en cours de compilation
   
-  Génération de code en cours...
   Project1.vcxproj -> S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\x64\Debug\Project1.exe
