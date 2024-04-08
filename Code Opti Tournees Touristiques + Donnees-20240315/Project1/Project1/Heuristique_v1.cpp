@@ -216,14 +216,22 @@ void Heuristique_v1::CalculMeilleureJournee()
     vector<int> pi_Journee = {};
     float f_Duree_Journee = 0;
 
+    // On modifie le score pour donner plus de poids au POI proche de la droite H à Ha
     unordered_map<int, float> pi_score_POI_Pour_H;
     for (int i_POI : pi_POI_Joignables) {
         pi_score_POI_Pour_H[i_POI] = map_Score_POI[i_POI] / ((instance->get_distance_Hotel_POI(i_Hotel_Debut_Journee, i_POI) + instance->get_distance_Hotel_POI(i_Hotel_Fin_Journee, i_POI)) * POI_DISTANCES_AUX_HOTELS);
     }
 
-    std::map<int, int> map_POI_Tries(pi_score_POI_Pour_H.begin(), pi_score_POI_Pour_H.end());
+    std::vector<std::pair<int, float>> vec_POI_Tries(pi_score_POI_Pour_H.begin(), pi_score_POI_Pour_H.end());
 
-    for (auto i : map_POI_Tries)
+    // Trie par valeur (en fonction du score)
+    std::sort(vec_POI_Tries.begin(), vec_POI_Tries.end(),
+        [](const std::pair<int, float>& a, const std::pair<int, float>& b) {
+            return a.second > b.second; 
+        }
+    );
+
+    for (auto i : vec_POI_Tries)
     {
         int i_POI = i.first;
 
@@ -438,11 +446,4 @@ float Heuristique_v1::GetAbsiceProjectionHotel(int i_Hotel_Param)
     //float d = sqrt(pow(xp - xs, 2) + pow(yp - ys, 2)); // Distance entre l'hotel de depart et le POI
 
     return 0;// d;
-}
-
-bool comparator(const pair<string, int>& p1, const pair<string, int>& p2) {
-    if (p1.second == p2.second) { // If numbers are same, sort by string
-        return p1.first < p2.first;
-    }
-    return p1.second > p2.second; // Descending order
 }
