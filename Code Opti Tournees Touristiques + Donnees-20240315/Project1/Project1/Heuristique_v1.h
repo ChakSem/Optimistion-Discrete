@@ -75,19 +75,21 @@ class Heuristique_v1
 private:
     int i_Jour;
     float f_Duree_Totale_Restante;
-    float f_Duree_Journee_En_Cours;
     int i_Hotel_Debut_Journee;
     int i_Hotel_Fin_Journee;
 
     Instance * instance;
     unordered_map<int, float> map_Score_POI;          // Map de taille n, stockant le score calculee du POI
-    vector<int> pi_Rayon_Hotels;          /* Liste contenant les hotels dans le rayon de l'hotel choisit en debut d'iteration*/
+    vector<unordered_map<int, vector<int>>> pmpi_Rayon_Hotels;          /* Liste contenant les hotels dans le rayon de l'hotel choisit en debut d'iteration*/
 
     vector<int> pi_POI_Joignables;
 
+    vector<int> pi_POI_Coherents;
     vector<int> pi_Hotels_Coherents;
 
-    int i_Score_Solution;
+    vector<vector<int>> ppi_Hotels_Supprimes;
+
+    vector<int> pi_Scores_Solution;
     Solution* solution;
 
 public:
@@ -110,7 +112,7 @@ public:
     /// Identifie les hotels joignables en une moins d'1 journée depuis l'hotel en parametre
     /// </summary>
     /// <param name="i_Hotel_Depart"></param>
-    void IdentifierHotelsFinJournee(int i_Hotel_Param);
+    vector<int> IdentifierHotelsFinJournee(int i_Hotel_Param);
 
 
     /// <summary>
