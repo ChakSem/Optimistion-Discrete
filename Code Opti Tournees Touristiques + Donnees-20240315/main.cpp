@@ -60,6 +60,7 @@ int main(int argc, const char * argv[])
                     printf("Nombre hotels : %d\n Nombre POI : %d\n Nombre jours: %d\n Duree jour1 : %.2f \n Duree Jour 2 : %.2f", instance->get_Nombre_Hotel(), instance->get_Nombre_POI()
                         , instance->get_Nombre_Jour(), instance->get_POI_Duree_Max_Voyage(0), instance->get_POI_Duree_Max_Voyage(1));
                     Solution* solution = Heuristique_v1::ExtraireSolution(instance);
+                    cout << "Solution optimale :" << i_best_solution_score <<endl;
                     solution->Verification_Solution(instance);
 
                     cout<< " Fin de résolution de "<<s_tmp<<endl;
