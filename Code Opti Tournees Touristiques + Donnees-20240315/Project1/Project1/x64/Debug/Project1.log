@@ -35,30 +35,28 @@ S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnee
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(71,85): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
   (compiler le fichier source 'Heuristique_v1.cpp')
   
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(71,16): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type 'unsigned __int64'
-  S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(71,16):
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(25,12): warning C4477: 'printf' : la chaîne de format '%f' nécessite un argument de type 'double', mais l'argument variadique 1 est de type 'std::vector<int,std::allocator<int>>'
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(90,16): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type 'unsigned __int64'
+  S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(90,16):
   utilisez '%zd' dans la chaîne de format
   
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(71,16): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 2 est de type 'unsigned __int64'
-  S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(71,16):
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(90,16): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 2 est de type 'unsigned __int64'
+  S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(90,16):
   utilisez '%zd' dans la chaîne de format
   
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(119,25): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(200,23): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(202,41): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(222,59): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(300,26): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(308,23): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(324,27): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(334,94): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(342,19): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(383,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(384,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(387,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(388,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(391,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(392,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(399,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(400,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(408,13): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(139,25): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(225,23): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(227,41): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(338,27): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(362,19): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(403,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(404,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(407,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(408,12): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(411,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(412,14): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(419,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(420,14): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(428,13): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\Heuristique_v1.cpp(479,16): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
   Project1.vcxproj -> S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\x64\Debug\Project1.exe

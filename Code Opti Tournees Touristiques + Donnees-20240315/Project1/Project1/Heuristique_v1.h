@@ -131,7 +131,7 @@ public:
     /// <summary>
     /// Determine la meilleure succession de POI pour une journée, à partir des hotels de départ et d'arrivé (de la journée) et des POI cohérents
     /// </summary>
-    void CalculMeilleureJournee();
+    vector<int> CalculMeilleureJournee();
     
     /// <summary>
     /// Détermine la meilleure séquence (qui laisse le plus de place pour insérer d'autre POI), à partir d'une séquence en paramètre et un POI à insérer
@@ -167,4 +167,12 @@ private :
     /// 
     /// </summary>
     float GetAbsiceProjectionHotel(int i_Hotel_Param);
+
+    /// <summary>
+    /// Donne la distance d'un hotel au POI en fonction de leurs coordonnees
+    /// </summary>
+    /// <param name="i_Hotel"></param>
+    /// <param name="i_POI"></param>
+    /// <returns></returns>
+    float GetVraieDistanceHotelPOI(int i_Hotel, int i_POI);
 };
