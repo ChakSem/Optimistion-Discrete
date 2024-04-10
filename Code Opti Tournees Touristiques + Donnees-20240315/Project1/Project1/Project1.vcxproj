@@ -130,12 +130,14 @@
     <ClInclude Include="..\..\Instance.hpp" />
     <ClInclude Include="..\..\Solution.hpp" />
     <ClInclude Include="Heuristique_v1.h" />
+    <ClInclude Include="MetaHeuristique.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Instance.cpp" />
     <ClCompile Include="..\..\main.cpp" />
     <ClCompile Include="..\..\Solution.cpp" />
     <ClCompile Include="Heuristique_v1.cpp" />
+    <ClCompile Include="MetaHeuristique.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

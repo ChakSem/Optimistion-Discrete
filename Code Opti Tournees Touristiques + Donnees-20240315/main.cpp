@@ -12,6 +12,7 @@
 #include "Instance.hpp"
 #include "Solution.hpp"
 #include "Project1\Project1\Heuristique_v1.h"
+#include "Project1\Project1\MetaHeuristique.h"
 
 using namespace std;
 
@@ -89,7 +90,7 @@ int Resolution(Instance * instance)
     Solution* uneSolution;
     vector<int> v_i_tmp ;
 
-    uneSolution = Heuristique_v1::ExtraireSolution(instance);
+    uneSolution = MetaHeuristique::ExtraireSolution(instance);
 
 /*INITIALISATION D'UN SOLUTION EN DUR*/
     //v_i_tmp.clear();

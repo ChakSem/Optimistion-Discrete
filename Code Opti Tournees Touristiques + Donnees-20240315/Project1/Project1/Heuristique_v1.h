@@ -73,12 +73,16 @@ using namespace std;
 class Heuristique_v1
 {
 private:
+    // Reference au objets externes
+    Instance* instance;
+    Solution* solution;
+
+    // Attribut pour le calcul d'une solution
     int i_Jour;
     float f_Duree_Totale_Restante;
     int i_Hotel_Debut_Journee;
     int i_Hotel_Fin_Journee;
 
-    Instance * instance;
     unordered_map<int, float> map_Score_POI;          // Map de taille n, stockant le score calculee du POI
     vector<unordered_map<int, vector<int>>> pmpi_Rayon_Hotels;          /* Liste contenant les hotels dans le rayon de l'hotel choisit en debut d'iteration*/
 
@@ -88,11 +92,10 @@ private:
     vector<int> pi_Hotels_Coherents;
 
     vector<vector<int>> ppi_Hotels_Supprimes;
-
     vector<int> pi_Scores_Solution;
-    Solution* solution;
 
 public:
+
     Heuristique_v1(Instance* problemeParam, Solution* nouvelleSolution);
 
     static Solution* ExtraireSolution(Instance* problemeParam);
@@ -120,7 +123,7 @@ public:
     /// </summary>
     /// <param name="i_Hotel_Param"></param>
     /// <returns></returns>
-    vector<int> IdentifierPOIRayonHotel(int i_Hotel_Param);
+    static vector<int> IdentifierPOIRayonHotel(int i_Hotel_Debut_Journee_Param, int i_Hotel_Param, Instance* instanceParam, vector<int> pi_POI_Coherents_Param, int i_Jour_Param);
 
     /// <summary>
     /// Methode qui permet de calculer le score d'un hotel en fonction des POI dans le rayon
@@ -134,6 +137,7 @@ public:
     /// Determine la meilleure succession de POI pour une journée, à partir des hotels de départ et d'arrivé (de la journée) et des POI cohérents
     /// </summary>
     vector<int> CalculMeilleureJournee();
+    static vector<int> CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
     
     /// <summary>
     /// Détermine la meilleure séquence (qui laisse le plus de place pour insérer d'autre POI), à partir d'une séquence en paramètre et un POI à insérer
@@ -143,7 +147,7 @@ public:
     /// <param name="id_POI"></param>
     /// <param name="info"></param>
     /// <returns></returns>
-    vector<int> MeilleureSequence(vector<int> pi_Sequence, int id_POI);
+    static vector<int> MeilleureSequence(vector<int> pi_Sequence, int id_POI, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
     
     /// <summary>
     /// Initialise les listes à partir des données du problèmes
@@ -156,7 +160,7 @@ private :
     /// </summary>
     /// <param name="pi_Trajet"></param>
     /// <returns> temps libre ou -1 si impossible </returns>
-    float GetScoreSequence(vector<int> pi_Trajet);
+    static float GetScoreSequence(vector<int> pi_Trajet, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
 
     /// <summary>
     /// Methode pour realiser la projection d'un POI sur la droite joignant le couple d'Hotels de la journée
@@ -170,11 +174,5 @@ private :
     /// </summary>
     float GetAbsiceProjectionHotel(int i_Hotel_Param);
 
-    /// <summary>
-    /// Donne la distance d'un hotel au POI en fonction de leurs coordonnees
-    /// </summary>
-    /// <param name="i_Hotel"></param>
-    /// <param name="i_POI"></param>
-    /// <returns></returns>
-    float GetVraieDistanceHotelPOI(int i_Hotel, int i_POI);
+    static void SupprimerElement(vector<int>* pi_Array, int i_Element);
 };
