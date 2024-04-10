@@ -1,4 +1,155 @@
-﻿  Heuristique_v1.cpp
+﻿  Instance.cpp
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(52,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(59,67): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(60,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(61,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(62,53): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(63,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(64,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(67,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(68,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(69,80): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(70,78): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(71,85): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Instance.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(10,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(52,29): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(85,43): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(86,43): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(91,41): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(92,41): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(94,49): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(95,49): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(124,39): warning C4244: 'argument' : conversion de 'double' en '_Ty', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(124,39): warning C4244:         with
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(124,39): warning C4244:         [
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(124,39): warning C4244:             _Ty=float
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(124,39): warning C4244:         ]
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(128,39): warning C4244: 'argument' : conversion de 'double' en '_Ty', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(128,39): warning C4244:         with
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(128,39): warning C4244:         [
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(128,39): warning C4244:             _Ty=float
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(128,39): warning C4244:         ]
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(138,39): warning C4244: 'argument' : conversion de 'double' en '_Ty', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(138,39): warning C4244:         with
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(138,39): warning C4244:         [
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(138,39): warning C4244:             _Ty=float
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(138,39): warning C4244:         ]
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(142,39): warning C4244: 'argument' : conversion de 'double' en '_Ty', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(142,39): warning C4244:         with
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(142,39): warning C4244:         [
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(142,39): warning C4244:             _Ty=float
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(142,39): warning C4244:         ]
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(186,69): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(198,59): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(210,59): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(222,55): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(225,16): warning C4244: 'return' : conversion de 'double' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(234,67): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(246,67): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(266,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(278,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(290,82): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(302,80): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.cpp(315,87): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  main.cpp
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(52,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(59,67): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(60,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(61,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(62,53): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(63,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(64,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(67,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(68,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(69,80): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(70,78): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(71,85): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+  Solution.cpp
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(52,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(59,67): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(60,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(61,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(62,53): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(63,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(64,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(67,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(68,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(69,80): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(70,78): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(71,85): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../Solution.cpp')
+  
+  Heuristique_v1.cpp
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(52,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
   (compiler le fichier source 'Heuristique_v1.cpp')
   

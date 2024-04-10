@@ -77,7 +77,7 @@ void Heuristique_v1::Solution1()
 {
     // Bon
     for (int i_POI_Coherent = 0; i_POI_Coherent < instance->get_Nombre_POI(); i_POI_Coherent ++) {
-        CalculScorePOI(i_POI_Coherent);
+        map_Score_POI[i_POI_Coherent] = CalculScorePOI(i_POI_Coherent, instance);
     }
 
     i_Hotel_Debut_Journee = instance->get_Id_Hotel_depart();
@@ -182,12 +182,12 @@ void Heuristique_v1::Solution1()
 /// Determine le score du POI en paramètre
 /// </summary>
 /// <param name="i_POI_Param"></param>
-void Heuristique_v1::CalculScorePOI(int i_POI_Param)
+float Heuristique_v1::CalculScorePOI(int i_POI_Param, Instance* instance)
 {
     // TODO : Revoir les constantes
 
     float f_Score_Total = POI_SCORE_INITIAL * instance->get_POI_Score(i_POI_Param) +(instance->get_POI_Heure_fermeture(i_POI_Param) - instance->get_POI_Heure_ouverture(i_POI_Param) / POI_TEMPS_OUVERT);
-    map_Score_POI[i_POI_Param] = f_Score_Total;
+    return f_Score_Total;
 }
 
 /// <summary>

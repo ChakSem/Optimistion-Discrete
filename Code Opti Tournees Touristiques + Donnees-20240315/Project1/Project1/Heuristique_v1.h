@@ -5,11 +5,6 @@
 #include "..\..\Instance.hpp"
 #include "..\..\Solution.hpp"
 
-#define HOTEL_OBSOLETE -2
-
-#define POI_OBSOLETE false
-#define POI_NON_OBSOLETE true
-
 using namespace std;
 
 /**
@@ -109,7 +104,7 @@ public:
     /// Determine le score du POI en paramètre
     /// </summary>
     /// <param name="i_POI_Param"></param>
-    void CalculScorePOI(int iPOI_Param);
+    static float CalculScorePOI(int iPOI_Param, Instance* instance);
     
     /// <summary>
     /// Identifie les hotels joignables en une moins d'1 journée depuis l'hotel en parametre
