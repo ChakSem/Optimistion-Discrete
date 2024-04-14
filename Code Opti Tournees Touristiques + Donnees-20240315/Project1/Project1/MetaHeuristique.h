@@ -29,6 +29,10 @@ using namespace std;
  *  - Trouver bonne solution pour chaque jour à l'aide de meilleure sequence
  *  - Identifier POI communs à plusieurs sequences
  *  - Gerer conflits
+ * 
+ * Idées :
+ *  - Faire un calcul de meilleure journée plus poussé
+ *  - Déterminer la "valeur" des POI partagés pour chaque journée, le placé dans la journée avec sa plus grande valeur
  */
 class MetaHeuristique
 {
@@ -43,9 +47,13 @@ private:
 	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
 
 	vector<pair<int, vector<int>>> pp_Meilleure_Sequence_par_Jour; // Stocke les meilleures séquences à chaque jour
+
+	vector<vector<vector<int>>> pppi_Sequence_par_Jour;
 public :
 	MetaHeuristique(Instance* instanceParam);
 	static Solution* ExtraireSolution(Instance* instanceParam);
 	void Solution();
 	void Initialisation();
+	vector<int> Randomisateur(vector<int> pi_POI);
+	vector<vector<int>> GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
 };
