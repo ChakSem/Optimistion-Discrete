@@ -13,21 +13,69 @@
 
 using namespace std;
 
+
+
+
+// Du coup la logique du metaheuristique si on suit ton raisnnement :
+
+//  MetaHeuristique(instance: Instance) // On return la solution
+//     // Init
+//     solution <- Nouvelle Solution()
+    
+//     // On reutilise l'heuristique pour recup la sol de base
+//     Pour chaque jour j de 1 Ã  Nombre_Jours(instance)
+//         POI_Possibles <- Liste_POI_Possibles(instance) triÃ©e alÃ©atoirement
+        
+//         // On determine la meilleure sequence 
+//         MeilleureSequence(solution, POI_Possibles)
+    
+//     return solution
+
+// MeilleureSequence(solution: Solution, POI_Possibles: ListePOI)  // On return la sequence
+//     Initialisation
+//     Sequence <- ListeVide()
+//     Pour chaque jour j
+//     Pour chaque POI_Possible dans POI_Possibles
+//         Sequence_journee <- TrouverMeilleureSequenceJournee(solution, POI_Possible)
+//         Ajouter Sequence_journee Ã  Sequence
+//     return Sequence
+
+// TrouverMeilleureSequenceJournee(solution: Solution, POI_Possible: POI) // on return la sequence
+//     Initialisation
+//     Meilleure_Sequence <- ListeVide()
+    
+//     Pour chaque hotel possible
+//     		Pour chaque Hotel_Possible dans Liste_Hotels_Possibles(solution)
+//         		Calcul du score de l'hotel en fonction des POI dans le rayon
+//         			Score_Hotel <- CalculScoreHotel(POI_Possible, Hotel_Possible)
+        
+//         	Si Score_Hotel > Meilleur_Score_Hotel
+//             Meilleur_Score_Hotel <- Score_Hotel
+//             Hotel_Optimal <- Hotel_Possible
+    
+//     Calcul de la meilleure succession de POI pour une journÃ©e
+//     Meilleure_Sequence <- CalculMeilleureJournee(Hotel_Optimal, POI_Possible)
+
+//     return  Meilleure_Sequence
+
+
+
+
 /**
- * Amélioration de la solution de l'heuristique :
- *  - On concidère que la séquence d'hotels est optimale, on cherchera donc à améliorer les séquences de POI à chaque jours
+ * Amï¿½lioration de la solution de l'heuristique :
+ *  - On concidï¿½re que la sï¿½quence d'hotels est optimale, on cherchera donc ï¿½ amï¿½liorer les sï¿½quences de POI ï¿½ chaque jours
  * 
- * Données :
+ * Donnï¿½es :
  *  - Solution :
- *		- Hotel de debut / fin trouvés à chaque jours
- *		- Sequence de POI à chaque jour
+ *		- Hotel de debut / fin trouvï¿½s ï¿½ chaque jours
+ *		- Sequence de POI ï¿½ chaque jour
  * - Instance
- * - POI inserables à chaque jours
+ * - POI inserables ï¿½ chaque jours
  * 
- * Déroulement :
+ * Dï¿½roulement :
  *  - Identifier POI communs a plusieurs hotels 
- *  - Trouver bonne solution pour chaque jour à l'aide de meilleure sequence
- *  - Identifier POI communs à plusieurs sequences
+ *  - Trouver bonne solution pour chaque jour ï¿½ l'aide de meilleure sequence
+ *  - Identifier POI communs ï¿½ plusieurs sequences
  *  - Gerer conflits
  */
 class MetaHeuristique
@@ -38,11 +86,11 @@ private:
 	
 	vector<int> pi_POI;
 	vector<vector<int>> ppi_POI_par_Jour; // id_Jour : POI accessible entre hotel du debut de journee et hotel de fin de journee
-	unordered_map<int, float> map_Score_POI; // Stocke les score recalculé des POI
+	unordered_map<int, float> map_Score_POI; // Stocke les score recalculï¿½ des POI
 
-	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
+	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journï¿½e qui peuvent intï¿½grer le POI pour chaque POI
 
-	vector<pair<int, vector<int>>> pp_Meilleure_Sequence_par_Jour; // Stocke les meilleures séquences à chaque jour
+	vector<pair<int, vector<int>>> pp_Meilleure_Sequence_par_Jour; // Stocke les meilleures sï¿½quences ï¿½ chaque jour
 public :
 	MetaHeuristique(Instance* instanceParam);
 	static Solution* ExtraireSolution(Instance* instanceParam);
