@@ -49,6 +49,10 @@ private:
 	vector<pair<int, vector<int>>> pp_Meilleure_Sequence_par_Jour; // Stocke les meilleures séquences à chaque jour
 
 	vector<vector<vector<int>>> pppi_Sequence_par_Jour;
+
+	vector<int> pi_POI_Partages;
+
+	bool CompareScores(const int& poi1, const int& poi2);
 public :
 	MetaHeuristique(Instance* instanceParam);
 	static Solution* ExtraireSolution(Instance* instanceParam);
@@ -56,4 +60,5 @@ public :
 	void Initialisation();
 	vector<int> Randomisateur(vector<int> pi_POI);
 	vector<vector<int>> GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
+	int GetScoreSequence(vector<int> pi_Sequence);
 };

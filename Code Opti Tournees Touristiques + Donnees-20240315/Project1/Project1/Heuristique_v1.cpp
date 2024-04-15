@@ -11,6 +11,9 @@
 
 #define POI_DISTANCES_AUX_HOTELS 1.0
 
+#define SEQUENCE_TPS_LIBRES 1.0
+#define SEQUENCE_DISTANCE_TOTALE 1.0
+
 
 void Heuristique_v1::SupprimerElement(vector<int>* pi_Array, int i_Element) {
     int idx = 0;
@@ -397,8 +400,12 @@ float Heuristique_v1::GetScoreSequence(vector<int> pi_Trajet, Instance* instance
 {
     float f_Duree_Trajet = 0.0;
     float f_Score = 0.0;
+    float f_Dist_Totale_Parcourue = 0.0;
+    float f_Dist = 0.0;
 
-    f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_Hotel_POI(i_Hotel_Debut_Journee, pi_Trajet[0]) + f_Heure_Debut;
+    f_Dist = instance->get_distance_Hotel_POI(i_Hotel_Debut_Journee, pi_Trajet[0]);
+    f_Dist_Totale_Parcourue += f_Dist;
+    f_Duree_Trajet = f_Duree_Trajet + f_Dist + f_Heure_Debut;
     int j = 0;
     do
     {
@@ -417,19 +424,27 @@ float Heuristique_v1::GetScoreSequence(vector<int> pi_Trajet, Instance* instance
         j++;
         if (j < pi_Trajet.size())
         {
-            f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_POI_POI(pi_Trajet[j - 1], pi_Trajet[j]);
+            f_Dist = instance->get_distance_POI_POI(pi_Trajet[j - 1], pi_Trajet[j]);
+            f_Dist_Totale_Parcourue += f_Dist;
+            f_Duree_Trajet = f_Duree_Trajet + f_Dist;
         }
     } while (j < pi_Trajet.size());
 
-    f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_Hotel_POI(i_Hotel_Fin_Journee, pi_Trajet[j - 1]);
+    f_Dist = instance->get_distance_Hotel_POI(i_Hotel_Fin_Journee, pi_Trajet[j - 1]);
+    f_Dist_Totale_Parcourue += f_Dist;
+    f_Duree_Trajet = f_Duree_Trajet + f_Dist;
     if ((f_Duree_Trajet - f_Heure_Debut) > instance->get_POI_Duree_Max_Voyage(i_Jour))
     {
         return -1;
     }
     f_Score += pow(instance->get_POI_Duree_Max_Voyage(i_Jour) - (f_Duree_Trajet - f_Heure_Debut), 2);
 
-    return f_Score;
+    return (f_Score * SEQUENCE_TPS_LIBRES); // (f_Dist * SEQUENCE_DISTANCE_TOTALE);
 }
+
+
+#define SEQUENCE_TPS_LIBRES 1.0
+#define SEQUENCE_DISTANCE_TOTALE 1.0
 
 /// <summary>
 /// Initialise les listes à partir des données du problèmes

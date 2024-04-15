@@ -1,4 +1,41 @@
-﻿  MetaHeuristique.cpp
+﻿  main.cpp
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(52,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(59,67): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(60,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(61,57): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(62,53): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(63,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(64,65): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(67,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(68,61): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(69,80): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(70,78): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(71,85): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
+  (compiler le fichier source '../../main.cpp')
+  
+  MetaHeuristique.cpp
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(52,63): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
   (compiler le fichier source 'MetaHeuristique.cpp')
   
@@ -35,5 +72,18 @@ S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnee
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Instance.hpp(71,85): warning C4290: Spécification d'exception C++ ignorée sauf pour indiquer qu'une fonction n'est pas __declspec(nothrow)
   (compiler le fichier source 'MetaHeuristique.cpp')
   
-S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(141,29): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-  Project1.vcxproj -> S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\x64\Debug\Project1.exe
+  Génération de code en cours...
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(116,56): error C3867: 'MetaHeuristique::CompareScores' : syntaxe non-standard ; utilisez '&' pour créer un pointeur vers un membre
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(116,8): error C2672: 'std::sort' : fonction correspondante surchargée introuvable
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\algorithm(8085,19):
+  est peut-être 'void std::sort(const _RanIt,const _RanIt)'
+  	S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(116,8):
+  	'void std::sort(const _RanIt,const _RanIt)' : attend des arguments 2 - 3 fournis.
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\algorithm(8077,19):
+  ou       'void std::sort(const _RanIt,const _RanIt,_Pr)'
+  
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(135,22): error C2143: erreur de syntaxe : absence de ';' avant ')'
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(136,2): error C2143: erreur de syntaxe : absence de ';' avant '}'
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(136,2): error C2143: erreur de syntaxe : absence de ')' avant '}'
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(136,2): error C2059: erreur de syntaxe : '}'
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(151,29): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données

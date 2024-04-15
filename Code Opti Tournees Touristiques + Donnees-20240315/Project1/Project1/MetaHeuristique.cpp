@@ -5,12 +5,12 @@
 #include "MetaHeuristique.h"
 #include "..\..\Solution.hpp"
 
-
 MetaHeuristique::MetaHeuristique(Instance* instanceParam) {
 	
 	instance = instanceParam;
 	solution = Heuristique_v1::ExtraireSolution(instanceParam);
 	pppi_Sequence_par_Jour = {};
+	pi_POI_Partages = {};
 }
 
 Solution* MetaHeuristique::ExtraireSolution(Instance* instanceParam) 
@@ -51,12 +51,13 @@ void MetaHeuristique::Solution() {
 		else
 			i_Hotel_Fin_Journee = solution->v_Id_Hotel_Intermedaire[i_Jour];
 
-		vector<vector<int>> ppi_Sequences = GenerationNSequence(pi_POI, 50, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour);
+
+		vector<vector<int>> ppi_Sequences = GenerationNSequence(pi_POI, 500, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour);
 
 		pppi_Sequence_par_Jour.push_back(ppi_Sequences);
 	}
-
 }
+
 void MetaHeuristique::Initialisation() {
 
 	// Initialisation de la liste des POI
@@ -108,21 +109,30 @@ void MetaHeuristique::Initialisation() {
 				map_conflit_POI[i_POI] = { i_Jour }; // Conflit initialisé avec l'id du 1er jour pouvant utiliser le POI
 			}
 			else {
+				if (map_conflit_POI[i_POI].size() == 1) {
+					pi_POI_Partages.push_back(i_POI);
+				} 
 				map_conflit_POI[i_POI].push_back(i_Jour); // Conflit initialiser avec l'id du 1er jour pouvant utiliser le POI
 			}
 		}
-		int i_Hotel_Debut_Journee;
-		if (i_Jour == 0)
-			i_Hotel_Debut_Journee = instance->get_Id_Hotel_depart();
-		else
-			i_Hotel_Debut_Journee = solution->v_Id_Hotel_Intermedaire[i_Jour - 1];
 
-		// Hotel à la fin du i_Jour-ième jour
-		int i_Hotel_Fin_Journee;
-		if (i_Jour == instance->get_Nombre_Jour() - 1)
-			i_Hotel_Fin_Journee = instance->get_Id_Hotel_Arrivee();
-		else
-			i_Hotel_Fin_Journee = solution->v_Id_Hotel_Intermedaire[i_Jour];
+		std::sort(pi_POI.begin(), pi_POI.end(), CompareScores);
+		
+		// Supprimer les POI partages
+		int idx = 0;
+		while (idx < pi_POI.size()) {
+			int i_POI = pi_POI[idx];
+			if (map_conflit_POI[i_POI].size() > 1) {
+				pi_POI.erase(pi_POI.begin() + idx);
+			} else {
+				idx++;			
+			}
+		}
+	}
+
+	// Affectation à un jour pour chaque POI partagé
+	for (int i_POI_a_Affecter : pi_POI_Partages) {
+		// TODO : Pour chaque, identifier la meilleure sequence cree avec le POI + la sequence des POI propres à la journée
 	}
 }
 
@@ -147,8 +157,15 @@ vector<vector<int>> MetaHeuristique::GenerationNSequence(vector<int> pi_POI, int
 		vector<int> pi_Sequence = {};
 		for (int i_POI : pi_POI_Ordre_Aleatoire)
 		{
-			pi_Sequence = Heuristique_v1::MeilleureSequence(pi_Sequence, i_POI, instance, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour, f_Debut);
+			pi_Sequence = Heuristique_v1::MeilleureSequence(pi_Sequence, i_POI, instance, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour, 0.0);//f_Debut);
 		}
+
+
+		printf("liste => {");
+		for (int idx = 0; idx < pi_Sequence.size(); idx++) {
+			printf(" %d ,", pi_Sequence[idx]);
+		}
+		printf("}\n");
 
 		pi_NSequences.push_back(pi_Sequence);
 
@@ -162,11 +179,11 @@ vector<vector<int>> MetaHeuristique::GenerationNSequence(vector<int> pi_POI, int
 
 	vector<pair<int, int>> vec_Sequences_Triees(map_Score_Sequence.begin(), map_Score_Sequence.end());
 
-	sort(vec_Sequences_Triees.begin(), vec_Sequences_Triees.end(),
+	std::sort(vec_Sequences_Triees.begin(), vec_Sequences_Triees.end(),
 		[](const pair<int, int>& a, const pair<int, int>& b) {
 			return a.second > b.second;
 		}
-	);
+	); 
 
 	vector<vector<int>> pi_NSequences_Triees;
 	for (const auto& paire : vec_Sequences_Triees) {
@@ -176,4 +193,21 @@ vector<vector<int>> MetaHeuristique::GenerationNSequence(vector<int> pi_POI, int
 	printf("Meilleure sequence jour %d : %d\n", i_Jour, vec_Sequences_Triees[0].second);
 
 	return pi_NSequences_Triees;
+}
+
+int MetaHeuristique::GetScoreSequence(vector<int> pi_Sequence) {
+	int i_Score_Sequence = 0;
+
+	for (int i_POI : pi_Sequence) {
+		i_Score_Sequence += instance->get_POI_Score(i_POI);
+	}
+
+	return i_Score_Sequence;
+}
+
+bool MetaHeuristique::CompareScores(const int& poi1, const int& poi2) {
+	int score1 = instance->get_POI_Score(poi1);
+	int score2 = instance->get_POI_Score(poi2);
+
+	return score1 > score2;
 }
