@@ -349,9 +349,9 @@ vector<int> Heuristique_v1::CalculMeilleureJournee(Instance* instance, vector<in
     {
         int i_POI = i.first;
 
-
-        pi_Journee = MeilleureSequence(pi_Journee, i_POI, instance, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour);
+        pi_Journee = MeilleureSequence(pi_Journee, i_POI, instance, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour, 0.0);
     }
+
 
     return pi_Journee;
 }
@@ -364,7 +364,7 @@ vector<int> Heuristique_v1::CalculMeilleureJournee(Instance* instance, vector<in
 /// <param name="id_POI"></param>
 /// <param name="info"></param>
 /// <returns></returns>
-vector<int> Heuristique_v1::MeilleureSequence(vector<int> pi_Sequence, int i_POI, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour)
+vector<int> Heuristique_v1::MeilleureSequence(vector<int> pi_Sequence, int i_POI, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, float f_Heure_Debut)
 {
     // TODO : Trouver alternative a l'enumeration
     vector<int> pi_Meilleure_Sequence = pi_Sequence;
@@ -375,7 +375,7 @@ vector<int> Heuristique_v1::MeilleureSequence(vector<int> pi_Sequence, int i_POI
 
         pi_Sequence_i.insert(pi_Sequence_i.begin() + i, i_POI);
 
-        float f_Score_Sequence = GetScoreSequence(pi_Sequence_i, instance, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour);
+        float f_Score_Sequence = GetScoreSequence(pi_Sequence_i, instance, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour, f_Heure_Debut);
 
         if (f_Score_Sequence > f_Meilleur_Score_Sequence) {
             pi_Meilleure_Sequence = pi_Sequence_i;
@@ -393,12 +393,12 @@ vector<int> Heuristique_v1::MeilleureSequence(vector<int> pi_Sequence, int i_POI
 /// </summary>
 /// <param name="pi_Trajet"></param>
 /// <returns> score ou -1 si impossible </returns>
-float Heuristique_v1::GetScoreSequence(vector<int> pi_Trajet, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour)
+float Heuristique_v1::GetScoreSequence(vector<int> pi_Trajet, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, float f_Heure_Debut)
 {
     float f_Duree_Trajet = 0.0;
     float f_Score = 0.0;
 
-    f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_Hotel_POI(i_Hotel_Debut_Journee, pi_Trajet[0]);
+    f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_Hotel_POI(i_Hotel_Debut_Journee, pi_Trajet[0]) + f_Heure_Debut;
     int j = 0;
     do
     {
@@ -422,11 +422,11 @@ float Heuristique_v1::GetScoreSequence(vector<int> pi_Trajet, Instance* instance
     } while (j < pi_Trajet.size());
 
     f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_Hotel_POI(i_Hotel_Fin_Journee, pi_Trajet[j - 1]);
-    if ((f_Duree_Trajet - 0.0) > instance->get_POI_Duree_Max_Voyage(i_Jour))
+    if ((f_Duree_Trajet - f_Heure_Debut) > instance->get_POI_Duree_Max_Voyage(i_Jour))
     {
         return -1;
     }
-    f_Score += pow(instance->get_POI_Duree_Max_Voyage(i_Jour) - (f_Duree_Trajet - 0.0), 2);
+    f_Score += pow(instance->get_POI_Duree_Max_Voyage(i_Jour) - (f_Duree_Trajet - f_Heure_Debut), 2);
 
     return f_Score;
 }

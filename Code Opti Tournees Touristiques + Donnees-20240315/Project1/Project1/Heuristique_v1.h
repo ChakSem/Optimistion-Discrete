@@ -142,7 +142,7 @@ public:
     /// <param name="id_POI"></param>
     /// <param name="info"></param>
     /// <returns></returns>
-    static vector<int> MeilleureSequence(vector<int> pi_Sequence, int id_POI, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
+    static vector<int> MeilleureSequence(vector<int> pi_Sequence, int id_POI, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, float f_Heure_Debut);
     
     /// <summary>
     /// Initialise les listes à partir des données du problèmes
@@ -155,7 +155,7 @@ private :
     /// </summary>
     /// <param name="pi_Trajet"></param>
     /// <returns> temps libre ou -1 si impossible </returns>
-    static float GetScoreSequence(vector<int> pi_Trajet, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
+    static float GetScoreSequence(vector<int> pi_Trajet, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, float f_Heure_Debut);
 
     /// <summary>
     /// Methode pour realiser la projection d'un POI sur la droite joignant le couple d'Hotels de la journée
