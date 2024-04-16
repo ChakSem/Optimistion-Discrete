@@ -307,7 +307,7 @@ float Heuristique_v1::CalculScoreHotel(int i_Hotel_Param, vector<int> pi_POI_Dan
 vector<int> Heuristique_v1::CalculMeilleureJournee()
 {
     pi_Scores_Solution.push_back(0);
-    vector<int> pi_Journee = CalculMeilleureJournee(instance, pi_POI_Joignables, map_Score_POI, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour);
+    vector<int> pi_Journee = CalculMeilleureJournee(instance, pi_POI_Joignables, map_Score_POI, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour, {});
 
     for (int i : pi_Journee) {
         //printf("%d, ", i);
@@ -328,10 +328,10 @@ vector<int> Heuristique_v1::CalculMeilleureJournee()
 /// <summary>
 /// Determine la meilleure succession de POI pour une journée, à partir des hotels de départ et d'arrivé (de la journée) et des POI cohérents
 /// </summary>
-vector<int> Heuristique_v1::CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour)
+vector<int> Heuristique_v1::CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, vector<int> pi_Sequence_Initiale)
 {
     // Bon
-    vector<int> pi_Journee = {};
+    vector<int> pi_Journee = pi_Sequence_Initiale;
 
     // On modifie le score pour donner plus de poids au POI proche de la droite H à Ha
     unordered_map<int, float> pi_score_POI_Pour_H;

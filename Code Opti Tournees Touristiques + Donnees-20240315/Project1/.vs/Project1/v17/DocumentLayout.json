@@ -9,6 +9,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{16EBC6CE-9500-43EC-905B-503C0AB164F8}|Project1\\Project1.vcxproj|S:\\Polytech\\DI4\\S8\\Optimistion-Discrete\\Code Opti Tournees Touristiques \u002B Donnees-20240315\\Project1\\Project1\\Heuristique_v1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{16EBC6CE-9500-43EC-905B-503C0AB164F8}|Project1\\Project1.vcxproj|solutionrelative:Project1\\Heuristique_v1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16EBC6CE-9500-43EC-905B-503C0AB164F8}|Project1\\Project1.vcxproj|S:\\Polytech\\DI4\\S8\\Optimistion-Discrete\\Code Opti Tournees Touristiques \u002B Donnees-20240315\\Project1\\Project1\\MetaHeuristique.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16EBC6CE-9500-43EC-905B-503C0AB164F8}|Project1\\Project1.vcxproj|solutionrelative:Project1\\MetaHeuristique.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 218,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MetaHeuristique.h",
+              "DocumentMoniker": "S:\\Polytech\\DI4\\S8\\Optimistion-Discrete\\Code Opti Tournees Touristiques \u002B Donnees-20240315\\Project1\\Project1\\MetaHeuristique.h",
+              "RelativeDocumentMoniker": "Project1\\MetaHeuristique.h",
+              "ToolTip": "S:\\Polytech\\DI4\\S8\\Optimistion-Discrete\\Code Opti Tournees Touristiques \u002B Donnees-20240315\\Project1\\Project1\\MetaHeuristique.h",
+              "RelativeToolTip": "Project1\\MetaHeuristique.h",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAACQAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-16T07:30:58.646Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -28,7 +45,7 @@
               "RelativeDocumentMoniker": "Project1\\Heuristique_v1.cpp",
               "ToolTip": "S:\\Polytech\\DI4\\S8\\Optimistion-Discrete\\Code Opti Tournees Touristiques \u002B Donnees-20240315\\Project1\\Project1\\Heuristique_v1.cpp",
               "RelativeToolTip": "Project1\\Heuristique_v1.cpp",
-              "ViewState": "AQIAAJUBAAAAAAAAAAAgwKwBAABfAAAA",
+              "ViewState": "AQIAACwBAAAAAAAAAAAgwDUBAACVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-10T17:39:27.252Z",
               "EditorCaption": ""
@@ -41,7 +58,7 @@
               "RelativeDocumentMoniker": "Project1\\MetaHeuristique.cpp",
               "ToolTip": "S:\\Polytech\\DI4\\S8\\Optimistion-Discrete\\Code Opti Tournees Touristiques \u002B Donnees-20240315\\Project1\\Project1\\MetaHeuristique.cpp",
               "RelativeToolTip": "Project1\\MetaHeuristique.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAcAAAA",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAAAI0AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-10T16:38:46.829Z",
               "EditorCaption": ""

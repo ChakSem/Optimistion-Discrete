@@ -132,7 +132,7 @@ public:
     /// Determine la meilleure succession de POI pour une journée, à partir des hotels de départ et d'arrivé (de la journée) et des POI cohérents
     /// </summary>
     vector<int> CalculMeilleureJournee();
-    static vector<int> CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
+    static vector<int> CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, vector<int> pi_Sequence_Initiale);
     
     /// <summary>
     /// Détermine la meilleure séquence (qui laisse le plus de place pour insérer d'autre POI), à partir d'une séquence en paramètre et un POI à insérer

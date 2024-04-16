@@ -44,21 +44,19 @@ private:
 	vector<vector<int>> ppi_POI_par_Jour; // id_Jour : POI accessible entre hotel du debut de journee et hotel de fin de journee
 	unordered_map<int, float> map_Score_POI; // Stocke les score recalculé des POI
 
-	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
+	vector<pair<int, int>> pii_Hotels_par_Jour;
 
 	vector<pair<int, vector<int>>> pp_Meilleure_Sequence_par_Jour; // Stocke les meilleures séquences à chaque jour
 
 	vector<vector<vector<int>>> pppi_Sequence_par_Jour;
 
-	vector<int> pi_POI_Partages;
-
-	bool CompareScores(const int& poi1, const int& poi2);
+	bool tri_par_score(const int& i1, const int& i2);
 public :
 	MetaHeuristique(Instance* instanceParam);
 	static Solution* ExtraireSolution(Instance* instanceParam);
 	void Solution();
 	void Initialisation();
 	vector<int> Randomisateur(vector<int> pi_POI);
-	vector<vector<int>> GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
+	vector<vector<int>> GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Jour);
 	int GetScoreSequence(vector<int> pi_Sequence);
 };
