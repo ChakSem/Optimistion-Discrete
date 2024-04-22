@@ -17,7 +17,7 @@ Solution* MetaHeuristique::ExtraireSolution(Instance* instanceParam)
 	MetaHeuristique metaHeuristique(instanceParam);
 
 	metaHeuristique.Initialisation();
-	//metaHeuristique.Solution();
+	metaHeuristique.Solution();
 
 	printf("vs solution Heuristique :\n");
 	for (int i_Jour = 0; i_Jour < metaHeuristique.instance->get_Nombre_Jour(); i_Jour++) {
@@ -27,18 +27,70 @@ Solution* MetaHeuristique::ExtraireSolution(Instance* instanceParam)
 		}
 
 		printf("Meilleure sequence jour %d : %d\n", i_Jour, i_Score_Sequence);
+
+		printf("{ ");
+		for (int i : metaHeuristique.solution->v_v_Sequence_Id_Par_Jour[i_Jour]) {
+			printf("%d, ", i);
+		}
+		printf("}\n");
 	}
 
 	return metaHeuristique.solution;
 }
 
 void MetaHeuristique::Solution() {
-	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+	/*for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
 		vector<int> pi_POI = ppi_POI_par_Jour[i_Jour];
 
 		vector<vector<int>> ppi_Sequences = GenerationNSequence(pi_POI, 500, i_Jour);
 
 		pppi_Sequence_par_Jour.push_back(ppi_Sequences);
+	}*/
+
+	// TODO : Trouver les meilleures sequences possibles (en temps polynomial) pour chaque jours, en fonctions des sets de POI (unique) calculé à chaque jour dans Initialisation
+
+	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+		printf("Jour %d :", i_Jour);
+		pair<int, vector<int>> pp = pp_Meilleure_Sequence_par_Jour[i_Jour];
+		int i_Meilleur_Score = pp.first;
+		vector<int> pi_Meilleure_Sequence = pp.second;
+
+		vector<int> pi_POI = ppi_POI_par_Jour[i_Jour];
+		int idx = 0;
+
+		int aSuppr = 0;
+		while (idx < pi_POI.size()) {
+
+			vector<int> pi_POI_i = pi_POI;
+			pi_POI_i.erase(pi_POI_i.begin() + idx);
+
+			vector<int> pi_Sequence = Heuristique_v1::CalculMeilleureJournee(instance, pi_POI_i, map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, { pi_POI[idx]});
+		
+			int score = GetScoreSequence(pi_Sequence);
+
+			if (score > i_Meilleur_Score) {
+				i_Meilleur_Score = score;
+				pi_Meilleure_Sequence = pi_Sequence;
+
+				idx++;
+			}
+			else {
+				pi_POI = pi_POI_i;
+			}
+
+			aSuppr++;
+		}
+		printf("Meilleure sequence : %d\n", i_Meilleur_Score);
+
+		printf("{ ");
+		for (int i : pi_Meilleure_Sequence) {
+			printf("%d, ", i);
+		}
+		printf("}\n");
+
+		pp.first = i_Meilleur_Score;
+		pp.second = pi_Meilleure_Sequence;
+		pp_Meilleure_Sequence_par_Jour[i_Jour] = pp;
 	}
 }
 
@@ -72,17 +124,7 @@ void MetaHeuristique::Initialisation() {
 		// Initialisation des POI potentiels à chaque jours
 		ppi_POI_par_Jour.push_back(Heuristique_v1::IdentifierPOIRayonHotel(ii_Hotels.first, ii_Hotels.second, instance, pi_POI, i_Jour));
 
-		// On trouve la meilleure sequence de la journée ( score : sequence )
-		pair<int, vector<int>> p_Meilleure_Sequence;
-		p_Meilleure_Sequence.first = 0;
-		p_Meilleure_Sequence.second = Heuristique_v1::CalculMeilleureJournee(instance, ppi_POI_par_Jour[i_Jour], map_Score_POI, ii_Hotels.first, ii_Hotels.second, i_Jour, {});
-	
-		for (int i_POI : p_Meilleure_Sequence.second) {
-			p_Meilleure_Sequence.first += instance->get_POI_Score(i_POI);
-		}
-
 		pii_Hotels_par_Jour.push_back(ii_Hotels);
-		pp_Meilleure_Sequence_par_Jour.push_back(p_Meilleure_Sequence);
 	}
 
 	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
@@ -99,7 +141,7 @@ void MetaHeuristique::Initialisation() {
 			else {
 				if (map_conflit_POI[i_POI].size() == 1) {
 					pi_POI_Partages.push_back(i_POI);
-				} 
+				}
 				map_conflit_POI[i_POI].push_back(i_Jour); // Conflit initialiser avec l'id du 1er jour pouvant utiliser le POI
 			}
 		}
@@ -113,16 +155,17 @@ void MetaHeuristique::Initialisation() {
 		);
 
 		// Supprimer les POI partages
-		int idx = 0;
+		/*int idx = 0;
 		while (idx < pi_POI.size()) {
 			int i_POI = pi_POI[idx];
 			if (map_conflit_POI[i_POI].size() > 1) {
 				pi_POI.erase(pi_POI.begin() + idx);
-			} else {
-				idx++;			
+			}
+			else {
+				idx++;
 			}
 		}
-		ppi_POI_par_Jour[i_Jour] = pi_POI;
+		ppi_POI_par_Jour[i_Jour] = pi_POI;*/
 	}
 
 	// Affectation à un jour pour chaque POI partagé
@@ -131,22 +174,48 @@ void MetaHeuristique::Initialisation() {
 		int i_Meilleur_Jour = 0;
 		int i_Meilleur_Score = -1;
 
-		printf("\nPOI %d en conflit entre les jours : ", i_POI_a_Affecter);
-
 		for (int i_Jour : map_conflit_POI[i_POI_a_Affecter]) {
-			printf("%d, ", i_Jour);
+			vector<int> pi_POI_jour_i = ppi_POI_par_Jour[i_Jour];
 
-			vector<int> pi_Sequence = Heuristique_v1::CalculMeilleureJournee(instance, ppi_POI_par_Jour[i_Jour], map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, {i_POI_a_Affecter});
-			int i_Score = GetScoreSequence(pi_Sequence);
+			bool supprime = false;
+			int idx = 0;
+			while (!supprime) {
+				if (pi_POI_jour_i[idx] == i_POI_a_Affecter) {
+					pi_POI_jour_i.erase(pi_POI_jour_i.begin() + idx); 
+					ppi_POI_par_Jour[i_Jour] = pi_POI_jour_i;
+					supprime = true;
+				}
+
+				idx++;
+			}
+
+			vector<int> pi_Sequence_Avec_POI = Heuristique_v1::CalculMeilleureJournee(instance, pi_POI_jour_i, map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, { i_POI_a_Affecter });
+
+			pi_POI_jour_i.push_back(i_POI_a_Affecter);
+			vector<int> pi_Meilleure_Sequence_Jour_i = Heuristique_v1::CalculMeilleureJournee(instance, ppi_POI_par_Jour[i_Jour], map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, {});
+
+			int i_Score = GetScoreSequence(pi_Meilleure_Sequence_Jour_i) - GetScoreSequence(pi_Sequence_Avec_POI);
 
 			if (i_Score > i_Meilleur_Score) {
 				i_Meilleur_Jour = i_Jour;
 				i_Meilleur_Score = i_Score;
 			}
 		}
-		printf("\nPOI %d affecte au jour %d pour un score de %d\n\n", i_POI_a_Affecter, i_Meilleur_Jour, i_Meilleur_Score);
-
+		printf("POI %d ajoute au jour %d\n", i_POI_a_Affecter, i_Meilleur_Jour);
 		ppi_POI_par_Jour[i_Meilleur_Jour].push_back(i_POI_a_Affecter);
+	}
+
+	// On trouve la meilleure sequence de la journée ( score : sequence )
+	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+		pair<int, vector<int>> p_Meilleure_Sequence;
+		p_Meilleure_Sequence.first = 0;
+		p_Meilleure_Sequence.second = Heuristique_v1::CalculMeilleureJournee(instance, ppi_POI_par_Jour[i_Jour], map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, {});
+
+		for (int i_POI : p_Meilleure_Sequence.second) {
+			p_Meilleure_Sequence.first += instance->get_POI_Score(i_POI);
+		}
+
+		pp_Meilleure_Sequence_par_Jour.push_back(p_Meilleure_Sequence);
 	}
 }
 
