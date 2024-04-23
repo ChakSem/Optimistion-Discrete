@@ -244,9 +244,29 @@ C:\Users\33611\Dossier_codes\DC-S8\Optimistion-Discrete\Code Opti Tournees Touri
   (compiler le fichier source 'MetaHeuristique.cpp')
   
 <<<<<<< HEAD
+<<<<<<< HEAD
   Génération de code en cours...
   Project1.vcxproj -> C:\Users\33611\Dossier_codes\DC-S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\x64\Debug\Project1.exe
 =======
 S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(141,29): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+=======
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(192,25): warning C4244: 'initialisation' : conversion de 'unsigned __int64' en 'double', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(208,26): warning C4244: 'initialisation' : conversion de 'const _Ty' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(208,26): warning C4244:         with
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(208,26): warning C4244:         [
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(208,26): warning C4244:             _Ty=double
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(208,26): warning C4244:         ]
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(213,25): warning C4244: 'initialisation' : conversion de 'const _Ty' en 'int', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(213,25): warning C4244:         with
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(213,25): warning C4244:         [
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(213,25): warning C4244:             _Ty=double
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(213,25): warning C4244:         ]
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(414,29): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(488,53): warning C4244: 'argument' : conversion de 'double' en '_Ty', perte possible de données
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(488,53): warning C4244:         with
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(488,53): warning C4244:         [
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(488,53): warning C4244:             _Ty=int
+S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\Project1\MetaHeuristique.cpp(488,53): warning C4244:         ]
+>>>>>>> d76d0abf1fd9e6ade3e1e50f819d0137cec1dcbf
   Project1.vcxproj -> S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\x64\Debug\Project1.exe
 >>>>>>> fc477a4a71cf909964dc5c37721f5b98cbf7e6ed

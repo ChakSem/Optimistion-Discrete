@@ -11,6 +11,9 @@
 
 #define POI_DISTANCES_AUX_HOTELS 1.0
 
+#define SEQUENCE_TPS_LIBRES 1.0
+#define SEQUENCE_DISTANCE_TOTALE 1.0
+
 
 void Heuristique_v1::SupprimerElement(vector<int>* pi_Array, int i_Element) {
     int idx = 0;
@@ -256,7 +259,7 @@ vector<int> Heuristique_v1::IdentifierPOIRayonHotel(int i_Hotel_Debut_Journee_Pa
     vector<int> pi_POI_DANS_LE_RAYON = {};
 
     for (int i_POI_Coherent : pi_POI_Coherents_Param) {
-        float f_Distance_Depuis_H = GetVraieDistanceHotelPOI(instanceParam, i_Hotel_Debut_Journee_Param, i_POI_Coherent);
+        float f_Distance_Depuis_H = instanceParam->get_distance_Hotel_POI(i_Hotel_Debut_Journee_Param, i_POI_Coherent);
 
         float f_Visite_Distance_a_Hfin = instanceParam->get_distance_Hotel_POI(i_Hotel_Param, i_POI_Coherent);
         
@@ -304,7 +307,7 @@ float Heuristique_v1::CalculScoreHotel(int i_Hotel_Param, vector<int> pi_POI_Dan
 vector<int> Heuristique_v1::CalculMeilleureJournee()
 {
     pi_Scores_Solution.push_back(0);
-    vector<int> pi_Journee = CalculMeilleureJournee(instance, pi_POI_Joignables, map_Score_POI, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour);
+    vector<int> pi_Journee = CalculMeilleureJournee(instance, pi_POI_Joignables, map_Score_POI, i_Hotel_Debut_Journee, i_Hotel_Fin_Journee, i_Jour, {});
 
     for (int i : pi_Journee) {
         //printf("%d, ", i);
@@ -325,10 +328,10 @@ vector<int> Heuristique_v1::CalculMeilleureJournee()
 /// <summary>
 /// Determine la meilleure succession de POI pour une journée, à partir des hotels de départ et d'arrivé (de la journée) et des POI cohérents
 /// </summary>
-vector<int> Heuristique_v1::CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour)
+vector<int> Heuristique_v1::CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, vector<int> pi_Sequence_Initiale)
 {
     // Bon
-    vector<int> pi_Journee = {};
+    vector<int> pi_Journee = pi_Sequence_Initiale;
 
     // On modifie le score pour donner plus de poids au POI proche de la droite H à Ha
     unordered_map<int, float> pi_score_POI_Pour_H;
@@ -397,8 +400,12 @@ float Heuristique_v1::GetScoreSequence(vector<int> pi_Trajet, Instance* instance
 {
     float f_Duree_Trajet = 0.0;
     float f_Score = 0.0;
+    float f_Dist_Totale_Parcourue = 0.0;
+    float f_Dist = 0.0;
 
-    f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_Hotel_POI(i_Hotel_Debut_Journee, pi_Trajet[0]) + f_Heure_Debut;
+    f_Dist = instance->get_distance_Hotel_POI(i_Hotel_Debut_Journee, pi_Trajet[0]);
+    f_Dist_Totale_Parcourue += f_Dist;
+    f_Duree_Trajet = f_Duree_Trajet + f_Dist + f_Heure_Debut;
     int j = 0;
     do
     {
@@ -417,19 +424,27 @@ float Heuristique_v1::GetScoreSequence(vector<int> pi_Trajet, Instance* instance
         j++;
         if (j < pi_Trajet.size())
         {
-            f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_POI_POI(pi_Trajet[j - 1], pi_Trajet[j]);
+            f_Dist = instance->get_distance_POI_POI(pi_Trajet[j - 1], pi_Trajet[j]);
+            f_Dist_Totale_Parcourue += f_Dist;
+            f_Duree_Trajet = f_Duree_Trajet + f_Dist;
         }
     } while (j < pi_Trajet.size());
 
-    f_Duree_Trajet = f_Duree_Trajet + instance->get_distance_Hotel_POI(i_Hotel_Fin_Journee, pi_Trajet[j - 1]);
+    f_Dist = instance->get_distance_Hotel_POI(i_Hotel_Fin_Journee, pi_Trajet[j - 1]);
+    f_Dist_Totale_Parcourue += f_Dist;
+    f_Duree_Trajet = f_Duree_Trajet + f_Dist;
     if ((f_Duree_Trajet - f_Heure_Debut) > instance->get_POI_Duree_Max_Voyage(i_Jour))
     {
         return -1;
     }
     f_Score += pow(instance->get_POI_Duree_Max_Voyage(i_Jour) - (f_Duree_Trajet - f_Heure_Debut), 2);
 
-    return f_Score;
+    return (f_Score * SEQUENCE_TPS_LIBRES); // (f_Dist * SEQUENCE_DISTANCE_TOTALE);
 }
+
+
+#define SEQUENCE_TPS_LIBRES 1.0
+#define SEQUENCE_DISTANCE_TOTALE 1.0
 
 /// <summary>
 /// Initialise les listes à partir des données du problèmes

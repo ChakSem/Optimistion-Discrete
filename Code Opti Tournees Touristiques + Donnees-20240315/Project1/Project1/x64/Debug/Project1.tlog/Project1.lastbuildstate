@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.39.33519:TargetPlatformVersion=10.0.22621.0:
 Debug|x64|C:\Users\33611\Dossier_codes\DC-S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\|
+=======
+PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.38.33130:TargetPlatformVersion=10.0.22621.0:
+Debug|x64|S:\Polytech\DI4\S8\Optimistion-Discrete\Code Opti Tournees Touristiques + Donnees-20240315\Project1\|
+>>>>>>> d76d0abf1fd9e6ade3e1e50f819d0137cec1dcbf
