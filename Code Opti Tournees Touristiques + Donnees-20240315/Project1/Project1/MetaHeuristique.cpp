@@ -5,11 +5,16 @@
 #include "MetaHeuristique.h"
 #include "..\..\Solution.hpp"
 
+#define Nombre_Max_Iteration 100
+#define EVAPORATION 70
+
+int choisirIndex(const std::vector<double>& array);
 MetaHeuristique::MetaHeuristique(Instance* instanceParam) {
 	
 	instance = instanceParam;
 	solution = Heuristique_v1::ExtraireSolution(instanceParam);
 	pppi_Sequence_par_Jour = {};
+	
 }
 
 Solution* MetaHeuristique::ExtraireSolution(Instance* instanceParam) 
@@ -49,7 +54,7 @@ void MetaHeuristique::Solution() {
 
 	// TODO : Trouver les meilleures sequences possibles (en temps polynomial) pour chaque jours, en fonctions des sets de POI (unique) calculé à chaque jour dans Initialisation
 
-	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+	/*for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
 		printf("Jour %d :", i_Jour);
 		pair<int, vector<int>> pp = pp_Meilleure_Sequence_par_Jour[i_Jour];
 		int i_Meilleur_Score = pp.first;
@@ -58,7 +63,6 @@ void MetaHeuristique::Solution() {
 		vector<int> pi_POI = ppi_POI_par_Jour[i_Jour];
 		int idx = 0;
 
-		int aSuppr = 0;
 		while (idx < pi_POI.size()) {
 
 			vector<int> pi_POI_i = pi_POI;
@@ -72,13 +76,9 @@ void MetaHeuristique::Solution() {
 				i_Meilleur_Score = score;
 				pi_Meilleure_Sequence = pi_Sequence;
 
-				idx++;
-			}
-			else {
-				pi_POI = pi_POI_i;
 			}
 
-			aSuppr++;
+			idx++;
 		}
 		printf("Meilleure sequence : %d\n", i_Meilleur_Score);
 
@@ -91,7 +91,187 @@ void MetaHeuristique::Solution() {
 		pp.first = i_Meilleur_Score;
 		pp.second = pi_Meilleure_Sequence;
 		pp_Meilleure_Sequence_par_Jour[i_Jour] = pp;
+	}*/
+	int i_FO = 0;
+
+	vector<vector<double>> ppd_Pheromones;
+	vector<double> pd_Pheromones_Depart;
+	vector<double> pd_Pheromones_Arrive;
+
+	// ALGO FOURMIS
+	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+		ppd_Pheromones = vector<vector<double>>(instance->get_Nombre_POI(), vector<double>(instance->get_Nombre_POI(), 0.0));
+		pd_Pheromones_Depart = vector<double>(instance->get_Nombre_POI(), 0.0);
+		pd_Pheromones_Arrive = vector<double>(instance->get_Nombre_POI(), 0.0);
+
+		// Initialisation variables
+		vector<int> pi_POI = ppi_POI_par_Jour[i_Jour];
+		int i_Hotel_Depart = pii_Hotels_par_Jour[i_Jour].first;
+		int i_Hotel_Arrive= pii_Hotels_par_Jour[i_Jour].second;
+		double d_Duree_Max = instance->get_POI_Duree_Max_Voyage(i_Jour);
+	
+		// Initialisation pheromones
+		for (int i_POI_x = 0; i_POI_x < pi_POI.size(); i_POI_x++) {
+			vector<int> pi_Nouvelle_Ligne;
+
+			for (int i_POI_y = 0; i_POI_y < pi_POI.size(); i_POI_y++) {
+				if (i_POI_x == i_POI_y) {
+					ppd_Pheromones[i_POI_x][i_POI_y] = 0.0;
+				}
+				else {
+					double d_Score = instance->get_POI_Score(i_POI_x) + instance->get_POI_Score(i_POI_y);
+					d_Score = max(0.0, d_Score + d_Duree_Max - instance->get_distance_POI_POI(i_POI_x, i_POI_y));
+
+					ppd_Pheromones[i_POI_x][i_POI_y] = d_Score;
+				}
+			}
+			int i_Score = instance->get_POI_Score(i_POI_x);
+
+			pd_Pheromones_Depart[i_POI_x] = max(0.0, i_Score + d_Duree_Max - instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_x));
+		}
+	
+		// DEROULEMENT
+		int i_Nb_Fourmis = 1000;
+
+		int iteration = 0;
+		bool stop = false;
+		vector<vector<double>> ppd_Nouveaux_Pheromones(ppd_Pheromones);
+		vector<double> pd_Nouveaux_Pheromones_Depart(pd_Pheromones_Depart);
+		double d_Evaporation = EVAPORATION;
+
+		while (iteration < Nombre_Max_Iteration && !stop) {
+			pd_Pheromones_Depart = pd_Nouveaux_Pheromones_Depart;
+			ppd_Pheromones = ppd_Nouveaux_Pheromones;
+
+			for (int i_POI_x = 0; i_POI_x < pi_POI.size(); i_POI_x++) {
+				//printf("%.1lf, ", pd_Pheromones_Depart[i_POI_x]);
+				for (int i_POI_y = 0; i_POI_y < pi_POI.size(); i_POI_y++) {
+					//printf("%.1lf, ", ppd_Pheromones[i_POI_x][i_POI_y]);
+				}
+				//printf("\n");
+			}
+			//printf(" Iteration %d\n\n", iteration);
+
+			for (int i_Fourmis = 0; i_Fourmis < i_Nb_Fourmis; i_Fourmis++) {
+				
+
+				/* Parcourt fourmis */
+				//printf("Fourmis %d :\n", i_Fourmis);
+				vector<int> pi_POI_parcourus;
+				int i_Score = 0;
+
+				int i_POI = choisirIndex(pd_Pheromones_Depart);
+				double d_Duree = max(instance->get_POI_Heure_ouverture(i_POI), instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI));
+
+
+				//printf("Ouverture : %lf, Distance depuis H : %lf, Duree Max %lf", instance->get_POI_Heure_ouverture(i_POI), instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI), d_Duree_Max);
+				while (d_Duree /* + instance->get_distance_Hotel_POI(i_Hotel_Arrive, i_POI)*/ < d_Duree_Max) {
+					//printf("%d =>", i_POI);
+					i_Score =  instance->get_POI_Score(i_POI);
+					pi_POI_parcourus.push_back(i_POI);
+					int i_POI_Choisit;
+
+					do {
+						i_POI_Choisit = choisirIndex(ppd_Pheromones[i_POI]);
+
+						//ppd_Pheromones[i_POI][i_POI_Choisit] = max(0.0, ppd_Pheromones[i_POI][i_POI_Choisit] - 3);
+					} while (d_Duree + instance->get_distance_POI_POI(i_POI, i_POI_Choisit) > instance->get_POI_Heure_fermeture(i_POI_Choisit) && i_POI_Choisit != -1);
+					//ppd_Pheromones[i_POI][i_POI_Choisit] += 3;
+
+					if (i_POI_Choisit != -1) {
+						d_Duree = max(0.0 + instance->get_POI_Heure_ouverture(i_POI), d_Duree + instance->get_distance_POI_POI(i_POI, i_POI_Choisit));
+						i_POI = i_POI_Choisit;
+					}
+					else {
+						d_Duree = d_Duree_Max + 1.0; // On force l'arret
+					}
+				}
+
+
+				/* Maj pheromone */
+				double d_Changement = i_Score + pi_POI_parcourus.size();
+				//printf("\nScore final : %d Mise a jour de %lf\n\n", i_Score, d_Changement);
+				if (pi_POI_parcourus.size() > 0) {
+					pd_Nouveaux_Pheromones_Depart[pi_POI_parcourus[0]] = max(0.0, pd_Nouveaux_Pheromones_Depart[pi_POI_parcourus[0]] + d_Changement);
+					for (int idx = 0; idx < pi_POI_parcourus.size() - 1; idx++) {
+						ppd_Nouveaux_Pheromones[pi_POI_parcourus[idx]][pi_POI_parcourus[idx + 1]] += d_Changement;
+					}
+				}
+			}
+
+			stop = true;
+			/* On efface la pheromone */
+			for (int i_POI_x = 0; i_POI_x < pi_POI.size(); i_POI_x++) {
+				vector<int> pi_Nouvelle_Ligne;
+
+				for (int i_POI_y = 0; i_POI_y < pi_POI.size(); i_POI_y++) {
+					int i_Max_Pheromone = max(0.0, ppd_Nouveaux_Pheromones[i_POI_x][i_POI_y] - d_Evaporation);
+					ppd_Nouveaux_Pheromones[i_POI_x][i_POI_y] = ppd_Nouveaux_Pheromones[i_POI_x][i_POI_y];
+
+					//stop = stop || i_Max_Pheromone == 0.0;
+				}
+				int i_Max_Pheromone = max(0.0, pd_Nouveaux_Pheromones_Depart[i_POI_x] - d_Evaporation);
+				pd_Nouveaux_Pheromones_Depart[i_POI_x] = i_Max_Pheromone;
+
+				stop = stop && i_Max_Pheromone == 0.0;
+			}
+
+			d_Evaporation += 20.0;
+			iteration++;
+		}
+
+		vector<int> pi_Sequence;
+		int i_POI_Choisit = 0;
+		double d_Meilleur_Score = 0.0;
+		int idx = 0;
+		int step = 0;
+		int i_Score_Jour = 0;
+		for (int i_POI : pi_POI) {
+			double d_Score = pd_Pheromones_Depart[i_POI];
+
+			if (d_Score > d_Meilleur_Score) {
+				d_Score = d_Meilleur_Score;
+				i_POI_Choisit = i_POI;
+				idx = step;
+			}
+			step++;
+		}
+		pi_POI.erase(pi_POI.begin() + idx);
+
+		double d_Duree = max(instance->get_POI_Heure_ouverture(i_POI_Choisit), instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_Choisit));
+		while (d_Duree /* + instance->get_distance_Hotel_POI(i_Hotel_Arrive, i_POI)*/ < d_Duree_Max) {
+			pi_Sequence.push_back(i_POI_Choisit);
+			i_Score_Jour += instance->get_POI_Score(i_POI_Choisit);
+			i_POI_Choisit = 0;
+			d_Meilleur_Score = 0.0;
+			idx = 0;
+			step = 0;
+
+			vector<double> pd_Pheromones_POI_Choisit = ppd_Pheromones[i_POI_Choisit];
+			for (int i_POI : pi_POI) {
+				double d_Score = pd_Pheromones_POI_Choisit[i_POI];
+
+				if (d_Score > d_Meilleur_Score) {
+					d_Score = d_Meilleur_Score;
+					i_POI_Choisit = i_POI;
+					idx = step;
+				}
+				step++;
+			}
+			pi_POI.erase(pi_POI.begin() + idx);
+			d_Duree = max(instance->get_POI_Heure_ouverture(i_POI_Choisit) + 0.0, d_Duree + instance->get_distance_POI_POI(pi_Sequence.back(), i_POI_Choisit));
+		}
+
+		printf("liste => {");
+		for (int idx = 0; idx < pi_Sequence.size(); idx++) {
+			printf(" %d ,", pi_Sequence[idx]);
+		}
+		printf("}, Score : %d\n",i_Score_Jour);
+
+		i_FO += i_Score_Jour;
+		pp_Meilleure_Sequence_par_Jour[i_Jour] = pair<int, vector<int>>(i_Score_Jour, pi_Sequence);
 	}
+	
 }
 
 void MetaHeuristique::Initialisation() {
@@ -169,7 +349,7 @@ void MetaHeuristique::Initialisation() {
 	}
 
 	// Affectation à un jour pour chaque POI partagé
-	for (int i_POI_a_Affecter : pi_POI_Partages) {
+	/*for (int i_POI_a_Affecter : pi_POI_Partages) {
 		// TODO : Pour chaque, identifier la meilleure sequence cree avec le POI + la sequence des POI propres à la journée
 		int i_Meilleur_Jour = 0;
 		int i_Meilleur_Score = -1;
@@ -191,7 +371,7 @@ void MetaHeuristique::Initialisation() {
 
 			vector<int> pi_Sequence_Avec_POI = Heuristique_v1::CalculMeilleureJournee(instance, pi_POI_jour_i, map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, { i_POI_a_Affecter });
 
-			pi_POI_jour_i.push_back(i_POI_a_Affecter);
+			//pi_POI_jour_i.push_back(i_POI_a_Affecter);
 			vector<int> pi_Meilleure_Sequence_Jour_i = Heuristique_v1::CalculMeilleureJournee(instance, ppi_POI_par_Jour[i_Jour], map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, {});
 
 			int i_Score = GetScoreSequence(pi_Meilleure_Sequence_Jour_i) - GetScoreSequence(pi_Sequence_Avec_POI);
@@ -203,7 +383,7 @@ void MetaHeuristique::Initialisation() {
 		}
 		printf("POI %d ajoute au jour %d\n", i_POI_a_Affecter, i_Meilleur_Jour);
 		ppi_POI_par_Jour[i_Meilleur_Jour].push_back(i_POI_a_Affecter);
-	}
+	}*/
 
 	// On trouve la meilleure sequence de la journée ( score : sequence )
 	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
@@ -291,4 +471,34 @@ int MetaHeuristique::GetScoreSequence(vector<int> pi_Sequence) {
 
 bool MetaHeuristique::tri_par_score(const int& i1, const int& i2) {
 	return instance->get_POI_Score(i1) < instance->get_POI_Score(i2);
+}
+
+int choisirIndex(const std::vector<double>& array) {
+	double sommeTotale = 0;
+	for (double valeur : array) {
+		sommeTotale += valeur;
+	}
+
+	if (sommeTotale == 0)
+		return -1;
+
+	// Générer un nombre aléatoire entre 0 et la somme totale - 1
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, sommeTotale - 1);
+	int choix = dis(gen);
+
+	// Parcourir le vecteur et choisir l'index en fonction du nombre aléatoire généré
+	int index = 0;
+	double sommePartielle = 0;
+	for (double valeur : array) {
+		sommePartielle += valeur;
+		if (choix < sommePartielle) {
+			return index;
+		}
+		index++;
+	}
+
+	// Cet état ne devrait jamais être atteint, mais retourner -1 en cas d'erreur
+	return -1;
 }

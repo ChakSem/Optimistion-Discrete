@@ -50,6 +50,8 @@ private:
 
 	vector<vector<vector<int>>> pppi_Sequence_par_Jour;
 
+	
+
 	bool tri_par_score(const int& i1, const int& i2);
 public :
 	MetaHeuristique(Instance* instanceParam);

@@ -259,7 +259,7 @@ vector<int> Heuristique_v1::IdentifierPOIRayonHotel(int i_Hotel_Debut_Journee_Pa
     vector<int> pi_POI_DANS_LE_RAYON = {};
 
     for (int i_POI_Coherent : pi_POI_Coherents_Param) {
-        float f_Distance_Depuis_H = GetVraieDistanceHotelPOI(instanceParam, i_Hotel_Debut_Journee_Param, i_POI_Coherent);
+        float f_Distance_Depuis_H = instanceParam->get_distance_Hotel_POI(i_Hotel_Debut_Journee_Param, i_POI_Coherent);
 
         float f_Visite_Distance_a_Hfin = instanceParam->get_distance_Hotel_POI(i_Hotel_Param, i_POI_Coherent);
         
