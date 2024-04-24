@@ -8,17 +8,22 @@
 #define Nombre_Max_Iteration 100
 #define EVAPORATION 70
 
+//Variables globales de l'algo genetique
+#define tournoi_size 10
+#define taille_population 1000
+#define max_iterations 100
+
 int choisirIndex(const std::vector<double>& array);
-MetaHeuristique::MetaHeuristique(Instance* instanceParam) {
-	
+MetaHeuristique::MetaHeuristique(Instance* instanceParam) 
+{
 	instance = instanceParam;
 	solution = Heuristique_v1::ExtraireSolution(instanceParam);
 	pppi_Sequence_par_Jour = {};
-	
 }
 
 Solution* MetaHeuristique::ExtraireSolution(Instance* instanceParam) 
 {
+
 	MetaHeuristique metaHeuristique(instanceParam);
 
 	metaHeuristique.Initialisation();
@@ -43,7 +48,136 @@ Solution* MetaHeuristique::ExtraireSolution(Instance* instanceParam)
 	return metaHeuristique.solution;
 }
 
+
+// ################################ Algorithme Genetique ################################
 void MetaHeuristique::Solution() {
+    // Initialisation de la population
+    vector<vector<int>> population;
+    for (int i = 0; i < taille_population; ++i) {
+        population.push_back(Randomisateur(pi_POI));
+    }
+
+    int iteration = 0;
+    while (iteration < max_iterations) {
+        // Ã‰valuation des solutions
+        vector<pair<int, vector<int>>> scores;
+        for (auto& solution : population) {
+            int score = GetScoreSequence(solution);
+            scores.push_back({score, solution});
+        }
+
+        // SÃ©lection des parents (on les choisit par tournoi, mais on utilise la fonction rand, on pourrait se baser sur une autre logique) 
+        vector<vector<int>> parents;
+        for (int i = 0; i < taille_population / 2; ++i) {
+            vector<int> parent1 = SelectionTournoi(scores);
+            vector<int> parent2 = SelectionTournoi(scores);
+            parents.push_back(parent1);
+            parents.push_back(parent2);
+        }
+
+        // Croisement
+        vector<vector<int>> enfants;
+        for (int i = 0; i < parents.size(); i += 2) {
+            vector<int> enfant = Croisement(parents[i], parents[i+1]);
+            enfants.push_back(enfant);
+        }
+
+        // Mutation 
+        for (auto& enfant : enfants) {
+            Mutation(enfant);
+        }
+
+        // Ã‰valuation des nouveaux individus (les enfants)
+        for (auto& enfant : enfants) {
+            int score = GetScoreSequence(enfant);
+            scores.push_back({score, enfant});
+        }
+
+        // Remplacement -> l'interet c'est de garder les meilleurs individus
+        sort(scores.begin(), scores.end(), [](const auto& a, const auto& b) {
+            return a.first > b.first;
+        });
+
+        population.clear();
+        for (int i = 0; i < taille_population; ++i) {
+            population.push_back(scores[i].second);
+        }
+
+        iteration++;	
+		
+    }
+	printf("Solution Finale : \n");
+	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+		int i_Score_Sequence = 0;
+		for (int i_POI : solution->v_v_Sequence_Id_Par_Jour[i_Jour]) {
+			i_Score_Sequence += instance->get_POI_Score(i_POI);
+		}
+
+		printf("Meilleure sequence jour %d : %d\n", i_Jour, i_Score_Sequence);
+
+		printf("{ ");
+		for (int i : solution->v_v_Sequence_Id_Par_Jour[i_Jour]) {
+			printf("%d, ", i);
+		}
+		printf("}\n");
+	}
+	
+
+}
+
+vector<int> MetaHeuristique::SelectionTournoi(const vector<pair<int, vector<int>>>& scores) {
+    vector<int> parents;
+    for (int i = 0; i < tournoi_size; ++i) {
+        int index = rand() % scores.size();
+        parents.push_back(index);
+    }
+
+    int best_index = parents[0];
+    for (int i = 1; i < parents.size(); ++i) {
+        if (scores[parents[i]].first > scores[best_index].first) {
+            best_index = parents[i];
+        }
+    }
+
+    return scores[best_index].second;
+}
+
+vector<int> MetaHeuristique::Croisement(const vector<int>& parent1, const vector<int>& parent2) {
+	if (parent1.empty() || parent2.empty())
+	{
+		return {};
+	}
+
+	int point_croisement = rand() % parent1.size();
+
+	vector<int> enfant(parent1.begin(), parent1.begin() + point_croisement);
+	enfant.insert(enfant.end(), parent2.begin() + point_croisement, parent2.end());
+	return enfant;
+}
+
+void MetaHeuristique::Mutation(vector<int>& solution) {
+	if (solution.empty()) {
+		return;
+	}
+    int idx1 = rand() % solution.size();
+    int idx2 = rand() % solution.size();
+    swap(solution[idx1], solution[idx2]);
+}
+
+// ################################ Fin Algorithme Genetique ################################
+
+
+
+
+/////				!!!!!!!!!!!!!!!!!!!!!!!	ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!					/////
+
+
+// !!!!!  C'est MetaHeuristique::SolutionGenetique mais je l'ai renommÃ©e pour tester l'autre plus rapidement !!!!!
+
+/////				!!!!!!!!!!!!!!!!!!!!!!!	ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!					/////
+
+
+void MetaHeuristique::SolutionGenetique() {
 	/*for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
 		vector<int> pi_POI = ppi_POI_par_Jour[i_Jour];
 
@@ -52,7 +186,7 @@ void MetaHeuristique::Solution() {
 		pppi_Sequence_par_Jour.push_back(ppi_Sequences);
 	}*/
 
-	// TODO : Trouver les meilleures sequences possibles (en temps polynomial) pour chaque jours, en fonctions des sets de POI (unique) calculé à chaque jour dans Initialisation
+	// TODO : Trouver les meilleures sequences possibles (en temps polynomial) pour chaque jours, en fonctions des sets de POI (unique) calculï¿½ ï¿½ chaque jour dans Initialisation
 
 	/*for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
 		printf("Jour %d :", i_Jour);
@@ -282,41 +416,41 @@ void MetaHeuristique::Initialisation() {
 		pi_POI.push_back(i_POI);
 	}
 
-	// Initialisation des attributs lié aux jours
+	// Initialisation des attributs liï¿½ aux jours
 	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++)
 	{
 		pair<int, int> ii_Hotels;
 
-		// Hotel au debut du i_Jour-ième jour
+		// Hotel au debut du i_Jour-iï¿½me jour
 		if (i_Jour == 0)
 			ii_Hotels.first = instance->get_Id_Hotel_depart();
 		else
 			ii_Hotels.first = solution->v_Id_Hotel_Intermedaire[i_Jour - 1];
 
-		// Hotel à la fin du i_Jour-ième jour
+		// Hotel ï¿½ la fin du i_Jour-iï¿½me jour
 		if (i_Jour == instance->get_Nombre_Jour() - 1)
 			ii_Hotels.second = instance->get_Id_Hotel_Arrivee();
 		else
 			ii_Hotels.second = solution->v_Id_Hotel_Intermedaire[i_Jour];
 
-		float f_Duree_Max_Journee = instance->get_POI_Duree_Max_Voyage(i_Jour); // Récupération de la durée de la journée (TODO : Inutile ?)
+		float f_Duree_Max_Journee = instance->get_POI_Duree_Max_Voyage(i_Jour); // Rï¿½cupï¿½ration de la durï¿½e de la journï¿½e (TODO : Inutile ?)
 
-		// Initialisation des POI potentiels à chaque jours
+		// Initialisation des POI potentiels ï¿½ chaque jours
 		ppi_POI_par_Jour.push_back(Heuristique_v1::IdentifierPOIRayonHotel(ii_Hotels.first, ii_Hotels.second, instance, pi_POI, i_Jour));
 
 		pii_Hotels_par_Jour.push_back(ii_Hotels);
 	}
 
-	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
+	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journï¿½e qui peuvent intï¿½grer le POI pour chaque POI
 	vector<int> pi_POI_Partages;
 
-	// Check des POI communs à plusieurs jours
+	// Check des POI communs ï¿½ plusieurs jours
 	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
 		vector<int> pi_POI = ppi_POI_par_Jour[i_Jour];
 		for (int i_POI : pi_POI) {
 			if (map_conflit_POI.find(i_POI) == map_conflit_POI.end()) {
 				map_Score_POI[i_POI] = Heuristique_v1::CalculScorePOI(i_POI, instance); // Initialisation du score
-				map_conflit_POI[i_POI] = { i_Jour }; // Conflit initialisé avec l'id du 1er jour pouvant utiliser le POI
+				map_conflit_POI[i_POI] = { i_Jour }; // Conflit initialisï¿½ avec l'id du 1er jour pouvant utiliser le POI
 			}
 			else {
 				if (map_conflit_POI[i_POI].size() == 1) {
@@ -348,9 +482,9 @@ void MetaHeuristique::Initialisation() {
 		ppi_POI_par_Jour[i_Jour] = pi_POI;*/
 	}
 
-	// Affectation à un jour pour chaque POI partagé
+	// Affectation ï¿½ un jour pour chaque POI partagï¿½
 	/*for (int i_POI_a_Affecter : pi_POI_Partages) {
-		// TODO : Pour chaque, identifier la meilleure sequence cree avec le POI + la sequence des POI propres à la journée
+		// TODO : Pour chaque, identifier la meilleure sequence cree avec le POI + la sequence des POI propres ï¿½ la journï¿½e
 		int i_Meilleur_Jour = 0;
 		int i_Meilleur_Score = -1;
 
@@ -385,7 +519,7 @@ void MetaHeuristique::Initialisation() {
 		ppi_POI_par_Jour[i_Meilleur_Jour].push_back(i_POI_a_Affecter);
 	}*/
 
-	// On trouve la meilleure sequence de la journée ( score : sequence )
+	// On trouve la meilleure sequence de la journï¿½e ( score : sequence )
 	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
 		pair<int, vector<int>> p_Meilleure_Sequence;
 		p_Meilleure_Sequence.first = 0;
@@ -482,13 +616,13 @@ int choisirIndex(const std::vector<double>& array) {
 	if (sommeTotale == 0)
 		return -1;
 
-	// Générer un nombre aléatoire entre 0 et la somme totale - 1
+	// Gï¿½nï¿½rer un nombre alï¿½atoire entre 0 et la somme totale - 1
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, sommeTotale - 1);
 	int choix = dis(gen);
 
-	// Parcourir le vecteur et choisir l'index en fonction du nombre aléatoire généré
+	// Parcourir le vecteur et choisir l'index en fonction du nombre alï¿½atoire gï¿½nï¿½rï¿½
 	int index = 0;
 	double sommePartielle = 0;
 	for (double valeur : array) {
@@ -499,6 +633,6 @@ int choisirIndex(const std::vector<double>& array) {
 		index++;
 	}
 
-	// Cet état ne devrait jamais être atteint, mais retourner -1 en cas d'erreur
+	// Cet ï¿½tat ne devrait jamais ï¿½tre atteint, mais retourner -1 en cas d'erreur
 	return -1;
 }

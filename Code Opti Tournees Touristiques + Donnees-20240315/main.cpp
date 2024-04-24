@@ -1,6 +1,6 @@
 //#define CHEMIN_DOSSIER_DONNEES "/Users/kergosien/Desktop/Cours Optim Discret/Conception itineraire Touristique/Format Etudiant Public/"
 #define CHEMIN_DOSSIER_DONNEES "S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/"
-
+//#define CHEMIN_DOSSIER_DONNEES "C:/Users/33611/Dossier_codes/DC-S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/"
 #define NOM_FICHIER_LISTE_FICHIER_DONNEES "data.txt"
 #define NOM_FICHIER_LISTE_SORTIE "sortie.txt"
 
