@@ -5,8 +5,14 @@
 #include "MetaHeuristique.h"
 #include "..\..\Solution.hpp"
 
-#define Nombre_Max_Iteration 100
-#define EVAPORATION 70
+#define POI 0
+#define DUREE 1
+#define SCORE 2
+
+#define NB_ITERATIONS 1000
+#define NB_FOURMIS 1000
+#define EVAPORATION 0
+#define AUGMENTATION_EVAPORATION 0
 
 int choisirIndex(const std::vector<double>& array);
 MetaHeuristique::MetaHeuristique(Instance* instanceParam) {
@@ -131,92 +137,101 @@ void MetaHeuristique::Solution() {
 		}
 	
 		// DEROULEMENT
-		int i_Nb_Fourmis = 1000;
 
 		int iteration = 0;
 		bool stop = false;
-		vector<vector<double>> ppd_Nouveaux_Pheromones(ppd_Pheromones);
-		vector<double> pd_Nouveaux_Pheromones_Depart(pd_Pheromones_Depart);
 		double d_Evaporation = EVAPORATION;
 
-		while (iteration < Nombre_Max_Iteration && !stop) {
-			pd_Pheromones_Depart = pd_Nouveaux_Pheromones_Depart;
-			ppd_Pheromones = ppd_Nouveaux_Pheromones;
+		vector<vector<int>> ppi_Fourmis(NB_FOURMIS, { -1,0,0 });
 
-			for (int i_POI_x = 0; i_POI_x < pi_POI.size(); i_POI_x++) {
-				//printf("%.1lf, ", pd_Pheromones_Depart[i_POI_x]);
+		// INITIALISATION DES POSITIONS DES FOURMIS
+		double d_Evaporation_Pheromones = EVAPORATION;
+		for (int i_Fourmis = 0; i_Fourmis < NB_FOURMIS; i_Fourmis++) {
+			double d_Duree_Debut = static_cast<double>(rand()) / (static_cast<double>(RAND_MAX / d_Duree_Max));
+			int i_POI = choisirIndex(pd_Pheromones_Depart);
+			double d_Duree = max(instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI), instance->get_POI_Heure_ouverture(i_POI));
+
+			do {
+				ppi_Fourmis[i_Fourmis][POI] = i_POI;
+				ppi_Fourmis[i_Fourmis][DUREE] = d_Duree;
+				ppi_Fourmis[i_Fourmis][SCORE] += instance->get_POI_Score(i_POI);
+
+				do {
+					i_POI = choisirIndex(ppd_Pheromones[i_POI]);
+				} while (d_Duree + instance->get_distance_POI_POI(ppi_Fourmis[i_Fourmis][POI], i_POI) > instance->get_POI_Heure_fermeture(i_POI));
+
+
+				double heureOuverture = instance->get_POI_Heure_ouverture(i_POI);
+				d_Duree += instance->get_distance_POI_POI(ppi_Fourmis[i_Fourmis][POI], i_POI);
+				if (d_Duree < heureOuverture) {
+					d_Duree = heureOuverture;
+				}
+			} while (d_Duree /* + instance->get_distance_Hotel_POI(i_Hotel_Arrive, i_POI)*/ < d_Duree_Debut);
+		}
+
+		while (iteration < NB_ITERATIONS && !stop) {
+			// AFFICHAGE DE LA MATRICE DE PHEROMONES
+			/*for (int i_POI_x = 0; i_POI_x < pi_POI.size(); i_POI_x++) {
+				printf("%.1lf, ", pd_Pheromones_Depart[i_POI_x]);
 				for (int i_POI_y = 0; i_POI_y < pi_POI.size(); i_POI_y++) {
-					//printf("%.1lf, ", ppd_Pheromones[i_POI_x][i_POI_y]);
+					printf("%.1lf, ", ppd_Pheromones[i_POI_x][i_POI_y]);
 				}
-				//printf("\n");
-			}
-			//printf(" Iteration %d\n\n", iteration);
+				printf("\n");
+			}*/
+			printf(" Iteration %d\n\n", iteration);
 
-			for (int i_Fourmis = 0; i_Fourmis < i_Nb_Fourmis; i_Fourmis++) {
-				
+			// DEPLACEMENTS DES FOURMIS ET DEPOT DE PHEROMONES
+			for (int i_Fourmis = 0; i_Fourmis < NB_FOURMIS; i_Fourmis++) {
+				int i_POI_Depart = ppi_Fourmis[i_Fourmis][POI];
 
-				/* Parcourt fourmis */
-				//printf("Fourmis %d :\n", i_Fourmis);
-				vector<int> pi_POI_parcourus;
-				int i_Score = 0;
+				int i_POI_Choisit;
+				int i_Pas = 0;
+				double d_Duree = 0.0;
+				do {
+					i_POI_Choisit = choisirIndex(ppd_Pheromones[i_POI_Depart]);
+					d_Duree = ppi_Fourmis[i_Fourmis][DUREE] + instance->get_distance_POI_POI(i_POI_Depart, i_POI_Choisit);
+					i_Pas++;
+				} while (d_Duree > instance->get_POI_Heure_fermeture(i_POI_Choisit) && i_Pas < 20);
 
-				int i_POI = choisirIndex(pd_Pheromones_Depart);
-				double d_Duree = max(instance->get_POI_Heure_ouverture(i_POI), instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI));
+				if (i_Pas == 20 || d_Duree + instance->get_distance_Hotel_POI(i_Hotel_Arrive, i_POI_Choisit) > d_Duree_Max) {
+					// REINITIALISATION DE LA FOURMIS
+					i_POI_Choisit = choisirIndex(pd_Pheromones_Depart);
+					ppi_Fourmis[i_Fourmis][POI] = i_POI_Choisit;
+					ppi_Fourmis[i_Fourmis][DUREE] = max(instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_Choisit), instance->get_POI_Heure_ouverture(i_POI_Choisit));
+					ppi_Fourmis[i_Fourmis][SCORE] = instance->get_POI_Score(i_POI_Choisit);
 
 
-				//printf("Ouverture : %lf, Distance depuis H : %lf, Duree Max %lf", instance->get_POI_Heure_ouverture(i_POI), instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI), d_Duree_Max);
-				while (d_Duree /* + instance->get_distance_Hotel_POI(i_Hotel_Arrive, i_POI)*/ < d_Duree_Max) {
-					//printf("%d =>", i_POI);
-					i_Score =  instance->get_POI_Score(i_POI);
-					pi_POI_parcourus.push_back(i_POI);
-					int i_POI_Choisit;
+					// DEPOT DE PHEROMONES SUR L'ARRETE DU POI DE DEPART
+					double d_Depot_Pheromone = ppi_Fourmis[i_Fourmis][SCORE]; // TODO: ADAPTER SCORE ICI
 
-					do {
-						i_POI_Choisit = choisirIndex(ppd_Pheromones[i_POI]);
-
-						//ppd_Pheromones[i_POI][i_POI_Choisit] = max(0.0, ppd_Pheromones[i_POI][i_POI_Choisit] - 3);
-					} while (d_Duree + instance->get_distance_POI_POI(i_POI, i_POI_Choisit) > instance->get_POI_Heure_fermeture(i_POI_Choisit) && i_POI_Choisit != -1);
-					//ppd_Pheromones[i_POI][i_POI_Choisit] += 3;
-
-					if (i_POI_Choisit != -1) {
-						d_Duree = max(0.0 + instance->get_POI_Heure_ouverture(i_POI), d_Duree + instance->get_distance_POI_POI(i_POI, i_POI_Choisit));
-						i_POI = i_POI_Choisit;
-					}
-					else {
-						d_Duree = d_Duree_Max + 1.0; // On force l'arret
-					}
+					pd_Pheromones_Depart[i_POI_Choisit] += d_Depot_Pheromone;
 				}
+				else {
+					// DEPOT DE PHEROMONES SUR L'ARRETE DU POI PRECEDENT ET DU POI DE DEPART
+					double d_Depot_Pheromone = ppi_Fourmis[i_Fourmis][SCORE]; // TODO: ADAPTER SCORE ICI
 
-
-				/* Maj pheromone */
-				double d_Changement = i_Score + pi_POI_parcourus.size();
-				//printf("\nScore final : %d Mise a jour de %lf\n\n", i_Score, d_Changement);
-				if (pi_POI_parcourus.size() > 0) {
-					pd_Nouveaux_Pheromones_Depart[pi_POI_parcourus[0]] = max(0.0, pd_Nouveaux_Pheromones_Depart[pi_POI_parcourus[0]] + d_Changement);
-					for (int idx = 0; idx < pi_POI_parcourus.size() - 1; idx++) {
-						ppd_Nouveaux_Pheromones[pi_POI_parcourus[idx]][pi_POI_parcourus[idx + 1]] += d_Changement;
-					}
+					ppd_Pheromones[i_POI_Depart][i_POI_Choisit] += d_Depot_Pheromone;
 				}
 			}
 
+			// DISPERTION DE LA PHEROMONE
 			stop = true;
-			/* On efface la pheromone */
 			for (int i_POI_x = 0; i_POI_x < pi_POI.size(); i_POI_x++) {
 				vector<int> pi_Nouvelle_Ligne;
 
 				for (int i_POI_y = 0; i_POI_y < pi_POI.size(); i_POI_y++) {
-					int i_Max_Pheromone = max(0.0, ppd_Nouveaux_Pheromones[i_POI_x][i_POI_y] - d_Evaporation);
-					ppd_Nouveaux_Pheromones[i_POI_x][i_POI_y] = ppd_Nouveaux_Pheromones[i_POI_x][i_POI_y];
+					int i_Max_Pheromone = max(0.0, ppd_Pheromones[i_POI_x][i_POI_y] - d_Evaporation);
+					ppd_Pheromones[i_POI_x][i_POI_y] = i_Max_Pheromone;
 
 					//stop = stop || i_Max_Pheromone == 0.0;
 				}
-				int i_Max_Pheromone = max(0.0, pd_Nouveaux_Pheromones_Depart[i_POI_x] - d_Evaporation);
-				pd_Nouveaux_Pheromones_Depart[i_POI_x] = i_Max_Pheromone;
+				int i_Max_Pheromone = max(0.0, pd_Pheromones_Depart[i_POI_x] - d_Evaporation);
+				pd_Pheromones_Depart[i_POI_x] = i_Max_Pheromone;
 
-				stop = stop && i_Max_Pheromone == 0.0;
+				stop = stop && i_Max_Pheromone == 0.0; // ON ARRETE SI LA 1ERE LIGNE EST VIDE
 			}
 
-			d_Evaporation += 20.0;
+			d_Evaporation += AUGMENTATION_EVAPORATION;
 			iteration++;
 		}
 
