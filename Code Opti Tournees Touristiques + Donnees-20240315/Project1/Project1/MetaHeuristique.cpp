@@ -56,6 +56,13 @@ Solution* MetaHeuristique::ExtraireSolution(Instance* instanceParam)
 
 
 // ################################ Algorithme Genetique ################################
+
+/////				!!!!!!!!!!!!!!!!!!!!!!!	ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!					/////
+
+
+// !!!!!  C'est MetaHeuristique::SolutionGenetique mais je l'ai renommée pour tester l'autre plus rapidement !!!!!
+
+/////				!!!!!!!!!!!!!!!!!!!!!!!	ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!					/////
 void MetaHeuristique::Solution() {
     // Initialisation de la population
     vector<vector<int>> population;
@@ -178,7 +185,7 @@ void MetaHeuristique::Mutation(vector<int>& solution) {
 /////				!!!!!!!!!!!!!!!!!!!!!!!	ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!					/////
 
 
-// !!!!!  C'est MetaHeuristique::SolutionGenetique mais je l'ai renommée pour tester l'autre plus rapidement !!!!!
+// !!!!!  C'est MetaHeuristique::Solution mais je l'ai renommée pour tester l'autre plus rapidement !!!!!
 
 /////				!!!!!!!!!!!!!!!!!!!!!!!	ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!					/////
 
