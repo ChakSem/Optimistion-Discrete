@@ -1,0 +1,208 @@
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	46.6465	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	46.2004	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	39.52	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	42.1214	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	21.8311	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	42.8283	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	38.511	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	48.6656	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.82453	60
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.69699	42
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	51.0363	61
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	44.1277	61
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	38.8715	60
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	39.1192	60
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.245989	6
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.244263	6
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.244489	6
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.243691	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.245863	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.25087	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.62938	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.66882	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	2.22882	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.54616	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	2.71147	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.58152	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0198085	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0318536	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0412718	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.035425	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0399474	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0549944	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0735342	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0679039	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0845158	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0687105	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0460224	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0640376	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0792608	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0735503	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0604794	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.337671	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.10551	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.162809	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0890886	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.099786	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0647053	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0769836	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.0730246	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.115277	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.101327	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.115171	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.17114	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.137296	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.106285	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.106433	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.166936	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.125806	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.162486	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	0.407846	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.08566	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.16569	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.20004	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.15664	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.16246	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.1487	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.10095	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.14118	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.15524	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.11138	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.16857	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.11601	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.15866	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.21668	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.10102	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.16393	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.16557	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.0943	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Test.txt	1.10166	4
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	1.06675	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	1.28571	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	0.928259	444
+ Fichier donnEes	 Tps de rEsolution 	 Best solution
+S:/Polytech/DI4/S8/Optimistion-Discrete/Code Opti Tournees Touristiques + Donnees-20240315/Format Etudiant Public/Inst1.txt	4.6482	444

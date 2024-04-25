@@ -91,6 +91,16 @@ int Resolution(Instance * instance)
     Solution* uneSolution;
     vector<int> v_i_tmp ;
 
+
+    printf("jour %d\n",instance->get_Nombre_Jour());
+
+    printf("poi %d\n", instance->get_Nombre_POI());
+
+    printf("hotel %d\n", instance->get_Nombre_Hotel());
+
+    printf("depar %d\n", instance->get_Id_Hotel_depart());
+    printf("arr %d\n", instance->get_Id_Hotel_Arrivee());
+
     uneSolution = MetaHeuristique_Fourmis::ExtraireSolution(instance);
 
 /*INITIALISATION D'UN SOLUTION EN DUR*/
