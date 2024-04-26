@@ -9,14 +9,15 @@
 #define DUREE 1
 #define SCORE 2
 #define QUANTITE 3
-#define PARCOURS 4
+#define DEBUT 4
 
-#define NB_ITERATIONS 100
-#define NB_FOURMIS 10000
-#define EVAPORATION 100.0
+#define NB_ITERATIONS 10
+#define NB_FOURMIS 50000
+#define EVAPORATION 1000.0
 #define AUGMENTATION_EVAPORATION 0
 
 int choisirIndex(const std::vector<double>& array);
+int choisirIndex_Ameliore(const std::vector<double>& array, const double duree, Instance* instance, int i_POI_Depart, int i_Hotel_Arrive, double d_Duree_Max);
 void SupprimerElement(vector<int>* pi_Array, int i_Element);
 
 MetaHeuristique_Fourmis::MetaHeuristique_Fourmis(Instance* instanceParam) {
@@ -32,9 +33,11 @@ Solution* MetaHeuristique_Fourmis::ExtraireSolution(Instance* instanceParam)
 	MetaHeuristique_Fourmis metaHeuristique(instanceParam);
 
 	metaHeuristique.Initialisation();
+
+	printf("solution MetaHeuristique\n");
 	metaHeuristique.Solution();
 
-	printf("vs solution Heuristique :\n");
+	printf("\nvs solution Heuristique :\n");
 	for (int i_Jour = 0; i_Jour < metaHeuristique.instance->get_Nombre_Jour(); i_Jour++) {
 		int i_Score_Sequence = 0;
 		for (int i_POI : metaHeuristique.solution->v_v_Sequence_Id_Par_Jour[i_Jour]) {
@@ -136,20 +139,20 @@ void MetaHeuristique_Fourmis::Solution() {
 					d_Score = max(0.0, d_Score * (d_Duree_Max - instance->get_distance_POI_POI(i_POI_x, i_POI_y)));
 
 					// TODO : Modifier initialisation
-					ppd_Pheromones[i_POI_x][i_POI_y] = 500.0;//d_Score;
+					ppd_Pheromones[i_POI_x][i_POI_y] = 3000.0;//d_Score;
 				}
 			}
 			double d_Score = instance->get_POI_Score(i_POI_x);
 			d_Score = max(0.0, d_Score * (d_Duree_Max - instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_x)));
 
-			pd_Pheromones_Depart[i_POI_x] = 500.0;//d_Score;
+			pd_Pheromones_Depart[i_POI_x] = 3000.0;//d_Score;
 		}
 	
 		// DEROULEMENT
 		int iteration = 0;
 		bool stop = false;
 
-		vector<vector<int>> ppi_Fourmis(NB_FOURMIS, { -1,0,0,0 });
+		vector<vector<int>> ppi_Fourmis(NB_FOURMIS, { -1,0,0,0,0 });
 		vector<vector<int>> ppi_ParcoursFourmis(NB_FOURMIS);
 
 		// INITIALISATION DES POSITIONS DES FOURMIS
@@ -158,25 +161,30 @@ void MetaHeuristique_Fourmis::Solution() {
 		for (int i_Fourmis = 0; i_Fourmis < NB_FOURMIS; i_Fourmis++) {
 			double d_Duree_Debut = static_cast<double>(rand()) / (static_cast<double>(RAND_MAX / d_Duree_Max));
 			int i_POI = choisirIndex(pd_Pheromones_Depart);
-			double d_Duree = max(instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI) + 0.0, max(0.0, instance->get_POI_Heure_ouverture(i_POI) - d_Debut_Au_Plus_Tard));
+			double d_Duree;
+			double d_Premiere_Distance = instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI);
+			double d_Ouverture_POI_Choisit = instance->get_POI_Heure_ouverture(i_POI);
+			double d_Debut = 0.0;
+			if (d_Premiere_Distance < d_Ouverture_POI_Choisit) {
+				d_Debut = min(d_Debut_Au_Plus_Tard, d_Ouverture_POI_Choisit - d_Premiere_Distance);
+				d_Duree = d_Ouverture_POI_Choisit - d_Debut;
+			}
+			else {
+				d_Duree = d_Premiere_Distance;
+			}
+			ppi_Fourmis[i_Fourmis][DEBUT] = d_Debut;
+
 			do {
-				ppi_Fourmis[i_Fourmis][POI] = i_POI;
-				ppi_Fourmis[i_Fourmis][DUREE] = d_Duree;
+				ppi_Fourmis[i_Fourmis][POI] = i_POI;				
 				ppi_Fourmis[i_Fourmis][SCORE] += instance->get_POI_Score(i_POI);
 				ppi_Fourmis[i_Fourmis][QUANTITE]++;
+
 				ppi_ParcoursFourmis[i_Fourmis].push_back(i_POI);
 
-				int i_POI_Choisit;
-				int pas = 0;
-				double d_Duree_Potentielle;
-				do {				
+				i_POI = choisirIndex_Ameliore(ppd_Pheromones[i_POI], d_Duree, instance, i_POI, i_Hotel_Arrive, d_Duree_Max);
+				
 
-					i_POI_Choisit = choisirIndex(ppd_Pheromones[i_POI]);
-					pas++;
-				} while (i_POI_Choisit > -1 && (d_Duree + instance->get_distance_POI_POI(i_POI, i_POI_Choisit) > instance->get_POI_Heure_fermeture(i_POI_Choisit) || d_Duree + instance->get_distance_POI_POI(i_POI, i_POI_Choisit) > d_Duree_Debut) && pas < 20);
-				i_POI = i_POI_Choisit;
-
-				if (i_POI > -1) {
+				if (i_POI> -1) {
 					double heureOuverture = instance->get_POI_Heure_ouverture(i_POI);
 					d_Duree += instance->get_distance_POI_POI(ppi_Fourmis[i_Fourmis][POI], i_POI);
 					if (d_Duree < heureOuverture) {
@@ -188,7 +196,7 @@ void MetaHeuristique_Fourmis::Solution() {
 				}
 			} while (d_Duree /* + instance->get_distance_Hotel_POI(i_Hotel_Arrive, i_POI)*/ < d_Duree_Debut);
 		}
-
+		printf("Pheromones");
 		// INITIALISATION D'UNE COPIE DES MATRICES DE PHEROMONES
 		vector<vector<double>> ppd_Pheromones_Copie(ppd_Pheromones);
 		vector<double> pd_Pheromones_Depart_Copie(pd_Pheromones_Depart);
@@ -202,7 +210,7 @@ void MetaHeuristique_Fourmis::Solution() {
 			pd_Pheromones_Depart_Copie = vector<double>(pd_Pheromones_Depart);
 
 			// AFFICHAGE DE LA MATRICE DE PHEROMONES
-			/*if (iteration % 49 == 0) {
+			/*if (iteration % 49 == 0) {*/
 				for (int i_POI_x = 0; i_POI_x < pi_POI.size(); i_POI_x++) {
 					printf("%.1lf, ", pd_Pheromones_Depart_Copie[i_POI_x]);
 					for (int i_POI_y = 0; i_POI_y < pi_POI.size(); i_POI_y++) {
@@ -210,7 +218,7 @@ void MetaHeuristique_Fourmis::Solution() {
 					}
 					printf("\n");
 				}
-				printf(" Iteration %d\n\n", iteration);
+				printf(" Iteration %d\n\n", iteration);/*
 			}*/
 
 
@@ -218,28 +226,27 @@ void MetaHeuristique_Fourmis::Solution() {
 			for (int i_Fourmis = 0; i_Fourmis < NB_FOURMIS; i_Fourmis++) {
 				int i_POI_Depart = ppi_Fourmis[i_Fourmis][POI];
 
-				int i_POI_Choisit;
-				int i_Pas = 0;
-				double d_Duree = 0.0;
-				do {
-					i_POI_Choisit = choisirIndex(ppd_Pheromones[i_POI_Depart]);
+				int i_POI_Choisit = choisirIndex_Ameliore(ppd_Pheromones[i_POI_Depart], ppi_Fourmis[i_Fourmis][DUREE], instance, i_POI_Depart, i_Hotel_Arrive, d_Duree_Max);
 
-					if (i_POI_Choisit > -1) {
-						d_Duree = ppi_Fourmis[i_Fourmis][DUREE] + instance->get_distance_POI_POI(i_POI_Depart, i_POI_Choisit);
-						i_Pas++;
-					}
-					else {
-						i_Pas = 20;
-					}
-				} while (i_Pas < 20 && d_Duree > instance->get_POI_Heure_fermeture(i_POI_Choisit));
-
-				if (i_Pas == 20 || d_Duree + instance->get_distance_Hotel_POI(i_Hotel_Arrive, i_POI_Choisit) > d_Duree_Max) {
+				if (i_POI_Choisit == -1) {
 					// REINITIALISATION DE LA FOURMIS
 					i_POI_Choisit = choisirIndex(pd_Pheromones_Depart);
 					ppi_Fourmis[i_Fourmis][POI] = i_POI_Choisit;
-					ppi_Fourmis[i_Fourmis][DUREE] = max(instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_Choisit) + 0.0, max(0.0, instance->get_POI_Heure_ouverture(i_POI_Choisit) - d_Debut_Au_Plus_Tard));
+
+					double d_Premiere_Distance = instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_Choisit);
+					double d_Ouverture_POI_Choisit = instance->get_POI_Heure_ouverture(i_POI_Choisit);
+					double d_Debut = 0.0;
+					if (d_Premiere_Distance < d_Ouverture_POI_Choisit) {
+						d_Debut = min(d_Debut_Au_Plus_Tard, d_Ouverture_POI_Choisit - d_Premiere_Distance);
+						ppi_Fourmis[i_Fourmis][DUREE] = d_Ouverture_POI_Choisit - d_Debut;
+					}
+					else {
+						ppi_Fourmis[i_Fourmis][DUREE] = d_Premiere_Distance;
+					}
+
 					ppi_Fourmis[i_Fourmis][SCORE] = instance->get_POI_Score(i_POI_Choisit);
 					ppi_Fourmis[i_Fourmis][QUANTITE] = 1;
+					ppi_Fourmis[i_Fourmis][DEBUT] = d_Debut;
 
 					ppi_ParcoursFourmis[i_Fourmis] = { i_POI_Choisit };
 
@@ -251,6 +258,7 @@ void MetaHeuristique_Fourmis::Solution() {
 					pd_Pheromones_Depart_Copie[i_POI_Choisit] += d_Depot_Pheromone;
 				}
 				else {
+					double d_Duree = ppi_Fourmis[i_Fourmis][DUREE] + instance->get_distance_POI_POI(i_POI_Depart, i_POI_Choisit);
 					double distance = ppi_Fourmis[i_Fourmis][DUREE] - d_Duree;
 
 					ppi_Fourmis[i_Fourmis][POI] = i_POI_Choisit;
@@ -280,7 +288,6 @@ void MetaHeuristique_Fourmis::Solution() {
 					double d_Max_Pheromone = max(0.0, ppd_Pheromones_Copie[i_POI_x][i_POI_y] - d_Evaporation_Pheromones);
 					ppd_Pheromones_Copie[i_POI_x][i_POI_y] = d_Max_Pheromone;
 
-					//stop = stop || i_Max_Pheromone == 0.0;
 				}
 				double d_Max_Pheromone = max(0.0, pd_Pheromones_Depart_Copie[i_POI_x] - d_Evaporation_Pheromones);
 				pd_Pheromones_Depart_Copie[i_POI_x] = d_Max_Pheromone;
@@ -300,18 +307,14 @@ void MetaHeuristique_Fourmis::Solution() {
 		int i_Score_Jour = 0;
 		for (int i_POI : pi_POI) {
 			double d_Score = pd_Pheromones_Depart[i_POI];
-			printf("Score %.2f", d_Score);
 			if (d_Score > d_Meilleur_Score) {
-				printf(" => choisit");
 				d_Meilleur_Score = d_Score;
 				i_POI_Choisit = i_POI;
 				idx = step;
 			}
-			printf("\n");
 			step++;
 		}
 		pi_POI.erase(pi_POI.begin() + idx);
-		printf("Premier POI : %d\n", i_POI_Choisit);
 
 		double d_Depart = max(0.0, 0.0 + instance->get_POI_Heure_ouverture(i_POI_Choisit) - instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_Choisit));
 		if (d_Depart > d_Debut_Au_Plus_Tard) {
@@ -350,10 +353,9 @@ void MetaHeuristique_Fourmis::Solution() {
 			else {
 				d_Duree = d_Duree_Max;
 			}
-			printf("\n\n");
 		}
 
-		printf("liste => {");
+		printf("Meilleure sequence jour %d : %d\n{ ", i_Jour, i_Score_Jour);
 		for (int idx = 0; idx < pi_Sequence.size(); idx++) {
 			int i_POI = pi_Sequence[idx];
 
@@ -363,14 +365,13 @@ void MetaHeuristique_Fourmis::Solution() {
 				}
 			}
 
-			printf(" %d ,", i_POI);
+			printf(" %d,", i_POI);
 		}
-		printf("}, Score : %d\n",i_Score_Jour);
+		printf("}\n");
 
 		i_FO += i_Score_Jour;
 		pp_Meilleure_Sequence_par_Jour[i_Jour] = pair<int, vector<int>>(i_Score_Jour, pi_Sequence);
 	}
-	
 }
 
 void MetaHeuristique_Fourmis::Initialisation() {
@@ -621,6 +622,47 @@ int choisirIndex(const std::vector<double>& array) {
 			return index;
 		}
 		index++;
+	}
+
+	// Cet état ne devrait jamais être atteint, mais retourner -1 en cas d'erreur
+	return -1;
+}
+
+
+int choisirIndex_Ameliore(const std::vector<double>& array, const double duree, Instance* instance, int i_POI_Depart, int i_Hotel_Arrive, double d_Duree_Max) {
+	double sommeTotale = 0.0;
+	unordered_map<int, double> map_POI_Choix;
+
+	for (int i_POI = 0; i_POI < array.size(); i_POI++) {
+		double valeur = array[i_POI];
+
+		if (valeur > 0.0) {
+			double d_Duree_Hypo = max(duree + instance->get_distance_POI_POI(i_POI_Depart, i_POI), instance->get_POI_Heure_ouverture(i_POI) + 0.0);
+
+			if (d_Duree_Hypo <= instance->get_POI_Heure_fermeture(i_POI) && d_Duree_Hypo + instance->get_distance_Hotel_POI(i_Hotel_Arrive, i_POI) < d_Duree_Max) {
+				sommeTotale += valeur;
+			}
+		}
+
+		map_POI_Choix[i_POI] = sommeTotale;
+	}
+
+	if (sommeTotale == 0.0)
+		return -1;
+
+	// Générer un nombre aléatoire entre 0 et la somme totale - 1
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, sommeTotale - 1);
+	int choix = dis(gen);
+
+	// Parcourir le vecteur et choisir l'index en fonction du nombre aléatoire généré
+	for (int i_POI = 0; i_POI < array.size(); i_POI++) {
+		double valeur = array[i_POI];
+
+		if (choix < map_POI_Choix[i_POI]) {
+			return i_POI;
+		}
 	}
 
 	// Cet état ne devrait jamais être atteint, mais retourner -1 en cas d'erreur
