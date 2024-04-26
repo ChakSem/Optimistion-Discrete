@@ -15,7 +15,7 @@
 #define SEQUENCE_DISTANCE_TOTALE 1.0
 
 
-void Heuristique_v1::SupprimerElement(vector<int>* pi_Array, int i_Element) {
+void SupprimerElement(vector<int>* pi_Array, int i_Element) {
     int idx = 0;
     while (idx < pi_Array->size()) {
         if (i_Element == (*pi_Array)[idx]) {

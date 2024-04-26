@@ -46,7 +46,11 @@ private:
 
 	vector<pair<int, int>> pii_Hotels_par_Jour;
 
+	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
+
 	vector<pair<int, vector<int>>> pp_Meilleure_Sequence_par_Jour; // Stocke les meilleures séquences à chaque jour
+
+	vector<int> pi_Jours_Tries; // Stocke l'ordre dans lequel traiter les jours
 
 	vector<vector<vector<int>>> pppi_Sequence_par_Jour;
 

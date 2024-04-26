@@ -12,11 +12,13 @@
 #define PARCOURS 4
 
 #define NB_ITERATIONS 100
-#define NB_FOURMIS 1000
-#define EVAPORATION 10.0
+#define NB_FOURMIS 10000
+#define EVAPORATION 100.0
 #define AUGMENTATION_EVAPORATION 0
 
 int choisirIndex(const std::vector<double>& array);
+void SupprimerElement(vector<int>* pi_Array, int i_Element);
+
 MetaHeuristique_Fourmis::MetaHeuristique_Fourmis(Instance* instanceParam) {
 	
 	instance = instanceParam;
@@ -107,7 +109,7 @@ void MetaHeuristique_Fourmis::Solution() {
 	vector<double> pd_Pheromones_Arrive;
 
 	// ALGO FOURMIS
-	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+	for (int i_Jour : pi_Jours_Tries) {
 		
 
 		ppd_Pheromones = vector<vector<double>>(instance->get_Nombre_POI(), vector<double>(instance->get_Nombre_POI(), 0.0));
@@ -134,13 +136,13 @@ void MetaHeuristique_Fourmis::Solution() {
 					d_Score = max(0.0, d_Score * (d_Duree_Max - instance->get_distance_POI_POI(i_POI_x, i_POI_y)));
 
 					// TODO : Modifier initialisation
-					ppd_Pheromones[i_POI_x][i_POI_y] = 50.0;//d_Score;
+					ppd_Pheromones[i_POI_x][i_POI_y] = 500.0;//d_Score;
 				}
 			}
 			double d_Score = instance->get_POI_Score(i_POI_x);
 			d_Score = max(0.0, d_Score * (d_Duree_Max - instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_x)));
 
-			pd_Pheromones_Depart[i_POI_x] = 50.0;//d_Score;
+			pd_Pheromones_Depart[i_POI_x] = 500.0;//d_Score;
 		}
 	
 		// DEROULEMENT
@@ -353,7 +355,15 @@ void MetaHeuristique_Fourmis::Solution() {
 
 		printf("liste => {");
 		for (int idx = 0; idx < pi_Sequence.size(); idx++) {
-			printf(" %d ,", pi_Sequence[idx]);
+			int i_POI = pi_Sequence[idx];
+
+			for (int i_Jour_Communs : map_conflit_POI[i_POI]) {
+				if (i_Jour != i_Jour_Communs) {
+					SupprimerElement(&(ppi_POI_par_Jour[i_Jour_Communs]), i_POI);
+				}
+			}
+
+			printf(" %d ,", i_POI);
 		}
 		printf("}, Score : %d\n",i_Score_Jour);
 
@@ -396,7 +406,6 @@ void MetaHeuristique_Fourmis::Initialisation() {
 		pii_Hotels_par_Jour.push_back(ii_Hotels);
 	}
 
-	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
 	vector<int> pi_POI_Partages;
 
 	// Check des POI communs à plusieurs jours
@@ -437,45 +446,71 @@ void MetaHeuristique_Fourmis::Initialisation() {
 		ppi_POI_par_Jour[i_Jour] = pi_POI;*/
 	}
 
+	// Permettra d'identifier dans quel ordre dérouler le jours
+	unordered_map<int, int> map_Meilleurs_Jours;
+	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+		map_Meilleurs_Jours[i_Jour] = 0;
+	}
+
 	// Affectation à un jour pour chaque POI partagé
-	/*for (int i_POI_a_Affecter : pi_POI_Partages) {
-		// TODO : Pour chaque, identifier la meilleure sequence cree avec le POI + la sequence des POI propres à la journée
-		int i_Meilleur_Jour = 0;
-		int i_Meilleur_Score = -1;
+	for (int i_POI_a_Affecter : pi_POI_Partages) {
+		int i_Meilleur_Jour = -1;
+		int i_Meilleur_Score = INT_MIN;
 
 		for (int i_Jour : map_conflit_POI[i_POI_a_Affecter]) {
 			vector<int> pi_POI_jour_i = ppi_POI_par_Jour[i_Jour];
 
-			bool supprime = false;
-			int idx = 0;
-			while (!supprime) {
-				if (pi_POI_jour_i[idx] == i_POI_a_Affecter) {
-					pi_POI_jour_i.erase(pi_POI_jour_i.begin() + idx); 
-					ppi_POI_par_Jour[i_Jour] = pi_POI_jour_i;
-					supprime = true;
-				}
-
-				idx++;
-			}
-
 			vector<int> pi_Sequence_Avec_POI = Heuristique_v1::CalculMeilleureJournee(instance, pi_POI_jour_i, map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, { i_POI_a_Affecter });
 
-			//pi_POI_jour_i.push_back(i_POI_a_Affecter);
 			vector<int> pi_Meilleure_Sequence_Jour_i = Heuristique_v1::CalculMeilleureJournee(instance, ppi_POI_par_Jour[i_Jour], map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, {});
 
 			int i_Score = GetScoreSequence(pi_Meilleure_Sequence_Jour_i) - GetScoreSequence(pi_Sequence_Avec_POI);
 
-			if (i_Score > i_Meilleur_Score) {
+			if (i_Score >= i_Meilleur_Score) {
 				i_Meilleur_Jour = i_Jour;
 				i_Meilleur_Score = i_Score;
 			}
 		}
-		printf("POI %d ajoute au jour %d\n", i_POI_a_Affecter, i_Meilleur_Jour);
+		map_Meilleurs_Jours[i_Meilleur_Jour] ++;
+		map_conflit_POI[i_POI_a_Affecter].push_back(i_Meilleur_Jour); // On place le meilleur jour a l'arriere pour s'en souvenir
+
 		ppi_POI_par_Jour[i_Meilleur_Jour].push_back(i_POI_a_Affecter);
-	}*/
+	}
+
+	// Definition du meilleur ordre pour traiter les jours 
+	vector<pair<int, int>> pp_Tri_Des_Jours(map_Meilleurs_Jours.begin(), map_Meilleurs_Jours.end());
+	sort(pp_Tri_Des_Jours.begin(), pp_Tri_Des_Jours.end(), [](const auto& a, const auto& b) {
+		return a.second > b.second;
+		});
+	for (const auto& pair : pp_Tri_Des_Jours) {
+		pi_Jours_Tries.push_back(pair.first);
+	}
+
+	// On fait en sorte que les POI soit utilise la 1ere fois par le jour auquel ils ont etes afectes
+	unordered_map<int, int> map_Jours_Traites;
+	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+		map_Meilleurs_Jours[i_Jour] = 0;
+	}
+
+	for (int i_Jour : pi_Jours_Tries) {
+		int idx = 0;
+		while (idx < ppi_POI_par_Jour[i_Jour].size()) {
+			int i_POI_A_Pottentielment_Supprime = ppi_POI_par_Jour[i_Jour][idx];
+			int i_Jour_Back = map_conflit_POI[i_POI_A_Pottentielment_Supprime].back();
+
+			if (i_Jour_Back != i_Jour && map_Jours_Traites[i_Jour_Back] == 0) {
+				ppi_POI_par_Jour[i_Jour].erase(ppi_POI_par_Jour[i_Jour].begin() + idx);
+			}
+			else {
+				idx++;
+			}
+		}
+
+		map_Jours_Traites[i_Jour] = 1; // On marque que le jour a ete traite
+	}
 
 	// On trouve la meilleure sequence de la journée ( score : sequence )
-	for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
+	for (int i_Jour  : pi_Jours_Tries) {
 		pair<int, vector<int>> p_Meilleure_Sequence;
 		p_Meilleure_Sequence.first = 0;
 		p_Meilleure_Sequence.second = Heuristique_v1::CalculMeilleureJournee(instance, ppi_POI_par_Jour[i_Jour], map_Score_POI, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour, {});

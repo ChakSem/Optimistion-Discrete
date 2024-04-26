@@ -173,8 +173,6 @@ private :
     /// 
     /// </summary>
     float GetAbsiceProjectionHotel(int i_Hotel_Param);
-
-    static void SupprimerElement(vector<int>* pi_Array, int i_Element);
 };
 
 #endif
