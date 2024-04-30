@@ -40,7 +40,6 @@ private:
 	Instance* instance;
 	Solution* solution;
 	
-	vector<int> pi_POI;
 	vector<vector<int>> ppi_POI_par_Jour; // id_Jour : POI accessible entre hotel du debut de journee et hotel de fin de journee
 	unordered_map<int, float> map_Score_POI; // Stocke les score recalculé des POI
 
