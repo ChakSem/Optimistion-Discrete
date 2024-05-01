@@ -34,22 +34,12 @@ using namespace std;
  *  - Faire un calcul de meilleure journée plus poussé
  *  - Déterminer la "valeur" des POI partagés pour chaque journée, le placé dans la journée avec sa plus grande valeur
  */
-class MetaHeuristique_Fourmis
+class MetaHeuristique_Fourmis : public Heuristique_v1
 {
-private:
-	Instance* instance;
-	Solution* solution;
-	
-	vector<vector<int>> ppi_POI_par_Jour; // id_Jour : POI accessible entre hotel du debut de journee et hotel de fin de journee
+private:	
 	unordered_map<int, float> map_Score_POI; // Stocke les score recalculé des POI
 
-	vector<pair<int, int>> pii_Hotels_par_Jour;
 
-	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
-
-	vector<pair<int, vector<int>>> pp_Meilleure_Sequence_par_Jour; // Stocke les meilleures séquences à chaque jour
-
-	vector<int> pi_Jours_Tries; // Stocke l'ordre dans lequel traiter les jours
 
 	vector<vector<vector<int>>> pppi_Sequence_par_Jour;
 
@@ -59,9 +49,7 @@ private:
 public :
 	MetaHeuristique_Fourmis(Instance* instanceParam);
 	static Solution* ExtraireSolution(Instance* instanceParam);
-	void Solution();
-	void Initialisation();
+	void SolutionMetaHeuristique();
 	vector<int> Randomisateur(vector<int> pi_POI);
 	vector<vector<int>> GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Jour);
-	int GetScoreSequence(vector<int> pi_Sequence);
 };

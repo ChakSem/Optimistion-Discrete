@@ -72,31 +72,29 @@ using namespace std;
 
 class Heuristique_v1
 {
-private:
+protected:
     // Reference au objets externes
     Instance* instance;
     Solution* solution;
 
-    // Attribut pour le calcul d'une solution
-    int i_Jour;
-    float f_Duree_Totale_Restante;
-    int i_Hotel_Debut_Journee;
-    int i_Hotel_Fin_Journee;
+    
+    vector<pair<int, int>> pii_Hotels_par_Jour;
+    vector<vector<int>> ppi_POI_par_Jour; // id_Jour : POI accessible entre hotel du debut de journee et hotel de fin de journee
 
     unordered_map<int, float> map_Score_POI;          // Map de taille n, stockant le score calculee du POI
     vector<unordered_map<int, vector<int>>> pmpi_Rayon_Hotels;          /* Liste contenant les hotels dans le rayon de l'hotel choisit en debut d'iteration*/
 
-    vector<int> pi_POI_Joignables;
+    unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journée qui peuvent intégrer le POI pour chaque POI
+    vector<int> pi_Jours_Tries; // Stocke l'ordre dans lequel traiter les jours
 
-    vector<int> pi_POI_Coherents;
-    vector<int> pi_Hotels_Coherents;
+    int i_FO;
+    vector<pair<float, vector<int>>> pp_Meilleure_Sequence_par_Jour; // Stocke les meilleures séquences à chaque jour
 
-    vector<vector<int>> ppi_Hotels_Supprimes;
-    vector<int> pi_Scores_Solution;
+    float f_Duree_Totale_Restante;
 
 public:
 
-    Heuristique_v1(Instance* problemeParam, Solution* nouvelleSolution);
+    Heuristique_v1(Instance* problemeParam);
 
     static Solution* ExtraireSolution(Instance* problemeParam);
 
@@ -115,7 +113,7 @@ public:
     /// Identifie les hotels joignables en une moins d'1 journée depuis l'hotel en parametre
     /// </summary>
     /// <param name="i_Hotel_Depart"></param>
-    vector<int> IdentifierHotelsFinJournee(int i_Hotel_Param);
+    vector<int> IdentifierHotelsFinJournee(int i_Hotel_Param, int i_Jour, vector<int> pi_Hotels);
 
 
     /// <summary>
@@ -136,8 +134,9 @@ public:
     /// <summary>
     /// Determine la meilleure succession de POI pour une journée, à partir des hotels de départ et d'arrivé (de la journée) et des POI cohérents
     /// </summary>
-    vector<int> CalculMeilleureJournee();
-    static vector<int> CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, vector<int> pi_Sequence_Initiale);
+    pair<float, vector<int>> CalculMeilleureJournee_v1(int i_Jour, vector<int>* pi_POI_Disponibles);
+    pair<float, vector<int>> CalculMeilleureJournee_v2(int i_Jour, vector<int>* pi_POI_Disponibles);
+    static pair<float, vector<int>> CalculMeilleureJournee(Instance* instance, vector<int> pi_POI_Joignables, unordered_map<int, float> map_Score_POI, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, vector<int> pi_Sequence_Initiale);
     
     /// <summary>
     /// Détermine la meilleure séquence (qui laisse le plus de place pour insérer d'autre POI), à partir d'une séquence en paramètre et un POI à insérer
@@ -147,13 +146,11 @@ public:
     /// <param name="id_POI"></param>
     /// <param name="info"></param>
     /// <returns></returns>
-    static vector<int> MeilleureSequence(vector<int> pi_Sequence, int id_POI, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour, float f_Heure_Debut);
-    
-    /// <summary>
-    /// Initialise les listes à partir des données du problèmes
-    /// </summary>
-    void Initialisation();
+    static pair<float, vector<int>> MeilleureSequence(pair<float, vector<int>> fpi_Paire_Sequence, int id_POI, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
 
+    void SauvegarderSolution();
+
+    static int CalculScoreSequence(vector<int> pi_Sequence, Instance* instance);
 private :
     /// <summary>
     /// Renvoie un score basé sur les temps libres (attente avant ouverture POI, nb d'heures restantes à la fin) de la journée, donnant plus d'importance au long

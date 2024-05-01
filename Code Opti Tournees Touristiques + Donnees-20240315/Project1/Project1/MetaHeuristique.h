@@ -64,6 +64,6 @@ public:
 	void Solution();
 	void Initialisation();
 	vector<int> Randomisateur(vector<int> pi_POI);
-	vector<vector<int>> GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Jour);
+	vector<pair<float, vector<int>>> GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Jour);
 	int GetScoreSequence(vector<int> pi_Sequence);
 };
