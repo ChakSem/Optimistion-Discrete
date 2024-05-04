@@ -240,7 +240,6 @@ void Heuristique_v1::Solution1() {
     for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
         map_Meilleurs_Jours[i_Jour] = 0;
     }
-
     for (int i_Jour : pi_Jours_Tries) {
         int idx = 0;
         while (idx < ppi_POI_par_Jour[i_Jour].size()) {
