@@ -281,6 +281,7 @@ void Heuristique_v1::Solution1() {
 
     }
 
+    printf("Score final 1ere Heuristique : %d\n", i_FO);
     if (i_FO_v2 > i_FO) {
         i_FO = i_FO_v2;
         pp_Meilleure_Sequence_par_Jour = pp_Meilleure_Sequence_par_Jour_v2;
@@ -288,8 +289,8 @@ void Heuristique_v1::Solution1() {
 
     SauvegarderSolution();
 
+    printf("Score final 2nde Heuristique : %d\n", i_FO_v2);
     //printf("Score final v2 de : %d\n", i_FO_v2);
-    printf("Score final de : %d\n\n", i_FO);
 }
 
 /// <summary>

@@ -14,7 +14,7 @@
 #define PREMIERIDXPOI 6
 
 #define NB_ITERATIONS 5
-#define NB_FOURMIS 20000
+#define NB_FOURMIS 200000
 #define PHEROMONES_INIT 10000.0
 #define EVAPORATION 4000.0
 #define AUGMENTATION_EVAPORATION 0
@@ -109,7 +109,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 		pp.second = pi_Meilleure_Sequence;
 		pp_Meilleure_Sequence_par_Jour[i_Jour] = pp;
 	}*/
-	int i_FO = 0;
+	int i_FO_Fourmis = 0;
 	vector <pair<float, vector<int>>> pp_Meilleure_Sequence_par_Jour_Fourmis(pi_Jours_Tries.size());
 
 	vector<vector<double>> ppd_Pheromones;
@@ -396,17 +396,23 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 			}
 			//printf("}\n");
 
-			i_FO += i_Score_Jour;
+			i_FO_Fourmis += i_Score_Jour;
 			pp_Meilleure_Sequence_par_Jour_Fourmis[i_Jour] = pair<float, vector<int>>(i_Score_Jour, pi_Sequence);
 		}
 		else {
 			//printf("Meilleure sequence jour %d : 0\n{ }\n", i_Jour);
 		}
 	}
-	printf("Score Final de : %d\n\n", i_FO);
+	printf("Score Final MetaHeuristique de : %d\n\n", i_FO_Fourmis);
 
 
-	// TODO : Check si meilleur, remplacer si c'est le cas 
+	if (i_FO < i_FO_Fourmis) {
+		i_FO = i_FO_Fourmis;
+		pp_Meilleure_Sequence_par_Jour = pp_Meilleure_Sequence_par_Jour_Fourmis;
+
+		SauvegarderSolution();
+	}
+	printf("Score Final Retenu : %d\n\n", i_FO);
 }
 
 vector<int> MetaHeuristique_Fourmis::Randomisateur(vector<int> pi_POI) {
