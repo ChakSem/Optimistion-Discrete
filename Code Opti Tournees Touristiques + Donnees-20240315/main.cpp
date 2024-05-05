@@ -22,6 +22,8 @@ int Resolution(Instance * instance);
 
 int main(int argc, const char* argv[])
 {
+    int aSuppr = 0;
+
     try
     {
         string s_tmp;
@@ -57,6 +59,7 @@ int main(int argc, const char* argv[])
                     instance->chargement_Instance(s_chemin);
                     chrono_start = chrono::system_clock::now();
                     i_best_solution_score = Resolution(instance);
+                    aSuppr += i_best_solution_score;
                     cout << " Fin de resolution de " << s_tmp << endl;
                     chrono_end = chrono::system_clock::now();
                     elapsed = chrono_end - chrono_start;
@@ -85,11 +88,14 @@ int main(int argc, const char* argv[])
         }
     }
 
+
     catch (string err)
     {
         cout << "Erreur fatale : " << endl;
         cout << err << endl;
     }
+
+    cout << aSuppr << " - 14863 = " << aSuppr - 14863 << endl;
     return 0;
 
 }

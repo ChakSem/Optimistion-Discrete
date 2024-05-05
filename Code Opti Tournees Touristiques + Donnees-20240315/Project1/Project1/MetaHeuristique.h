@@ -42,7 +42,7 @@ private:
 
 	vector<int> pi_POI;
 	vector<vector<int>> ppi_POI_par_Jour;	 // id_Jour : POI accessible entre hotel du debut de journee et hotel de fin de journee
-	unordered_map<int, float> map_Score_POI; // Stocke les score recalcul� des POI
+	unordered_map<int, double> map_Score_POI; // Stocke les score recalcul� des POI
 
 	unordered_map<int, vector<int>> map_conflit_POI; // Stocke la liste des journ�e qui peuvent int�grer le POI pour chaque POI
 	vector<pair<int, int>> pii_Hotels_par_Jour;
