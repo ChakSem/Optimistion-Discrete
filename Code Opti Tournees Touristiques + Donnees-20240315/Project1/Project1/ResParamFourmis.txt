@@ -16,3 +16,7 @@ FO Instance 5: 522
  	Temps: 19 s| Pourcentage de la solution optimale : 46.7742%
 FO Instance 6: 462
  	Temps: 21 s| Pourcentage de la solution optimale : 37.3786%
+FO Instance 7: 444
+ 	Temps: 23 s| Pourcentage de la solution optimale : 35.9223%
+FO Instance 8: 450
+ 	Temps: 26 s| Pourcentage de la solution optimale : 36.4078%
