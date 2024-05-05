@@ -4,7 +4,8 @@
 #include <random>
 #include "MetaHeuristique_Fourmis.h"
 #include "..\..\Solution.hpp"
-
+#include <fstream>
+#include <chrono>
 #define POI 0
 #define IDXPOI 1
 #define DUREE 2
@@ -15,14 +16,15 @@
 
 #define NB_ITERATIONS 5
 #define NB_FOURMIS 20000
+
 #define PHEROMONES_INIT 10000.0
 #define EVAPORATION 4000.0
 #define AUGMENTATION_EVAPORATION 0
 
+#define CHEMIN_FICHIER_SORTIE_RESULTATS "ResParamFourmis.txt"
 int choisirIndex(const std::vector<double>& array);
 int choisirIndex_Ameliore(const std::vector<double>& array, const std::vector<int>& pi_POI, const std::vector<int>& pi_POI_Disponibles, const double duree, Instance* instance, int i_POI_Depart, int i_Hotel_Arrive, double d_Duree_Max);
 void SupprimerElement(vector<int>* pi_Array, int i_Element);
-
 
 MetaHeuristique_Fourmis::MetaHeuristique_Fourmis(Instance* instanceParam) : Heuristique_v1(instanceParam) {
 	pppi_Sequence_par_Jour = {};
@@ -69,7 +71,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 		pppi_Sequence_par_Jour.push_back(ppi_Sequences);
 	}*/
 
-	// TODO : Trouver les meilleures sequences possibles (en temps polynomial) pour chaque jours, en fonctions des sets de POI (unique) calculé à chaque jour dans Initialisation
+	// TODO : Trouver les meilleures sequences possibles (en temps polynomial) pour chaque jours, en fonctions des sets de POI (unique) calculï¿½ ï¿½ chaque jour dans Initialisation
 
 	/*for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
 		printf("Jour %d :", i_Jour);
@@ -115,6 +117,8 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 	vector<vector<double>> ppd_Pheromones;
 	vector<double> pd_Pheromones_Depart;
 	vector<double> pd_Pheromones_Arrive;
+	//Activer le chorno
+	auto chrono_start = chrono::system_clock::now();
 
 	// ALGO FOURMIS
 	for (int i_Jour : pi_Jours_Tries) {
@@ -403,7 +407,86 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 			//printf("Meilleure sequence jour %d : 0\n{ }\n", i_Jour);
 		}
 	}
-	printf("Score Final de : %d\n\n", i_FO);
+	//arret du chrono
+	auto chrono_end = chrono::system_clock::now();
+	printf("Score Final de la Metaheuristique : %d\n\n", i_FO);
+
+	ofstream fichier(CHEMIN_FICHIER_SORTIE_RESULTATS, ios::app);
+	if (fichier)
+	{
+		static int Instance = 1;
+		//on cree une liste des FO
+		vector<int> liste_FO;
+		liste_FO.push_back(i_FO);
+		vector<int> liste_FO_Optimal;
+		liste_FO_Optimal.push_back(816);
+		liste_FO_Optimal.push_back(900);
+		liste_FO_Optimal.push_back(1062);
+		liste_FO_Optimal.push_back(1062);
+		liste_FO_Optimal.push_back(1116);
+		liste_FO_Optimal.push_back(1236);
+		liste_FO_Optimal.push_back(1236);
+		liste_FO_Optimal.push_back(1236);
+		liste_FO_Optimal.push_back(1284);
+		liste_FO_Optimal.push_back(1284);
+		liste_FO_Optimal.push_back(1284);
+		liste_FO_Optimal.push_back(1670);
+		liste_FO_Optimal.push_back(173);
+		liste_FO_Optimal.push_back(241);
+		liste_FO_Optimal.push_back(367);
+		liste_FO_Optimal.push_back(412);
+		liste_FO_Optimal.push_back(412);
+		liste_FO_Optimal.push_back(504);
+		liste_FO_Optimal.push_back(504);
+		liste_FO_Optimal.push_back(504);
+		liste_FO_Optimal.push_back(590);
+		liste_FO_Optimal.push_back(1114);
+		liste_FO_Optimal.push_back(1164);
+		liste_FO_Optimal.push_back(1234);
+		liste_FO_Optimal.push_back(1234);
+		liste_FO_Optimal.push_back(1261);
+		liste_FO_Optimal.push_back(1306);
+
+		vector<float> liste_Pourcentage;
+		vector<float> liste_temps;
+		liste_temps.push_back(chrono::duration_cast<chrono::seconds>(chrono_end - chrono_start).count());
+		liste_Pourcentage.push_back((float)i_FO / liste_FO_Optimal[Instance - 1] * 100);
+
+		if (chrono::duration_cast<chrono::seconds>(chrono_end - chrono_start).count() > 180)
+			fichier << "FO Instance " << Instance << ": " << i_FO << endl << " / t" << "Temps" << ": \033[31m" << chrono::duration_cast<chrono::seconds>(chrono_end - chrono_start).count() << " s\033[0m" << " DELAI DE RESOLUTION DEPASSE" << endl;
+		else
+		fichier << "FO Instance "<< Instance << ": " << i_FO << endl <<" \t" << "Temps" << ": " << chrono::duration_cast<chrono::seconds>(chrono_end - chrono_start).count() << " s" << "| Pourcentage de la solution optimale : " << liste_Pourcentage[0] << "%" << endl;
+
+		
+		//quand Instance = 27 , on fait la moyenne totale par rapport a la liste des FO
+		if (Instance == 27)
+		{
+			int somme = 0;
+			for (int i = 0; i < liste_FO.size(); i++)
+			{
+				somme += liste_FO[i];
+			}
+			float moyenne = somme / liste_FO.size();
+			float somme_Pourcentage = 0;
+			for (int i = 0; i < liste_Pourcentage.size(); i++)
+			{
+				somme_Pourcentage += liste_Pourcentage[i];
+			}
+			float moyenne_Pourcentage = somme_Pourcentage / liste_Pourcentage.size();
+			fichier << "Moyenne des FO : " << moyenne << endl << "Moyenne des pourcentages : " << moyenne_Pourcentage << "%" << endl;
+			//on affiche le total des temps
+			int somme_temps = 0;
+			for (int i = 0; i < liste_temps.size(); i++)
+			{
+				somme_temps += liste_temps[i];
+			}
+			fichier << "Temps total : " << somme_temps << " s" << endl;
+		}
+		
+		Instance++;
+	}
+	else
+		cerr << "Impossible d'ouvrir le fichier !" << endl;
 
 
 	// TODO : Check si meilleur, remplacer si c'est le cas 
@@ -481,13 +564,13 @@ int choisirIndex(const std::vector<double>& array) {
 	if (sommeTotale == 0)
 		return -1;
 
-	// Générer un nombre aléatoire entre 0 et la somme totale - 1
+	// Gï¿½nï¿½rer un nombre alï¿½atoire entre 0 et la somme totale - 1
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, sommeTotale - 1);
 	int choix = dis(gen);
 
-	// Parcourir le vecteur et choisir l'index en fonction du nombre aléatoire généré
+	// Parcourir le vecteur et choisir l'index en fonction du nombre alï¿½atoire gï¿½nï¿½rï¿½
 	int index = 0;
 	double sommePartielle = 0;
 	for (double valeur : array) {
@@ -498,7 +581,7 @@ int choisirIndex(const std::vector<double>& array) {
 		index++;
 	}
 
-	// Cet état ne devrait jamais être atteint, mais retourner -1 en cas d'erreur
+	// Cet ï¿½tat ne devrait jamais ï¿½tre atteint, mais retourner -1 en cas d'erreur
 	return -1;
 }
 
@@ -525,13 +608,13 @@ int choisirIndex_Ameliore(const std::vector<double>& array, const std::vector<in
 	if (sommeTotale == 0.0)
 		return -1;
 
-	// Générer un nombre aléatoire entre 0 et la somme totale - 1
+	// Gï¿½nï¿½rer un nombre alï¿½atoire entre 0 et la somme totale - 1
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, sommeTotale - 1);
 	int choix = dis(gen);
 
-	// Parcourir le vecteur et choisir l'index en fonction du nombre aléatoire généré
+	// Parcourir le vecteur et choisir l'index en fonction du nombre alï¿½atoire gï¿½nï¿½rï¿½
 	for (int idx_POI = 0; idx_POI < array.size(); idx_POI++) {
 		double valeur = array[idx_POI] * pi_POI_Disponibles[idx_POI];
 
@@ -540,6 +623,6 @@ int choisirIndex_Ameliore(const std::vector<double>& array, const std::vector<in
 		}
 	}
 
-	// Cet état ne devrait jamais être atteint, mais retourner -1 en cas d'erreur
+	// Cet ï¿½tat ne devrait jamais ï¿½tre atteint, mais retourner -1 en cas d'erreur
 	return -1;
 }

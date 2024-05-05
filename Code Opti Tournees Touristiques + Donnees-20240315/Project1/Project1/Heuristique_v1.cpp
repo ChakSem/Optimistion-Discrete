@@ -288,7 +288,7 @@ void Heuristique_v1::Solution1() {
     SauvegarderSolution();
 
     //printf("Score final v2 de : %d\n", i_FO_v2);
-    printf("Score final de : %d\n\n", i_FO);
+    printf("Score final de l'Heuristique: %d\n\n", i_FO);
 }
 
 /// <summary>
