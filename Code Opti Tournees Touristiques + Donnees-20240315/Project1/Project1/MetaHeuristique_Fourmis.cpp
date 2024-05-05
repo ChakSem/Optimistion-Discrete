@@ -69,7 +69,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 		pppi_Sequence_par_Jour.push_back(ppi_Sequences);
 	}*/
 
-	// TODO : Trouver les meilleures sequences possibles (en temps polynomial) pour chaque jours, en fonctions des sets de POI (unique) calculé à chaque jour dans Initialisation
+	// TODO : Trouver les meilleures sequences possibles (en temps polynomial) pour chaque jours, en fonctions des sets de POI (unique) calculï¿½ ï¿½ chaque jour dans Initialisation
 
 	/*for (int i_Jour = 0; i_Jour < instance->get_Nombre_Jour(); i_Jour++) {
 		printf("Jour %d :", i_Jour);
@@ -109,7 +109,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 		pp.second = pi_Meilleure_Sequence;
 		pp_Meilleure_Sequence_par_Jour[i_Jour] = pp;
 	}*/
-	int i_FO_Fourmis = 0;
+	int i_FO = 0;
 	vector <pair<float, vector<int>>> pp_Meilleure_Sequence_par_Jour_Fourmis(pi_Jours_Tries.size());
 
 	vector<vector<double>> ppd_Pheromones;
@@ -396,7 +396,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 			}
 			//printf("}\n");
 
-			i_FO_Fourmis += i_Score_Jour;
+			i_FO += i_Score_Jour;
 			pp_Meilleure_Sequence_par_Jour_Fourmis[i_Jour] = pair<float, vector<int>>(i_Score_Jour, pi_Sequence);
 		}
 		else {
@@ -488,13 +488,13 @@ int choisirIndex(const std::vector<double>& array) {
 	if (sommeTotale == 0)
 		return -1;
 
-	// Générer un nombre aléatoire entre 0 et la somme totale - 1
+	// Gï¿½nï¿½rer un nombre alï¿½atoire entre 0 et la somme totale - 1
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, sommeTotale - 1);
 	int choix = dis(gen);
 
-	// Parcourir le vecteur et choisir l'index en fonction du nombre aléatoire généré
+	// Parcourir le vecteur et choisir l'index en fonction du nombre alï¿½atoire gï¿½nï¿½rï¿½
 	int index = 0;
 	double sommePartielle = 0;
 	for (double valeur : array) {
@@ -505,7 +505,7 @@ int choisirIndex(const std::vector<double>& array) {
 		index++;
 	}
 
-	// Cet état ne devrait jamais être atteint, mais retourner -1 en cas d'erreur
+	// Cet ï¿½tat ne devrait jamais ï¿½tre atteint, mais retourner -1 en cas d'erreur
 	return -1;
 }
 
@@ -532,13 +532,13 @@ int choisirIndex_Ameliore(const std::vector<double>& array, const std::vector<in
 	if (sommeTotale == 0.0)
 		return -1;
 
-	// Générer un nombre aléatoire entre 0 et la somme totale - 1
+	// Gï¿½nï¿½rer un nombre alï¿½atoire entre 0 et la somme totale - 1
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, sommeTotale - 1);
 	int choix = dis(gen);
 
-	// Parcourir le vecteur et choisir l'index en fonction du nombre aléatoire généré
+	// Parcourir le vecteur et choisir l'index en fonction du nombre alï¿½atoire gï¿½nï¿½rï¿½
 	for (int idx_POI = 0; idx_POI < array.size(); idx_POI++) {
 		double valeur = array[idx_POI] * pi_POI_Disponibles[idx_POI];
 
@@ -547,6 +547,6 @@ int choisirIndex_Ameliore(const std::vector<double>& array, const std::vector<in
 		}
 	}
 
-	// Cet état ne devrait jamais être atteint, mais retourner -1 en cas d'erreur
+	// Cet ï¿½tat ne devrait jamais ï¿½tre atteint, mais retourner -1 en cas d'erreur
 	return -1;
 }
