@@ -14,7 +14,7 @@
 #define PREMIERIDXPOI 6
 
 #define NB_ITERATIONS 5
-#define NB_FOURMIS 200000
+#define NB_FOURMIS 2//00000
 #define PHEROMONES_INIT 10000.0
 #define EVAPORATION 4000.0
 #define AUGMENTATION_EVAPORATION 0
@@ -410,7 +410,8 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 		i_FO = i_FO_Fourmis;
 		pp_Meilleure_Sequence_par_Jour = pp_Meilleure_Sequence_par_Jour_Fourmis;
 
-		SauvegarderSolution();
+		// TODO : Enregistrer
+		//SauvegarderSolution();
 	}
 	printf("Score Final Retenu : %d\n\n", i_FO);
 }
