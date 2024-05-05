@@ -174,7 +174,6 @@ public:
     /// <returns></returns>
     static pair<float, vector<int>> MeilleureSequence(pair<float, vector<int>> fpi_Paire_Sequence, int id_POI, Instance* instance, int i_Hotel_Debut_Journee, int i_Hotel_Fin_Journee, int i_Jour);
 
-private :
     /// <summary>
     /// Renvoie un score basé sur les temps libres (attente avant ouverture POI, nb d'heures restantes à la fin) de la journée, donnant plus d'importance aux longues périodes
     /// </summary>
@@ -191,6 +190,9 @@ private :
     /// Permet de sauvegarder la solution trouvée dans Solution
     /// </summary>
     void SauvegarderSolution();
+
+private :
+    
 
     /// <summary>
     /// Permet de calculer le score d'une séquence de POI
