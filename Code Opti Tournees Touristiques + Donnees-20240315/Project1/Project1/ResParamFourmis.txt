@@ -1,0 +1,18 @@
+Parametrage de la Metaheuristique des Fourmis
+Nombre d'iterations : 5
+Nombre de fourmis : 20000
+Pheromones initiales : 10000
+Evaporation : 4000
+Augmentation de l'evaporation : 0
+FO Instance 1: 294
+ 	Temps: 9 s| Pourcentage de la solution optimale : 36.0294%
+FO Instance 2: 438
+ 	Temps: 10 s| Pourcentage de la solution optimale : 48.6667%
+FO Instance 3: 318
+ 	Temps: 11 s| Pourcentage de la solution optimale : 29.9435%
+FO Instance 4: 330
+ 	Temps: 11 s| Pourcentage de la solution optimale : 31.0734%
+FO Instance 5: 522
+ 	Temps: 19 s| Pourcentage de la solution optimale : 46.7742%
+FO Instance 6: 462
+ 	Temps: 21 s| Pourcentage de la solution optimale : 37.3786%

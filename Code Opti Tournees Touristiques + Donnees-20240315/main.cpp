@@ -4,13 +4,7 @@
 
 #define NOM_FICHIER_LISTE_FICHIER_DONNEES "data.txt"
 #define NOM_FICHIER_LISTE_SORTIE "sortie.txt"
-#define CHEMIN_FICHIER_SORTIE_RESULTATS "ResParamFourmis.txt"
-#define NB_ITERATIONS 5
-#define NB_FOURMIS 20000
 
-#define PHEROMONES_INIT 10000.0
-#define EVAPORATION 4000.0
-#define AUGMENTATION_EVAPORATION 0
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -40,20 +34,7 @@ int main(int argc, const char* argv[])
         ofstream fichier_Sortie(s_chemin.c_str(), std::ios::out | std::ios::app);
         int Nb_Instance = 1;
 
-        ofstream fichierRes(CHEMIN_FICHIER_SORTIE_RESULTATS, ios::app);
-        if (fichierRes)
-        {
-            //on ecris une seule fois les parametrages suivant
-            fichierRes << "Parametrage de la Metaheuristique des Fourmis" << endl;
-            fichierRes << "Nombre d'iterations : " << NB_ITERATIONS << endl;
-            fichierRes << "Nombre de fourmis : " << NB_FOURMIS << endl;
-            fichierRes << "Pheromones initiales : " << PHEROMONES_INIT << endl;
-            fichierRes << "Evaporation : " << EVAPORATION << endl;
-            fichierRes << "Augmentation de l'evaporation : " << AUGMENTATION_EVAPORATION << endl;
-
-        }
-        else
-            cerr << "Impossible d'ouvrir le fichier !" << endl;
+       
 
         if (fichier)
         {

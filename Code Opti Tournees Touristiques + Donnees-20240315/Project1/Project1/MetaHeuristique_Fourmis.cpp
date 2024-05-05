@@ -415,6 +415,16 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 	if (fichier)
 	{
 		static int Instance = 1;
+		if (Instance == 1)
+		{
+			//on ecris une seule fois les parametrages suivant
+			fichier << "Parametrage de la Metaheuristique des Fourmis" << endl;
+			fichier << "Nombre d'iterations : " << NB_ITERATIONS << endl;
+			fichier << "Nombre de fourmis : " << NB_FOURMIS << endl;
+			fichier << "Pheromones initiales : " << PHEROMONES_INIT << endl;
+			fichier << "Evaporation : " << EVAPORATION << endl;
+			fichier << "Augmentation de l'evaporation : " << AUGMENTATION_EVAPORATION << endl;
+		}
 		//on cree une liste des FO
 		vector<int> liste_FO;
 		liste_FO.push_back(i_FO);
