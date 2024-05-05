@@ -1,22 +1,368 @@
-Parametrage de la Metaheuristique des Fourmis
-Nombre d'iterations : 5
+Paramétrage de la Metaheuristique des Fourmis
+Nombre d'itérations : 5
+Nombre de fourmis : 20000
+Pheromones initiales : 5000
+Evaporation : 2000
+Augmentation de l'evaporation : 1000
+FO Instance 1: 288
+	Temps: 10 s| Pourcentage de la solution optimale : 35.2941%
+FO Instance 2: 342
+	Temps: 15 s| Pourcentage de la solution optimale : 38%
+FO Instance 3: 204
+	Temps: 13 s| Pourcentage de la solution optimale : 19.209%
+FO Instance 4: 270
+	Temps: 14 s| Pourcentage de la solution optimale : 25.4237%
+FO Instance 5: 462
+	Temps: 19 s| Pourcentage de la solution optimale : 41.3979%
+FO Instance 6: 456
+	Temps: 17 s| Pourcentage de la solution optimale : 36.8932%
+FO Instance 7: 354
+	Temps: 16 s| Pourcentage de la solution optimale : 28.6408%
+FO Instance 8: 468
+	Temps: 19 s| Pourcentage de la solution optimale : 37.8641%
+FO Instance 9: 360
+	Temps: 15 s| Pourcentage de la solution optimale : 28.0374%
+FO Instance 10: 486
+	Temps: 19 s| Pourcentage de la solution optimale : 37.8505%
+FO Instance 11: 294
+	Temps: 17 s| Pourcentage de la solution optimale : 22.8972%
+FO Instance 12: 570
+	Temps: 17 s| Pourcentage de la solution optimale : 34.1317%
+FO Instance 13: 128
+	Temps: 3 s| Pourcentage de la solution optimale : 73.9884%
+FO Instance 14: 181
+	Temps: 5 s| Pourcentage de la solution optimale : 75.1037%
+FO Instance 15: 198
+	Temps: 7 s| Pourcentage de la solution optimale : 53.951%
+FO Instance 16: 319
+	Temps: 9 s| Pourcentage de la solution optimale : 77.4272%
+FO Instance 17: 253
+	Temps: 9 s| Pourcentage de la solution optimale : 61.4078%
+FO Instance 18: 312
+	Temps: 10 s| Pourcentage de la solution optimale : 61.9048%
+FO Instance 19: 295
+	Temps: 10 s| Pourcentage de la solution optimale : 58.5317%
+FO Instance 20: 210
+	Temps: 10 s| Pourcentage de la solution optimale : 41.6667%
+FO Instance 21: 231
+	Temps: 14 s| Pourcentage de la solution optimale : 39.1525%
+FO Instance 22: 239
+	Temps: 24 s| Pourcentage de la solution optimale : 21.4542%
+FO Instance 23: 241
+	Temps: 20 s| Pourcentage de la solution optimale : 20.7045%
+FO Instance 24: 421
+	Temps: 38 s| Pourcentage de la solution optimale : 34.1167%
+FO Instance 25: 260
+	Temps: 19 s| Pourcentage de la solution optimale : 21.0697%
+FO Instance 26: 161
+	Temps: 15 s| Pourcentage de la solution optimale : 12.7676%
+FO Instance 27: 627
+	Temps: 39 s| Pourcentage de la solution optimale : 48.0092%
+Moyenne des FO : 8630
+Moyenne des pourcentages : 37.56%
+Temps total : 423 s 
+
+FO Instance 6: 438
+	Temps: 14 s| Pourcentage de la solution optimale : 35.4369%
+FO Instance 7: 348
+	Temps: 15 s| Pourcentage de la solution optimale : 28.1553%
+FO Instance 8: 432
+	Temps: 17 s| Pourcentage de la solution optimale : 34.9515%
+FO Instance 9: 390
+	Temps: 14 s| Pourcentage de la solution optimale : 30.3738%
+FO Instance 10: 540
+	Temps: 18 s| Pourcentage de la solution optimale : 42.0561%
+FO Instance 11: 288
+	Temps: 13 s| Pourcentage de la solution optimale : 22.4299%
+FO Instance 12: 555
+	Temps: 14 s| Pourcentage de la solution optimale : 33.2335%
+FO Instance 13: 128
+	Temps: 3 s| Pourcentage de la solution optimale : 73.9884%
+FO Instance 14: 129
+	Temps: 5 s| Pourcentage de la solution optimale : 53.527%
+FO Instance 15: 187
+	Temps: 7 s| Pourcentage de la solution optimale : 50.9537%
+FO Instance 16: 288
+	Temps: 8 s| Pourcentage de la solution optimale : 69.9029%
+FO Instance 17: 246
+	Temps: 8 s| Pourcentage de la solution optimale : 59.7087%
+FO Instance 18: 317
+	Temps: 12 s| Pourcentage de la solution optimale : 62.8968%
+FO Instance 19: 319
+	Temps: 14 s| Pourcentage de la solution optimale : 63.2937%
+FO Instance 20: 221
+	Temps: 13 s| Pourcentage de la solution optimale : 43.8492%
+FO Instance 21: 228
+	Temps: 12 s| Pourcentage de la solution optimale : 38.6441%
+FO Instance 22: 231
+	Temps: 22 s| Pourcentage de la solution optimale : 20.7361%
+FO Instance 23: 227
+	Temps: 17 s| Pourcentage de la solution optimale : 19.5017%
+FO Instance 24: 461
+	Temps: 27 s| Pourcentage de la solution optimale : 37.3582%
+FO Instance 25: 260
+	Temps: 16 s| Pourcentage de la solution optimale : 21.0697%
+FO Instance 26: 168
+	Temps: 19 s| Pourcentage de la solution optimale : 13.3228%
+FO Instance 27: 646
+	Temps: 32 s| Pourcentage de la solution optimale : 49.464%
+Moyenne des FO : 8913
+Moyenne des pourcentages : 1095.3%
+Temps total : 386 s 
+
+Paramétrage de la Metaheuristique des Fourmis
+Nombre d'itérations : 5
 Nombre de fourmis : 20000
 Pheromones initiales : 10000
-Evaporation : 4000
+Evaporation : 100
 Augmentation de l'evaporation : 0
-FO Instance 1: 294
- 	Temps: 9 s| Pourcentage de la solution optimale : 36.0294%
-FO Instance 2: 438
- 	Temps: 10 s| Pourcentage de la solution optimale : 48.6667%
-FO Instance 3: 318
- 	Temps: 11 s| Pourcentage de la solution optimale : 29.9435%
-FO Instance 4: 330
- 	Temps: 11 s| Pourcentage de la solution optimale : 31.0734%
-FO Instance 5: 522
- 	Temps: 19 s| Pourcentage de la solution optimale : 46.7742%
-FO Instance 6: 462
- 	Temps: 21 s| Pourcentage de la solution optimale : 37.3786%
-FO Instance 7: 444
- 	Temps: 23 s| Pourcentage de la solution optimale : 35.9223%
+FO Instance 1: 300
+	Temps: 10 s| Pourcentage de la solution optimale : 36.7647%
+FO Instance 2: 384
+	Temps: 12 s| Pourcentage de la solution optimale : 42.6667%
+FO Instance 3: 402
+	Temps: 13 s| Pourcentage de la solution optimale : 37.8531%
+FO Instance 4: 342
+	Temps: 14 s| Pourcentage de la solution optimale : 32.2034%
+FO Instance 5: 486
+	Temps: 21 s| Pourcentage de la solution optimale : 43.5484%
+FO Instance 6: 420
+	Temps: 16 s| Pourcentage de la solution optimale : 33.9806%
+FO Instance 7: 390
+	Temps: 16 s| Pourcentage de la solution optimale : 31.5534%
+FO Instance 8: 330
+	Temps: 19 s| Pourcentage de la solution optimale : 26.699%
+FO Instance 9: 366
+	Temps: 15 s| Pourcentage de la solution optimale : 28.5047%
+FO Instance 10: 534
+	Temps: 21 s| Pourcentage de la solution optimale : 41.5888%
+FO Instance 11: 294
+	Temps: 15 s| Pourcentage de la solution optimale : 22.8972%
+FO Instance 12: 570
+	Temps: 15 s| Pourcentage de la solution optimale : 34.1317%
+FO Instance 13: 128
+	Temps: 3 s| Pourcentage de la solution optimale : 73.9884%
+FO Instance 14: 174
+	Temps: 6 s| Pourcentage de la solution optimale : 72.1992%
+FO Instance 15: 157
+	Temps: 8 s| Pourcentage de la solution optimale : 42.7793%
+FO Instance 16: 331
+	Temps: 9 s| Pourcentage de la solution optimale : 80.3398%
+FO Instance 17: 243
+	Temps: 9 s| Pourcentage de la solution optimale : 58.9806%
+FO Instance 18: 317
+	Temps: 10 s| Pourcentage de la solution optimale : 62.8968%
+FO Instance 19: 292
+	Temps: 10 s| Pourcentage de la solution optimale : 57.9365%
+FO Instance 20: 210
+	Temps: 9 s| Pourcentage de la solution optimale : 41.6667%
+FO Instance 21: 228
+	Temps: 9 s| Pourcentage de la solution optimale : 38.6441%
+FO Instance 22: 250
+	Temps: 18 s| Pourcentage de la solution optimale : 22.4417%
+FO Instance 23: 241
+	Temps: 14 s| Pourcentage de la solution optimale : 20.7045%
+FO Instance 24: 465
+	Temps: 32 s| Pourcentage de la solution optimale : 37.6823%
+FO Instance 25: 260
+	Temps: 19 s| Pourcentage de la solution optimale : 21.0697%
+FO Instance 26: 168
+	Temps: 18 s| Pourcentage de la solution optimale : 13.3228%
+FO Instance 27: 557
+	Temps: 43 s| Pourcentage de la solution optimale : 42.6493%
+Moyenne des FO : 8839
+Moyenne des pourcentages : 40.70%
+Temps total : 404 s 
+
+Paramétrage de la Metaheuristique des Fourmis
+Nombre d'itérations : 5
+Nombre de fourmis : 20000
+Pheromones initiales : 500000
+Evaporation : 2000
+Augmentation de l'evaporation : 20
+FO Instance 1: 342
+	Temps: 10 s| Pourcentage de la solution optimale : 41.9118%
+FO Instance 2: 342
+	Temps: 12 s| Pourcentage de la solution optimale : 38%
+FO Instance 3: 204
+	Temps: 13 s| Pourcentage de la solution optimale : 19.209%
+FO Instance 4: 282
+	Temps: 14 s| Pourcentage de la solution optimale : 26.5537%
+FO Instance 5: 498
+	Temps: 20 s| Pourcentage de la solution optimale : 44.6237%
+FO Instance 6: 390
+	Temps: 16 s| Pourcentage de la solution optimale : 31.5534%
+FO Instance 7: 396
+	Temps: 16 s| Pourcentage de la solution optimale : 32.0388%
+FO Instance 8: 444
+	Temps: 19 s| Pourcentage de la solution optimale : 35.9223%
+FO Instance 9: 366
+	Temps: 17 s| Pourcentage de la solution optimale : 28.5047%
+FO Instance 10: 402
+	Temps: 19 s| Pourcentage de la solution optimale : 31.3084%
+FO Instance 11: 276
+	Temps: 15 s| Pourcentage de la solution optimale : 21.4953%
+FO Instance 12: 570
+	Temps: 13 s| Pourcentage de la solution optimale : 34.1317%
+FO Instance 13: 128
+	Temps: 3 s| Pourcentage de la solution optimale : 73.9884%
+FO Instance 14: 181
+	Temps: 6 s| Pourcentage de la solution optimale : 75.1037%
+FO Instance 15: 157
+	Temps: 9 s| Pourcentage de la solution optimale : 42.7793%
+FO Instance 16: 315
+	Temps: 13 s| Pourcentage de la solution optimale : 76.4563%
+FO Instance 17: 264
+	Temps: 13 s| Pourcentage de la solution optimale : 64.0777%
+FO Instance 18: 309
+	Temps: 14 s| Pourcentage de la solution optimale : 61.3095%
+FO Instance 19: 284
+	Temps: 12 s| Pourcentage de la solution optimale : 56.3492%
+FO Instance 20: 221
+	Temps: 10 s| Pourcentage de la solution optimale : 43.8492%
+FO Instance 21: 178
+	Temps: 10 s| Pourcentage de la solution optimale : 30.1695%
+FO Instance 22: 250
+	Temps: 18 s| Pourcentage de la solution optimale : 22.4417%
+FO Instance 23: 241
+	Temps: 16 s| Pourcentage de la solution optimale : 20.7045%
+FO Instance 24: 394
+	Temps: 30 s| Pourcentage de la solution optimale : 31.9287%
+FO Instance 25: 260
+	Temps: 15 s| Pourcentage de la solution optimale : 21.0697%
+FO Instance 26: 161
+	Temps: 15 s| Pourcentage de la solution optimale : 12.7676%
+FO Instance 27: 641
+	Temps: 35 s| Pourcentage de la solution optimale : 49.0812%
+Moyenne des FO : 314
+Moyenne des pourcentages : 39.5307%
+Temps total : 403 s 
+
+Paramétrage de la Metaheuristique des Fourmis
+Nombre d'itérations : 5
+Nombre de fourmis : 20000
+Pheromones initiales : 10000
+Evaporation : 14
+Augmentation de l'evaporation : 2
+FO Instance 1: 288
+	Temps: 10 s| Pourcentage de la solution optimale : 35.2941%
+FO Instance 2: 318
+	Temps: 12 s| Pourcentage de la solution optimale : 35.3333%
+FO Instance 3: 366
+	Temps: 13 s| Pourcentage de la solution optimale : 34.4633%
+FO Instance 4: 318
+	Temps: 14 s| Pourcentage de la solution optimale : 29.9435%
+FO Instance 5: 432
+	Temps: 21 s| Pourcentage de la solution optimale : 38.7097%
+FO Instance 6: 492
+	Temps: 16 s| Pourcentage de la solution optimale : 39.8058%
+FO Instance 7: 360
+	Temps: 16 s| Pourcentage de la solution optimale : 29.1262%
 FO Instance 8: 450
- 	Temps: 26 s| Pourcentage de la solution optimale : 36.4078%
+	Temps: 19 s| Pourcentage de la solution optimale : 36.4078%
+FO Instance 9: 378
+	Temps: 16 s| Pourcentage de la solution optimale : 29.4393%
+FO Instance 10: 510
+	Temps: 19 s| Pourcentage de la solution optimale : 39.7196%
+FO Instance 11: 270
+	Temps: 15 s| Pourcentage de la solution optimale : 21.028%
+FO Instance 12: 620
+	Temps: 16 s| Pourcentage de la solution optimale : 37.1257%
+FO Instance 13: 128
+	Temps: 3 s| Pourcentage de la solution optimale : 73.9884%
+FO Instance 14: 174
+	Temps: 5 s| Pourcentage de la solution optimale : 72.1992%
+FO Instance 15: 226
+	Temps: 8 s| Pourcentage de la solution optimale : 61.5804%
+FO Instance 16: 343
+	Temps: 9 s| Pourcentage de la solution optimale : 83.2524%
+FO Instance 17: 285
+	Temps: 10 s| Pourcentage de la solution optimale : 69.1748%
+FO Instance 18: 317
+	Temps: 14 s| Pourcentage de la solution optimale : 62.8968%
+FO Instance 19: 292
+	Temps: 18 s| Pourcentage de la solution optimale : 57.9365%
+FO Instance 20: 249
+	Temps: 17 s| Pourcentage de la solution optimale : 49.4048%
+FO Instance 21: 207
+	Temps: 14 s| Pourcentage de la solution optimale : 35.0847%
+FO Instance 22: 250
+	Temps: 21 s| Pourcentage de la solution optimale : 22.4417%
+FO Instance 23: 241
+	Temps: 16 s| Pourcentage de la solution optimale : 20.7045%
+FO Instance 24: 400
+	Temps: 29 s| Pourcentage de la solution optimale : 32.4149%
+FO Instance 25: 260
+	Temps: 15 s| Pourcentage de la solution optimale : 21.0697%
+FO Instance 26: 168
+	Temps: 17 s| Pourcentage de la solution optimale : 13.3228%
+FO Instance 27: 610
+	Temps: 37 s| Pourcentage de la solution optimale : 46.7075%
+Moyenne des FO : 331
+Moyenne des pourcentages : 41.7991%
+Temps total : 420 s 
+
+Paramétrage de la Metaheuristique des Fourmis
+Nombre d'itérations : 30
+Nombre de fourmis : 20000
+Pheromones initiales : 2000
+Evaporation : 14
+Augmentation de l'evaporation : 2
+FO Instance 1: 486
+	Temps: 42 s| Pourcentage de la solution optimale : 59.5588%
+FO Instance 2: 510
+	Temps: 52 s| Pourcentage de la solution optimale : 56.6667%
+FO Instance 3: 522
+	Temps: 52 s| Pourcentage de la solution optimale : 49.1525%
+FO Instance 4: 402
+	Temps: 67 s| Pourcentage de la solution optimale : 37.8531%
+FO Instance 5: 612
+	Temps: 80 s| Pourcentage de la solution optimale : 54.8387%
+FO Instance 6: 528
+	Temps: 71 s| Pourcentage de la solution optimale : 42.7184%
+FO Instance 7: 366
+	Temps: 65 s| Pourcentage de la solution optimale : 29.6117%
+FO Instance 8: 444
+	Temps: 75 s| Pourcentage de la solution optimale : 35.9223%
+FO Instance 9: 402
+	Temps: 63 s| Pourcentage de la solution optimale : 31.3084%
+FO Instance 10: 528
+	Temps: 76 s| Pourcentage de la solution optimale : 41.1215%
+FO Instance 11: 294
+	Temps: 62 s| Pourcentage de la solution optimale : 22.8972%
+FO Instance 12: 585
+	Temps: 85 s| Pourcentage de la solution optimale : 35.0299%
+FO Instance 13: 128
+	Temps: 21 s| Pourcentage de la solution optimale : 73.9884%
+FO Instance 14: 167
+	Temps: 36 s| Pourcentage de la solution optimale : 69.2946%
+FO Instance 15: 226
+	Temps: 49 s| Pourcentage de la solution optimale : 61.5804%
+FO Instance 16: 311
+	Temps: 57 s| Pourcentage de la solution optimale : 75.4854%
+FO Instance 17: 290
+	Temps: 55 s| Pourcentage de la solution optimale : 70.3883%
+FO Instance 18: 295
+	Temps: 47 s| Pourcentage de la solution optimale : 58.5317%
+FO Instance 19: 229
+	Temps: 60 s| Pourcentage de la solution optimale : 45.4365%
+FO Instance 20: 196
+	Temps: 55 s| Pourcentage de la solution optimale : 38.8889%
+FO Instance 21: 184
+	Temps: 43 s| Pourcentage de la solution optimale : 31.1864%
+FO Instance 22: 237
+	Temps: 82 s| Pourcentage de la solution optimale : 21.2747%
+FO Instance 23: 227
+	Temps: 71 s| Pourcentage de la solution optimale : 19.5017%
+FO Instance 24: 466
+	Temps: 123 s| Pourcentage de la solution optimale : 37.7634%
+FO Instance 25: 260
+	Temps: 87 s| Pourcentage de la solution optimale : 21.0697%
+FO Instance 26: 172
+	Temps: 83 s| Pourcentage de la solution optimale : 13.64%
+FO Instance 27: 552
+	Temps: 165 s| Pourcentage de la solution optimale : 42.2665%
+Moyenne des FO : 356
+Moyenne des pourcentages : 43.5917%
+Temps total : 1824 s 
+
