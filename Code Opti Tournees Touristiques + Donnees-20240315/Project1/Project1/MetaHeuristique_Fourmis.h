@@ -14,7 +14,7 @@
 using namespace std;
 
 /**
- * Adaptation de l'algorithme de fourmis :
+ * Adaptation de l'algorithme de colonie de fourmis :
  *	- n fourmis
  *  - m iterations
  * 
@@ -52,28 +52,64 @@ using namespace std;
  */
 class MetaHeuristique_Fourmis : public Heuristique_v1
 {
-private:	
-	unordered_map<int, float> map_Score_POI; // Stocke les score recalculé des POI
-
-	vector<vector<vector<int>>> pppi_Sequence_par_Jour;
-
 public :
+	/// <summary>
+	/// Constructeur de MetaHeuristique_Fourmis
+	/// </summary>
+	/// <param name="instanceParam"> Instance a resoudre </param>
 	MetaHeuristique_Fourmis(Instance* instanceParam);
+
+	/// <summary>
+	/// Méthode appelé dans le main pour lancer l'Heuristique puis la MetaHeuristique et stocker la meilleure solution dans Solution
+	/// </summary>
+	/// <param name="instanceParam"> Instance a resoudre </param>
+	/// <returns></returns>
 	static Solution* ExtraireSolution(Instance* instanceParam);
+
+	/// <summary>
+	/// Déroule l'algorithme de colonie de fourmis
+	/// </summary>
 	void SolutionMetaHeuristique();
-
-private:
-	bool tri_par_score(const int& i1, const int& i2);
-
-
-
-
-
-	vector<int> Randomisateur(vector<int> pi_POI);
-	vector<vector<int>> GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Jour);
 };
 
+/// <summary>
+/// Méthode permettant de choisir aléartoirement un index à partir d'une ligne de la matrice de pheromones
+/// </summary>
+/// <param name="array"> Ligne de la matrice de pheromones </param>
+/// <returns></returns>
 int choisirIndex(const std::vector<double>& array);
+
+/// <summary>
+/// Méthode permettant de choisir aléartoirement un index à partir d'une ligne de la matrice de pheromones
+/// <param name="array"> Ligne de la matrice de pheromones </param>
+/// <param name="pi_POI"> POI possibles </param>
+/// <param name="pi_POI_Disponibles"> Indique si les POI ont deja etes parcourus par la fourmis </param>
+/// <param name="f_Duree_Trajet"> Durée actuelle du parcours de la fourmis</param>
+/// <param name="instance"></param>
+/// <param name="i_POI_Depart"> POI actuel de la fourmis </param>
+/// <param name="i_Hotel_Arrive"> Hotel de fin de journée </param>
+/// <param name="f_Duree_Max"> Durée maximale de la journée </param>
+/// <param name="f_Heure_Debut"> Heure de départ de la fourmis </param>
+/// <returns></returns>
 int choisirIndex_Ameliore(const std::vector<double>& array, const std::vector<int>& pi_POI, const std::vector<int>& pi_POI_Disponibles, const float f_Duree_Trajet, Instance* instance, int i_POI_Depart, int i_Hotel_Arrive, float f_Duree_Max, float f_Heure_Debut);
+
+/// <summary>
+/// Méthode permettant de choisir le "meilleur" index à partir d'une ligne de la matrice de pheromones
+/// </summary>
+/// <param name="array"> Ligne de la matrice de pheromones </param>
+/// <returns></returns>
 int choisirIndex_Fin(const std::vector<double>& array);
+
+/// <summary>
+/// Méthode permettant de choisir le "meilleur" index à partir d'une ligne de la matrice de pheromones
+/// <param name="array"> Ligne de la matrice de pheromones </param>
+/// <param name="pi_POI"> POI possibles </param>
+/// <param name="pi_POI_Disponibles"> Indique si les POI ont deja etes parcourus par la fourmis </param>
+/// <param name="f_Duree_Trajet"> Durée actuelle du parcours de la fourmis</param>
+/// <param name="instance"></param>
+/// <param name="i_POI_Depart"> POI actuel de la fourmis </param>
+/// <param name="i_Hotel_Arrive"> Hotel de fin de journée </param>
+/// <param name="f_Duree_Max"> Durée maximale de la journée </param>
+/// <param name="f_Heure_Debut"> Heure de départ de la fourmis </param>
+/// <returns></returns>
 int choisirIndex_Fin(const std::vector<double>& array, const std::vector<int>& pi_POI, const std::vector<int>& pi_POI_Disponibles, const float f_Duree_Trajet, Instance* instance, int i_POI_Depart, int i_Hotel_Arrive, float f_Duree_Max, float f_Heure_Debut);
