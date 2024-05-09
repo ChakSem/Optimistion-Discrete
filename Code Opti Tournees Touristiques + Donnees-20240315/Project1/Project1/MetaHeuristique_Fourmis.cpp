@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -18,20 +16,27 @@
 #define DUREE 0
 #define DEBUT 1
 
-#define NB_ITERATIONS 30
-#define NB_FOURMIS 20000
+#define NB_ITERATIONS 5
+#define NB_FOURMIS 100000
 
 #define PHEROMONES_INIT 2000.0
-#define EVAPORATION 14.0
+#define EVAPORATION 400.0
 #define AUGMENTATION_EVAPORATION 0.0
 
 #define CHEMIN_FICHIER_SORTIE_RESULTATS "ResParamFourmis.txt"
 
+/// <summary>
+/// Constructeur de MetaHeuristique_Fourmis
+/// </summary>
+/// <param name="instanceParam"></param>
 MetaHeuristique_Fourmis::MetaHeuristique_Fourmis(Instance* instanceParam) : Heuristique_v1(instanceParam) {
-	pppi_Sequence_par_Jour = {};
-
 }
 
+/// <summary>
+/// Méthode appelé dans le main pour lancer l'Heuristique puis la MetaHeuristique et stocker la meilleure solution dans Solution
+/// </summary>
+/// <param name="instanceParam"> Instance a resoudre </param>
+/// <returns></returns>
 Solution* MetaHeuristique_Fourmis::ExtraireSolution(Instance* instanceParam)
 {
 	MetaHeuristique_Fourmis metaHeuristique(instanceParam);
@@ -46,6 +51,9 @@ Solution* MetaHeuristique_Fourmis::ExtraireSolution(Instance* instanceParam)
 	return solution;
 }
 
+/// <summary>
+/// Déroule l'algorithme de colonie de fourmis
+/// </summary>
 void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 	int i_FO_Fourmis = 0;
 	vector <pair<float, vector<int>>> pp_Meilleure_Sequence_par_Jour_Fourmis(pi_Jours_Tries.size());
@@ -53,10 +61,6 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 	vector<vector<double>> ppd_Pheromones;
 	vector<double> pd_Pheromones_Depart;
 	vector<double> pd_Pheromones_Arrive;
-	// Activer le chorno
-	auto chrono_start = chrono::system_clock::now();
-
-	//Demarrage du chrono 
 	
 	// ALGO FOURMIS
 	for (int i_Jour : pi_Jours_Tries) {
@@ -84,24 +88,22 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 					else {
 						int i_POI_y = pi_POI[idx_POI_y];
 
-						double d_Score = instance->get_POI_Score(i_POI_x) + instance->get_POI_Score(i_POI_y);
-						d_Score = max(0.0, d_Score * (f_Duree_Max - instance->get_distance_POI_POI(i_POI_x, i_POI_y)));
+						double d_Score = PHEROMONES_INIT;
 
 						// TODO : Modifier initialisation
-						ppd_Pheromones[idx_POI_x][idx_POI_y] = PHEROMONES_INIT;//d_Score;
+						ppd_Pheromones[idx_POI_x][idx_POI_y] = d_Score;
 					}
 				}
-				double d_Score = instance->get_POI_Score(i_POI_x);
-				d_Score = max(0.0, d_Score * (f_Duree_Max - instance->get_distance_Hotel_POI(i_Hotel_Depart, i_POI_x)));
+				double d_Score = PHEROMONES_INIT;
 
-				pd_Pheromones_Depart[idx_POI_x] = PHEROMONES_INIT;//d_Score;
+				pd_Pheromones_Depart[idx_POI_x] = d_Score;
 			}
 
 			// DEROULEMENT
 			int iteration = 0;
 			bool stop = false;
 
-			vector<vector<int>> ppi_Fourmis(NB_FOURMIS, { -1,-1,0,0,-1 });
+			vector<vector<int>> ppi_Fourmis(NB_FOURMIS, { -1, -1, 0, 0, -1 });
 			vector<vector<float>> ppf_Fourmis(NB_FOURMIS, { 0.0, 0.0 });
 			vector<vector<int>> ppi_ParcoursFourmis(NB_FOURMIS);
 			vector<vector<int>> ppi_POI_Disponibles(NB_FOURMIS, vector<int>(pi_POI.size(), 1));
@@ -110,7 +112,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 			double d_Evaporation_Pheromones = EVAPORATION;
 
 			for (int i_Fourmis = 0; i_Fourmis < NB_FOURMIS; i_Fourmis++) {
-				float f_Heure_Max = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / f_Duree_Max));
+				float f_Heure_Max = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / f_Duree_Max)); // Initialisation d'une durée max d'avancement de la fourmis dans les POI
 				int idx_POI = choisirIndex(pd_Pheromones_Depart);
 				int i_POI = pi_POI[idx_POI];
 
@@ -151,7 +153,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 					else {
 						f_Duree_Trajet = f_Heure_Max + 1;
 					}
-				} while (f_Duree_Trajet < f_Heure_Max);
+				} while (f_Duree_Trajet < f_Heure_Max); // Tant que la durée passée par la fourmis n'a pas dépassé f_Heure_Max
 
 			}
 
@@ -160,7 +162,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 			vector<double> pd_Pheromones_Depart_Copie(pd_Pheromones_Depart);
 
 			while (iteration < NB_ITERATIONS && !stop) {
-				// ON ENREGISTRE LES MODIFICATIONS
+				// ON ENREGISTRE LES MISES A JOUR DE PHEROMONES APRES DEPOT
 				ppd_Pheromones = ppd_Pheromones_Copie;
 				pd_Pheromones_Depart = pd_Pheromones_Depart_Copie;
 
@@ -168,7 +170,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 				pd_Pheromones_Depart_Copie = vector<double>(pd_Pheromones_Depart);
 
 				// AFFICHAGE DE LA MATRICE DE PHEROMONES
-				/*if (iteration % 49 == 0) {
+				/*if (iteration % 49 == 0) {*/
 					for (int i_POI_x = 0; i_POI_x < pi_POI.size(); i_POI_x++) {
 						printf("%.1lf, ", pd_Pheromones_Depart_Copie[i_POI_x]);
 						for (int i_POI_y = 0; i_POI_y < pi_POI.size(); i_POI_y++) {
@@ -187,8 +189,8 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 
 					int idx_POI_Choisit = choisirIndex_Ameliore(ppd_Pheromones[idx_POI_Depart], pi_POI, ppi_POI_Disponibles[i_Fourmis], ppf_Fourmis[i_Fourmis][DUREE], instance, i_POI_Depart, i_Hotel_Arrive, f_Duree_Max, ppf_Fourmis[i_Fourmis][DEBUT]);
 
+					/* Si la fourmis est obligé d'aller à l'hotel de fin de journée */
 					if (idx_POI_Choisit == -1) {
-
 						// REINITIALISATION DE LA FOURMIS
 						ppi_POI_Disponibles[i_Fourmis] = vector<int>(pi_POI.size(), 1);
 
@@ -239,7 +241,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 						ppi_ParcoursFourmis[i_Fourmis].push_back(idx_POI_Choisit);
 						ppi_POI_Disponibles[i_Fourmis][idx_POI_Choisit] = 0;
 
-						// DEPOT DE PHEROMONES SUR L'ARRETE DU POI PRECEDENT ET DU POI DE DEPART
+						// DEPOT DE PHEROMONES SUR L'ENSEMBLE DU CHEMIN PARCOURU PAR LA FOURMIS
 						double d_Depot_Pheromone = ppi_Fourmis[i_Fourmis][SCORE] + ppi_Fourmis[i_Fourmis][QUANTITE];// TODO: ADAPTER SCORE ICI
 
 						pd_Pheromones_Depart_Copie[ppi_Fourmis[i_Fourmis][PREMIERIDXPOI]] += d_Depot_Pheromone;
@@ -249,7 +251,7 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 					}
 				}
 
-				// DISPERTION DE LA PHEROMONE
+				// DISPERTION DES PHEROMONE
 				stop = true;
 				for (int idx_POI_x = 0; idx_POI_x < pi_POI.size(); idx_POI_x++) {
 					vector<int> pi_Nouvelle_Ligne;
@@ -269,6 +271,8 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 				iteration++;
 			}
 
+
+			// RECUPERATION DE LA MEILLEURE SOLUTION TROUVEE
 			vector<int> pi_Sequence;
 			vector<int> pi_POI_Restants(pi_POI.size(), 1);
 			int i_Score_Jour = 0;
@@ -330,98 +334,13 @@ void MetaHeuristique_Fourmis::SolutionMetaHeuristique() {
 	//}
 	printf("Score Final Retenu : %d\n\n", i_FO);
 
-
-
-	
-	// arret du chrono
-	auto chrono_end = chrono::system_clock::now();
-	printf("Score Final de la Metaheuristique : %d\n\n", i_FO);
-	std::ofstream fichier(CHEMIN_FICHIER_SORTIE_RESULTATS, std::ios::app);
-	if (fichier)
-	{
-		static int Instance = 1;
-		if (Instance == 1)
-		{
-			// on écrit une seule fois les paramétrages suivants
-			fichier << "Paramétrage de la Metaheuristique des Fourmis" << std::endl;
-			fichier << "Nombre d'itérations : " << NB_ITERATIONS << std::endl;
-			fichier << "Nombre de fourmis : " << NB_FOURMIS << std::endl;
-			fichier << "Pheromones initiales : " << PHEROMONES_INIT << std::endl;
-			fichier << "Evaporation : " << EVAPORATION << std::endl;
-			fichier << "Augmentation de l'evaporation : " << AUGMENTATION_EVAPORATION << std::endl;
-		}
-		printf("Score Final MetaHeuristique de : %d\n\n", i_FO_Fourmis);
-
-		std::vector<int> liste_FO;
-		std::vector<float> liste_Pourcentage;
-		std::vector<int> liste_FO_Optimal{ 816, 900, 1062, 1062, 1116, 1236, 1236, 1236, 1284, 1284, 1284, 1670, 173, 241, 367, 412, 412, 504, 504, 504, 590, 1114, 1164, 1234, 1234, 1261, 1306 };
-		std::vector<float> liste_temps;
-
-		liste_temps.push_back(std::chrono::duration_cast<std::chrono::seconds>(chrono_end - chrono_start).count());
-		liste_Pourcentage.push_back((float)i_FO / liste_FO_Optimal[Instance - 1] * 100);
-		liste_FO.push_back(i_FO);
-
-		if (std::chrono::duration_cast<std::chrono::seconds>(chrono_end - chrono_start).count() > 180)
-		{
-			fichier << "FO Instance " << Instance << ": " << i_FO << std::endl
-				<< "\t"
-				<< "Temps"
-				<< ": \033[31m" << std::chrono::duration_cast<std::chrono::seconds>(chrono_end - chrono_start).count() << " s\033[0m"
-				<< " DELAI DE RESOLUTION DEPASSE" << std::endl;
-		}
-		else
-		{
-			fichier << "FO Instance " << Instance << ": " << i_FO << std::endl
-				<< "\t"
-				<< "Temps"
-				<< ": " << std::chrono::duration_cast<std::chrono::seconds>(chrono_end - chrono_start).count() << " s"
-				<< "| Pourcentage de la solution optimale : " << liste_Pourcentage[0] << "%" << std::endl;
-			printf("Pourcentage de la solution optimale : %f\n", liste_Pourcentage[0]);
-		}
-
-		static int somme = 0;
-		static float somme_Pourcentage = 0;
-		static int somme_temps = 0;
-		float moyenne = 0;
-		float moyenne_Pourcentage = 0;
-
-		for (int i = 0; i < liste_FO.size(); i++)
-		{
-			somme += liste_FO[i];
-			somme_Pourcentage += liste_Pourcentage[i];
-			somme_temps += liste_temps[i];
-		}
-
-		// quand Instance = 27 , on fait la moyenne totale par rapport a la liste des FO
-		if (Instance == 27)
-		{
-			moyenne = somme / 27;
-			moyenne_Pourcentage = somme_Pourcentage / 27;
-
-			fichier << "Moyenne des FO : " << moyenne << std::endl
-				<< "Moyenne des pourcentages : " << moyenne_Pourcentage << "%" << std::endl
-				<< "Temps total : " << somme_temps << " s \n"
-				<< std::endl;
-
-			printf("Moyenne des FO : %f\n", moyenne);
-			printf("Moyenne des pourcentages : %f\n", moyenne_Pourcentage);
-		}
-
-		Instance++;
-	}
-	else
-	{
-		std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
-	}
-
-	// TODO : Check si meilleur, remplacer si c'est le cas
 }
 
-
-bool MetaHeuristique_Fourmis::tri_par_score(const int& i1, const int& i2) {
-	return instance->get_POI_Score(i1) < instance->get_POI_Score(i2);
-}
-
+/// <summary>
+/// Méthode permettant de choisir aléartoirement un index à partir d'une ligne de la matrice de pheromones
+/// </summary>
+/// <param name="array"> Ligne de la matrice de pheromones </param>
+/// <returns></returns>
 int choisirIndex(const std::vector<double>& array) {
 	double sommeTotale = 0;
 	for (double valeur : array) {
@@ -452,6 +371,18 @@ int choisirIndex(const std::vector<double>& array) {
 	return -1;
 }
 
+/// <summary>
+/// Méthode permettant de choisir aléartoirement un index à partir d'une ligne de la matrice de pheromones
+/// <param name="array"> Ligne de la matrice de pheromones </param>
+/// <param name="pi_POI"> POI possibles </param>
+/// <param name="pi_POI_Disponibles"> Indique si les POI ont deja etes parcourus par la fourmis </param>
+/// <param name="f_Duree_Trajet"> Durée actuelle du parcours de la fourmis</param>
+/// <param name="instance"></param>
+/// <param name="i_POI_Depart"> POI actuel de la fourmis </param>
+/// <param name="i_Hotel_Arrive"> Hotel de fin de journée </param>
+/// <param name="f_Duree_Max"> Durée maximale de la journée </param>
+/// <param name="f_Heure_Debut"> Heure de départ de la fourmis </param>
+/// <returns></returns>
 int choisirIndex_Ameliore(const std::vector<double>& array, const std::vector<int>& pi_POI, const std::vector<int>& pi_POI_Disponibles, const float f_Duree_Trajet, Instance* instance, int i_POI_Depart, int i_Hotel_Arrive, float f_Duree_Max, float f_Heure_Debut) {
 	double sommeTotale = 0.0;
 	unordered_map<int, double> map_POI_Choix;
@@ -494,6 +425,11 @@ int choisirIndex_Ameliore(const std::vector<double>& array, const std::vector<in
 	return -1;
 }
 
+/// <summary>
+/// Méthode permettant de choisir le "meilleur" index à partir d'une ligne de la matrice de pheromones
+/// </summary>
+/// <param name="array"> Ligne de la matrice de pheromones </param>
+/// <returns></returns>
 int choisirIndex_Fin(const std::vector<double>& array) {
 	double pheromone_max = -1;
 	int idx_POI_Choisit = -1;
@@ -510,6 +446,18 @@ int choisirIndex_Fin(const std::vector<double>& array) {
 	return idx_POI_Choisit;
 }
 
+/// <summary>
+/// Méthode permettant de choisir le "meilleur" index à partir d'une ligne de la matrice de pheromones
+/// <param name="array"> Ligne de la matrice de pheromones </param>
+/// <param name="pi_POI"> POI possibles </param>
+/// <param name="pi_POI_Disponibles"> Indique si les POI ont deja etes parcourus par la fourmis </param>
+/// <param name="f_Duree_Trajet"> Durée actuelle du parcours de la fourmis</param>
+/// <param name="instance"></param>
+/// <param name="i_POI_Depart"> POI actuel de la fourmis </param>
+/// <param name="i_Hotel_Arrive"> Hotel de fin de journée </param>
+/// <param name="f_Duree_Max"> Durée maximale de la journée </param>
+/// <param name="f_Heure_Debut"> Heure de départ de la fourmis </param>
+/// <returns></returns>
 int choisirIndex_Fin(const std::vector<double>& array, const std::vector<int>& pi_POI, const std::vector<int>& pi_POI_Disponibles, const float f_Duree_Trajet, Instance* instance, int i_POI_Depart, int i_Hotel_Arrive, float f_Duree_Max, float f_Heure_Debut) {
 	double pheromone_max = -1;
 	int idx_POI_Choisit = -1;
@@ -534,76 +482,3 @@ int choisirIndex_Fin(const std::vector<double>& array, const std::vector<int>& p
 
 	return idx_POI_Choisit;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-vector<int> MetaHeuristique_Fourmis::Randomisateur(vector<int> pi_POI) {
-	std::random_device rd;
-	std::mt19937 g(rd());
-
-	std::shuffle(pi_POI.begin(), pi_POI.end(), g);
-
-	return pi_POI;
-}
-//
-//vector<vector<int>> MetaHeuristique_Fourmis::GenerationNSequence(vector<int> pi_POI, int i_Nombre_de_Liste_A_Construire, int i_Jour) {
-//	vector<vector<int>> pi_NSequences = {};
-//	unordered_map<int, int> map_Score_Sequence;
-//	float f_Debut_au_Plus_Tard = (24.00 - instance->get_POI_Duree_Max_Voyage(i_Jour));
-//
-//	for (int i_N = 0; i_N < i_Nombre_de_Liste_A_Construire; i_N++) {
-//		vector<int> pi_POI_Ordre_Aleatoire = Randomisateur(pi_POI);
-//		float f_Debut = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / f_Debut_au_Plus_Tard));
-//
-//		vector<int> pi_Sequence = {};
-//		for (int i_POI : pi_POI_Ordre_Aleatoire)
-//		{
-//			pi_Sequence = Heuristique_v1::MeilleureSequence(pi_Sequence, i_POI, instance, pii_Hotels_par_Jour[i_Jour].first, pii_Hotels_par_Jour[i_Jour].second, i_Jour).second;//f_Debut);
-//		}
-//
-//
-//		printf("liste => {");
-//		for (int idx = 0; idx < pi_Sequence.size(); idx++) {
-//			printf(" %d ,", pi_Sequence[idx]);
-//		}
-//		printf("}\n");
-//
-//		pi_NSequences.push_back(pi_Sequence);
-//
-//		int i_Score_Sequence = 0;
-//		for (int i_POI : pi_Sequence){
-//			i_Score_Sequence += instance->get_POI_Score(i_POI);
-//		}
-//
-//		map_Score_Sequence[i_N] = i_Score_Sequence;
-//	}
-//
-//	vector<pair<int, int>> vec_Sequences_Triees(map_Score_Sequence.begin(), map_Score_Sequence.end());
-//
-//	std::sort(vec_Sequences_Triees.begin(), vec_Sequences_Triees.end(),
-//		[](const pair<int, int>& a, const pair<int, int>& b) {
-//			return a.second > b.second;
-//		}
-//	); 
-//
-//	vector<vector<int>> pi_NSequences_Triees;
-//	for (const auto& paire : vec_Sequences_Triees) {
-//		pi_NSequences_Triees.push_back(pi_NSequences[paire.first]);
-//	}
-//
-//	printf("Meilleure sequence jour %d : %d\n", i_Jour, vec_Sequences_Triees[0].second);
-//
-//	return pi_NSequences_Triees;
-//}
-//
