@@ -2,14 +2,14 @@ Un support d'explication de notre solution peut être trouvé ici :
 https://www.canva.com/design/DAGE6JhWHuU/Pz1M2skjac1F5dXPPaeE-g/edit?utm_content=DAGE6JhWHuU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 # Sujet
-Réaliser une Heuristique et une Méta-Heuristique pour résoudre un problème --de conception d’itinéraires touristiques--.
+Réaliser une Heuristique et une Méta-Heuristique pour résoudre un problème _de conception d’itinéraires touristiques_.
 
 # Le Problème
 ## Les données :
 - n hotels : coordonnees **x**, **y**
 - m points d'intérêts (POI) : coordonnées **x**, **y** , un **score** et des **horaires d'ouvertures**
 - k jours : une **durée maximale de trajet** (par jour)
-- une matrice --n+m x n+m-- de distance (distance + temps de visite dans le cas des POI)
+- une matrice _n+m x n+m_ de distance (distance + temps de visite dans le cas des POI)
 - un hotel de debut **Hi**
 - un hotel de fin **Ha**
 
@@ -32,4 +32,4 @@ Trouver un itinéraire pour chaque jour de sorte à maximiser la somme des score
 
 ##
 
-_Crochemore Arthur et Alâa Chakori Semmane_
+_Arthur Crochemore et Alâa Chakori Semmane_
