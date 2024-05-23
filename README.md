@@ -1,11 +1,11 @@
-Un support d'explication de la solution peut être trouvé ici :
+Un support d'explication de notre solution peut être trouvé ici :
 https://www.canva.com/design/DAGE6JhWHuU/Pz1M2skjac1F5dXPPaeE-g/edit?utm_content=DAGE6JhWHuU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
-## Sujet
+# Sujet
 Réaliser une Heuristique et une Méta-Heuristique pour résoudre un problème --de conception d’itinéraires touristiques--.
 
-## Le Problème
-# Les données :
+# Le Problème
+## Les données :
 - n hotels : coordonnees **x**, **y**
 - m points d'intérêts (POI) : coordonnées **x**, **y** , un **score** et des **horaires d'ouvertures**
 - k jours : une **durée maximale de trajet** (par jour)
@@ -13,7 +13,7 @@ Réaliser une Heuristique et une Méta-Heuristique pour résoudre un problème -
 - un hotel de debut **Hi**
 - un hotel de fin **Ha**
 
-# Les variables :
+## Les variables :
 - Un hotel de fin pour chaque jour
 - Un hotel de début pour chaque jour (hotel de fin du jour précédent)
 - Une séquence de POI pour chaque POI (POI traverse entre l'hôtel de début et de fin de journée)
@@ -21,11 +21,15 @@ Réaliser une Heuristique et une Méta-Heuristique pour résoudre un problème -
 - Une **durée de trajet** pour chaque jour (somme des dist de la matrice - heure de départ + temps d'attente pour l'ouverture des POI)
 
 
-# Contraites :
+## Contraites :
 - Chaque jour commence par un hôtel et finit par un hôtel
 - Chaque POI ne peut être traversé qu'**une seule fois**
 - Un POI ne peut être visité en dehors de ces horaires d'ouverture (si on arrive avant l'ouverture => on attend l'ouverture ce qui augmente donc le temps de trajet)
 - La durée de trajet d'un jour ne peut dépasser la durée maximale de trajet de ce jour
 
-# Objectif :
+## Objectif :
 Trouver un itinéraire pour chaque jour de sorte à maximiser la somme des score des POI traversé
+
+##
+
+_Crochemore Arthur et Alâa Chakori Semmane_
