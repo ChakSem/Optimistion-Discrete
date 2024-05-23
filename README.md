@@ -16,9 +16,10 @@ Réaliser une Heuristique et une Méta-Heuristique pour résoudre un problème _
 ## Les variables :
 - Un hotel de fin pour chaque jour
 - Un hotel de début pour chaque jour (hotel de fin du jour précédent)
-- Une séquence de POI pour chaque POI (POI traverse entre l'hôtel de début et de fin de journée)
+- Une séquence de POI pour chaque POI (POI traverse entre l'hôtel de début et l'hôtel de fin de journée)
 - Une **heure de départ** pour chaque jour
-- Une **durée de trajet** pour chaque jour (somme des dist de la matrice - heure de départ + temps d'attente pour l'ouverture des POI)
+- Une **durée de trajet** pour chaque jour (Soit x,y un couple d'élement successsif dans une journee i (hotel ou POI) :  
+duree jour i = (Σ(x,y) max(dist x,y ; ouverture y) - heure de départ )
 
 
 ## Contraites :
